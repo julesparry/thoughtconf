@@ -14,8 +14,8 @@
     <property name="test.report.dir" location="${report.dir}/test"/>
 
     <path id="common-classpath">
-        <pathelement location="${unit.test.dir}/resources"/>
-        <pathelement location="${src.dir}/resources"/>
+        <pathelement location="${unit.test.dir}"/>
+        <pathelement location="${src.dir}"/>
         <pathelement location="${src.dir}/deployment/env/dev"/>
         <fileset dir="${compile.dir}"/>
         <fileset dir="lib/runtime/jar"/>
