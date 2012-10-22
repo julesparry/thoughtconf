@@ -99,15 +99,15 @@
             depends="run-unit-tests, run-integration-tests, run-system-tests, report-tests, check-failed-tests"
             description="Run all unit, integration and system tests."/>
 
-    <target name="run-unit-tests" depends="make-jars">
+    <target name="run-unit-tests" depends="make-jars" description="run unit tests">
         <unit-test testdir="${unit.test.dir}" classpath="common-classpath"/>
     </target>
 
-    <target name="run-integration-tests" depends="make-jars">
+    <target name="run-integration-tests" depends="make-jars" description="run integration tests">
         <unit-test testdir="${integration.test.dir}" classpath="common-classpath"/>
     </target>
 
-    <target name="run-system-tests" depends="make-jars">
+    <target name="run-system-tests" depends="make-jars" description="run system tests">
         <unit-test testdir="${system.test.dir}" classpath="system-classpath"/>
     </target>
 
