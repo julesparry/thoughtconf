@@ -138,7 +138,6 @@
         <mkdir dir="${dist.dir}/webapp"/>
         <war destfile="${dist.dir}/${ant.project.name}.war" webxml="${src.dir}/webapp/WEB-INF/web.xml">
             <classes dir="${dist.dir}/classes"/>
-            <classes dir="${src.dir}/resources"/>
             <webinf dir="${src.dir}/deployment">
                 <include name="applicationContext-*.xml"/>
             </webinf>
