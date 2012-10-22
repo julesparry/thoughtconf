@@ -1,4 +1,4 @@
-thoughtconf
-===========
+Spring Quickstart
+=================
 
-A TWU creation
+A quick start to a working spring app.
