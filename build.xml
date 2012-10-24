@@ -19,8 +19,9 @@
         <pathelement location="${src.dir}/deployment/env/dev"/>
         <fileset dir="${compile.dir}"/>
         <fileset dir="lib/runtime/jar"/>
-        <fileset dir="lib/buildtime/jar" />
+        <fileset dir="lib/buildtime/jar"/>
         <fileset dir="lib/jetty/jar" excludes="ant-*.jar"/>
+        <fileset dir="lib/tomcat/jar"/>
     </path>
 
     <path id="system-classpath">
@@ -48,7 +49,7 @@
         <sequential>
             <mkdir dir="${test.report.dir}"/>
             <junit fork="yes" forkmode="once" failureproperty="unit.tests.failed" printsummary="yes">
-                <classpath refid="@{classpath}" />
+                <classpath refid="@{classpath}"/>
                 <formatter type="xml"/>
                 <batchtest if="testcase" todir="${test.report.dir}">
                     <fileset dir="@{testdir}/java">
@@ -142,7 +143,7 @@
                 <include name="applicationContext-*.xml"/>
             </webinf>
             <fileset dir="${src.dir}/webapp">
-                <exclude name="**/applicationContext-properties.xml"/>
+                <!--<exclude name="**/applicationContext-properties.xml"/>-->
                 <exclude name="**/web.xml"/>
                 <exclude name="static/"/>
                 <exclude name="src/"/>
@@ -163,13 +164,90 @@
             <fileset dir="${dist.dir}" includes="*.war"/>
             <fileset dir="${src.dir}/deployment/env"/>
         </zip>
+
         <checksum file="${dist.dir}/${ant.project.name}.zip"/>
     </target>
+
+    <path id="jetty-plugin-classpath">
+        <fileset dir="lib/jetty/jar" includes="*.jar"/>
+    </path>
+
+    <path id="tomcat-plugin-classpath">
+        <fileset dir="lib/tomcat/jar" includes="*.jar"/>
+    </path>
+
+    <taskdef classpathref="jetty-plugin-classpath" resource="tasks.properties" loaderref="jetty.loader"/>
+
 
     <target name="run-jetty" depends="make-jars" description="Run application in Jetty.">
         <java classname="com.example.app.jetty.WebServer" classpathref="system-classpath" fork="true"
               failonerror="true"/>
+        <!--<jetty tempDirectory="jetty-temp">-->
+        <!--<webapp name="webapp" warfile="build/dist/app.war" contextpath="/build/dist" />-->
+        <!--</jetty>-->
     </target>
+
+
+    <property name="url" value="http://localhost:8080/app"/>
+    <!--<property name="url" value="http://localhost/manager"/>-->
+    <property name="username" value="user"/>
+    <property name="password" value="pass"/>
+    <property name="path" value="build/dist"/>
+
+
+
+    <taskdef classpathref="tomcat-plugin-classpath" name="deploy" classname="org.apache.catalina.ant.DeployTask" />
+    <!--<taskdef classpathref="tomcat-plugin-classpath" name="deploy" classname="org.apache.catalina.ant.StartTask" />-->
+    <!--<taskdef classpathref="tomcat-plugin-classpath" name="deploy" classname="org.apache.catalina.ant.StopTask" />-->
+    <!--<taskdef classpathref="tomcat-plugin-classpath" name="deploy" classname="org.apache.catalina.ant.UndeployTask" />-->
+
+
+    <!--<taskdef classpathref="tomcat-plugin-classpath" name="undeploy" classname="org.apache.catalina.ant.UndeployTask" />-->
+
+    <!--<taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask">-->
+        <!--<classpath>-->
+            <!--<path location="lib/tomcat/jar/tomcat-catalina-ant-7.0.32.jar"/>-->
+        <!--</classpath>-->
+    <!--</taskdef>-->
+
+
+    <!--<target name="start" description="start tomcat" depends="make-jars">-->
+
+        <!--<deploy-->
+                <!--url="${url}"-->
+                <!--username="${username}"-->
+                <!--password="${password}"-->
+                <!--path="${path}"-->
+                <!--war="build/dist/app.war"/>-->
+    <!--</target>-->
+
+
+    <target name="deploy" description="deploy to tomcat" depends="make-jars">
+
+        <deploy
+                url="${url}"
+                username="${username}"
+                password="${password}"
+                path="${path}"
+                war="build/dist/app.war"/>
+    </target>
+
+
+    <path id="tomcat-plugin-classpath">
+        <fileset dir="lib/tomcat/jar" includes="*.jar"/>
+    </path>
+    <!--<taskdef classpathref="tomcat-plugin-classpath" resource="tasks.properties" loaderref="tomcat.loader" />-->
+    <target name="run-tomcat" depends="make-jars" description="Run application in Tomcat">
+
+        <!--<target name="deploy" description="Deploy web application">-->
+        <java classname="org.apache.catalina.ant.DeployTask" classpathref="system-classpath" fork="true"
+              failonerror="true"/>
+        <!--<taskdef resource="org/apache/catalina/ant/catalina.tasks"   classpathref="deployer.classpath"/>-->
+        <!--<deploy url="${deploy.url}" username="${deploy.username}" password="${deploy.password}"-->
+        <!--path="${deploy.path}" war="${basedir}/dist/${deploy.webapp}" update="true" />-->
+        <!--</target>-->
+    </target>
+
 
     <target name="package-src" description="Create zip of the source code for distribution.">
         <mkdir dir="${dist.dir}"/>
@@ -180,5 +258,6 @@
     <target name="get-build-number" unless="build.number">
         <input message="Build number?" addproperty="build.number"/>
     </target>
+
 
 </project>

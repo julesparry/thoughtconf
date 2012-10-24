@@ -214,27 +214,6 @@
       <JAVADOC />
       <SOURCES />
     </library>
-    <library name="jar2">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/jcl-over-slf4j-1.6.1.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/org.springframework.beans-3.0.2.RELEASE.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/commons-lang-2.4.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/freemarker-2.3.16.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/org.springframework.web-3.0.2.RELEASE.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/org.springframework.asm-3.0.2.RELEASE.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/org.springframework.core-3.0.2.RELEASE.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/org.springframework.context.support-3.0.2.RELEASE.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/org.springframework.transaction-3.0.2.RELEASE.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/org.springframework.expression-3.0.2.RELEASE.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/slf4j-api-1.6.1.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/org.springframework.context-3.0.2.RELEASE.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/org.springframework.jdbc-3.0.2.RELEASE.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/slf4j-jcl-1.6.1.jar!/" />
-        <root url="jar://$PROJECT_DIR$/lib/runtime/jar/org.springframework.web.servlet-3.0.2.RELEASE.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
     <library name="javadoc">
       <CLASSES>
         <root url="jar://$PROJECT_DIR$/lib/buildtime/javadoc/selenium-htmlunit-driver-2.24.1.jar!/" />
@@ -259,6 +238,30 @@
       </CLASSES>
       <JAVADOC />
       <SOURCES />
+    </library>
+    <library name="jetty">
+      <CLASSES>
+        <root url="file://$PROJECT_DIR$/lib/jetty/jar" />
+        <root url="file://$PROJECT_DIR$/lib/jetty/jar" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+      <jarDirectory url="file://$PROJECT_DIR$/lib/jetty/jar" recursive="false" />
+    </library>
+    <library name="runtime">
+      <CLASSES>
+        <root url="file://$PROJECT_DIR$/lib/runtime/jar" />
+        <root url="file://$PROJECT_DIR$/lib/runtime/bundle" />
+        <root url="file://$PROJECT_DIR$/lib/runtime/jar" />
+        <root url="file://$PROJECT_DIR$/lib/runtime/bundle" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$PROJECT_DIR$/lib/runtime/src/org.springframework.web-sources-3.0.2.RELEASE.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/runtime/source/commons-logging-1.1.1.jar!/" />
+      </SOURCES>
+      <jarDirectory url="file://$PROJECT_DIR$/lib/runtime/bundle" recursive="false" />
+      <jarDirectory url="file://$PROJECT_DIR$/lib/runtime/jar" recursive="false" />
     </library>
     <library name="source">
       <CLASSES>
@@ -305,22 +308,6 @@
       <JAVADOC />
       <SOURCES />
     </library>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.6</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
 
