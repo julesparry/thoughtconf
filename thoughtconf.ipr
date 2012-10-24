@@ -30,6 +30,9 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="GradleSettings">
+    <option name="gradleHome" value="F:/Softwares/gradle-1.0" />
+  </component>
   <component name="IdProvider" IDEtalkID="E1C13F0DA7B57468200F06C642E825FC" />
   <component name="Palette2">
     <group name="Swing">

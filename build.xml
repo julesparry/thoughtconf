@@ -21,7 +21,7 @@
         <fileset dir="lib/runtime/jar"/>
         <fileset dir="lib/buildtime/jar"/>
         <fileset dir="lib/jetty/jar" excludes="ant-*.jar"/>
-        <fileset dir="lib/tomcat/jar"/>
+        <!--<fileset dir="lib/tomcat/jar"/>-->
     </path>
 
     <path id="system-classpath">
@@ -188,15 +188,15 @@
     </target>
 
 
-    <property name="url" value="http://localhost:8080/app"/>
-    <!--<property name="url" value="http://localhost/manager"/>-->
-    <property name="username" value="user"/>
-    <property name="password" value="pass"/>
-    <property name="path" value="build/dist"/>
+    <!--<property name="url" value="http://localhost:8080/app"/>-->
+    <!--&lt;!&ndash;<property name="url" value="http://localhost/manager"/>&ndash;&gt;-->
+    <!--<property name="username" value="user"/>-->
+    <!--<property name="password" value="pass"/>-->
+    <!--<property name="path" value="build/dist"/>-->
 
 
 
-    <taskdef classpathref="tomcat-plugin-classpath" name="deploy" classname="org.apache.catalina.ant.DeployTask" />
+    <!--<taskdef classpathref="tomcat-plugin-classpath" name="deploy" classname="org.apache.catalina.ant.DeployTask" />-->
     <!--<taskdef classpathref="tomcat-plugin-classpath" name="deploy" classname="org.apache.catalina.ant.StartTask" />-->
     <!--<taskdef classpathref="tomcat-plugin-classpath" name="deploy" classname="org.apache.catalina.ant.StopTask" />-->
     <!--<taskdef classpathref="tomcat-plugin-classpath" name="deploy" classname="org.apache.catalina.ant.UndeployTask" />-->
@@ -222,31 +222,31 @@
     <!--</target>-->
 
 
-    <target name="deploy" description="deploy to tomcat" depends="make-jars">
+    <!--<target name="deploy" description="deploy to tomcat" depends="make-jars">-->
 
-        <deploy
-                url="${url}"
-                username="${username}"
-                password="${password}"
-                path="${path}"
-                war="build/dist/app.war"/>
-    </target>
+        <!--<deploy-->
+                <!--url="${url}"-->
+                <!--username="${username}"-->
+                <!--password="${password}"-->
+                <!--path="${path}"-->
+                <!--war="build/dist/app.war"/>-->
+    <!--</target>-->
 
 
-    <path id="tomcat-plugin-classpath">
-        <fileset dir="lib/tomcat/jar" includes="*.jar"/>
-    </path>
-    <!--<taskdef classpathref="tomcat-plugin-classpath" resource="tasks.properties" loaderref="tomcat.loader" />-->
-    <target name="run-tomcat" depends="make-jars" description="Run application in Tomcat">
+    <!--<path id="tomcat-plugin-classpath">-->
+        <!--<fileset dir="lib/tomcat/jar" includes="*.jar"/>-->
+    <!--</path>-->
+    <!--&lt;!&ndash;<taskdef classpathref="tomcat-plugin-classpath" resource="tasks.properties" loaderref="tomcat.loader" />&ndash;&gt;-->
+    <!--<target name="run-tomcat" depends="make-jars" description="Run application in Tomcat">-->
 
-        <!--<target name="deploy" description="Deploy web application">-->
-        <java classname="org.apache.catalina.ant.DeployTask" classpathref="system-classpath" fork="true"
-              failonerror="true"/>
-        <!--<taskdef resource="org/apache/catalina/ant/catalina.tasks"   classpathref="deployer.classpath"/>-->
-        <!--<deploy url="${deploy.url}" username="${deploy.username}" password="${deploy.password}"-->
-        <!--path="${deploy.path}" war="${basedir}/dist/${deploy.webapp}" update="true" />-->
-        <!--</target>-->
-    </target>
+        <!--&lt;!&ndash;<target name="deploy" description="Deploy web application">&ndash;&gt;-->
+        <!--<java classname="org.apache.catalina.ant.DeployTask" classpathref="system-classpath" fork="true"-->
+              <!--failonerror="true"/>-->
+        <!--&lt;!&ndash;<taskdef resource="org/apache/catalina/ant/catalina.tasks"   classpathref="deployer.classpath"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<deploy url="${deploy.url}" username="${deploy.username}" password="${deploy.password}"&ndash;&gt;-->
+        <!--&lt;!&ndash;path="${deploy.path}" war="${basedir}/dist/${deploy.webapp}" update="true" />&ndash;&gt;-->
+        <!--&lt;!&ndash;</target>&ndash;&gt;-->
+    <!--</target>-->
 
 
     <target name="package-src" description="Create zip of the source code for distribution.">

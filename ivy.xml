@@ -6,7 +6,7 @@
         <conf name="jetty" />
         <conf name="runtime" />
         <conf name="buildtime" />
-        <conf name="tomcat" />
+        <!--<conf name="tomcat" />-->
     </configurations>
 
     <dependencies>
@@ -18,8 +18,8 @@
         </dependency>
         <dependency org="org.mortbay.jetty" name="jetty-ant" rev="6.1.22" conf="jetty->*"/>
 
-        <dependency org="org.apache.tomcat" name="tomcat-catalina" rev="7.0.32" conf="tomcat->*"/>
-        <dependency org="org.apache.tomcat" name="tomcat-catalina-ant" rev="7.0.32" conf="tomcat->*"/>
+        <!--<dependency org="org.apache.tomcat" name="tomcat-catalina" rev="7.0.32" conf="tomcat->*"/>-->
+        <!--<dependency org="org.apache.tomcat" name="tomcat-catalina-ant" rev="7.0.32" conf="tomcat->*"/>-->
 
 
 
