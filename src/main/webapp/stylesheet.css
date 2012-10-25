@@ -1,5 +1,23 @@
 body {
-    background:#2F2F2F;
-    color:#FFF;
-    font-family:Helvetica, Arial, Sans-serif;
+    background: #2F2F2F;
+    color: #FFF;
+    font-family: Helvetica, Arial, Sans-serif;
+}
+
+@font-face {
+    font-family: 'marydaleregular';
+    src: url('Fonts/marydale-webfont.eot');
+    src: url('Fonts/marydale-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Fonts/marydale-webfont.woff') format('woff'),
+         url('Fonts/marydale-webfont.ttf') format('truetype'),
+         url('Fonts/marydale-webfont.svg#marydaleregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.session-title {
+
+    font-family: 'marydaleregular';
+
 }
