@@ -46,7 +46,7 @@
         <dependency org="log4j" name="log4j" rev="1.2.17" conf="runtime->*"/>
         <dependency org="commons-lang" name="commons-lang" rev="2.4" transitive="false" conf="buildtime,runtime->*" />
         <dependency org="commons-dbcp" name="commons-dbcp" rev="1.4" transitive="false" conf="buildtime,runtime->*" />
-        <dependency org="commons-pool" name="commons-pool" rev="1.5" transitive="false" conf="buildtime->*" />
+        <dependency org="commons-pool" name="commons-pool" rev="1.5" transitive="false" conf="buildtime,runtime->*" />
         <dependency org="org.seleniumhq.selenium" name="selenium-java" rev="2.24.1" transitive="false" conf="buildtime->*" />
         <dependency org="org.seleniumhq.selenium" name="selenium-firefox-driver" rev="2.24.1" transitive="false" conf="buildtime->*" />
         <dependency org="org.seleniumhq.selenium" name="selenium-api" rev="2.24.1" transitive="false" conf="buildtime->*" />
