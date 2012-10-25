@@ -176,7 +176,6 @@
         <fileset dir="lib/tomcat/jar" includes="*.jar"/>
     </path>
 
-    <taskdef classpathref="jetty-plugin-classpath" resource="tasks.properties" loaderref="jetty.loader"/>
 
 
     <target name="run-jetty" depends="make-jars" description="Run application in Jetty.">
