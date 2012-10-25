@@ -1,7 +1,6 @@
 package com.example.app.web.controller;
 
 import com.example.app.services.ExampleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,9 +14,13 @@ public class ExampleController {
 
     private ExampleService exampleService;
 
-    @Autowired
     public ExampleController(ExampleService exampleService) {
         this.exampleService = exampleService;
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String homePage( ) {
+        return "viewName";
     }
 
     @RequestMapping(value = "/setup", method = RequestMethod.GET)
@@ -39,5 +42,6 @@ public class ExampleController {
                           @ModelAttribute("conversation") ExampleConversation conversation) {
         return "viewName";
     }
+
 
 }
