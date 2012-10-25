@@ -16,8 +16,11 @@ public class ExampleController {
     @Autowired
     private ExampleService exampleService;
 
-    public ExampleController(ExampleService exampleService) {
+    public void setExampleService(ExampleService exampleService) {
         this.exampleService = exampleService;
+    }
+
+    public ExampleController() {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
