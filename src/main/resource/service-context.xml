@@ -10,4 +10,7 @@
         <property name="mapper" ref="userMapper"/>
     </bean>
 
+    <bean id="exampleService" class="com.example.app.services.ExampleService">
+    </bean>
+
 </beans>
