@@ -167,6 +167,7 @@
             </zipfileset>
             <lib dir="${compile.dir}" excludes="*-tests.jar"/>
             <lib dir="lib/runtime/jar"/>
+            <lib dir="lib/runtime/bundle"/>
         </war>
     </target>
 
