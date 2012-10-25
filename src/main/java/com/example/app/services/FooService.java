@@ -3,7 +3,7 @@ package com.example.app.services;
 import com.example.app.dao.UserMapper;
 import com.example.app.domain.User;
 
-class FooService {
+public class FooService {
     private UserMapper userMapper;
 
     public void setMapper(UserMapper userMapper) {

@@ -43,6 +43,17 @@
         </sequential>
     </macrodef>
 
+     <macrodef name="make-resource-jar">
+        <attribute name="srcdir"/>
+        <attribute name="jarfile"/>
+        <attribute name="classpath"/>
+        <sequential>
+            <jar jarfile="${compile.dir}/@{jarfile}" basedir="${src.dir}/resource" >
+                <fileset dir="@{srcdir}/resource" />
+            </jar>
+        </sequential>
+     </macrodef>
+
     <macrodef name="unit-test">
         <attribute name="testdir"/>
         <attribute name="classpath"/>
@@ -94,6 +105,7 @@
         <make-jar srcdir="${integration.test.dir}" jarfile="${ant.project.name}-int-tests.jar"
                   classpath="common-classpath"/>
         <make-jar srcdir="${system.test.dir}" jarfile="${ant.project.name}-sys-tests.jar" classpath="system-classpath"/>
+        <make-resource-jar srcdir="${src.dir}" jarfile="resource.jar" classpath="common-classpath" />
     </target>
 
     <target name="run-tests"

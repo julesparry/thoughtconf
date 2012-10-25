@@ -20,6 +20,11 @@ public class ExampleController {
         this.exampleService = exampleService;
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String homePage( ) {
+        return "viewName";
+    }
+
     @RequestMapping(value = "/setup", method = RequestMethod.GET)
     public ModelAndView setup(@PathVariable("entityId") String entityId) {
 
@@ -39,5 +44,6 @@ public class ExampleController {
                           @ModelAttribute("conversation") ExampleConversation conversation) {
         return "viewName";
     }
+
 
 }
