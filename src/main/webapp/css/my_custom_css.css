@@ -1,0 +1,15 @@
+.going_button{
+    height: 100%; width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.going_button_inactive{
+    background-image: url('../Icons/going-no_clicked.png');
+}
+
+
+.going_button_active{
+    background-image: url('../Icons/going-clicked.png');
+
+}
