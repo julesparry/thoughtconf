@@ -6,8 +6,11 @@
 
     <import resource="mapper-context.xml"/>
 
-    <bean id="collectionService" class="com.example.app.services.FooService">
+    <bean id="userService" class="com.example.app.services.UserService">
         <property name="mapper" ref="userMapper"/>
+    </bean>
+
+    <bean id="exampleService" class="com.example.app.services.ExampleService">
     </bean>
 
 </beans>

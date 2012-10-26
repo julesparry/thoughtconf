@@ -1,3 +1,7 @@
-lib
-build
+lib/
+out/
+build/
 *.iws
+*.iml
+.DS_Store
+*.ipr
