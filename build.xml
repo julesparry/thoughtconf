@@ -20,13 +20,14 @@
         <pathelement location="${src.dir}/deployment/env/dev"/>
         <fileset dir="${compile.dir}"/>
         <fileset dir="lib/runtime/jar"/>
+        <fileset dir="lib/runtime/bundle"/>
         <fileset dir="lib/buildtime/jar"/>
         <fileset dir="lib/jetty/jar" excludes="ant-*.jar"/>
-        <!--<fileset dir="lib/tomcat/jar"/>-->
     </path>
 
     <path id="system-classpath">
         <path refid="common-classpath"/>
+        <path location="${src.dir}/webapp/WEB-INF/classes"/>
     </path>
 
     <macrodef name="make-jar">
@@ -44,16 +45,16 @@
         </sequential>
     </macrodef>
 
-     <macrodef name="make-resource-jar">
+    <macrodef name="make-resource-jar">
         <attribute name="srcdir"/>
         <attribute name="jarfile"/>
         <attribute name="classpath"/>
         <sequential>
-            <jar jarfile="${compile.dir}/@{jarfile}" basedir="${src.dir}/resource" >
-                <fileset dir="@{srcdir}/resource" />
+            <jar jarfile="${compile.dir}/@{jarfile}" basedir="${src.dir}/resource">
+                <fileset dir="@{srcdir}/resource"/>
             </jar>
         </sequential>
-     </macrodef>
+    </macrodef>
 
     <macrodef name="unit-test">
         <attribute name="testdir"/>
@@ -107,7 +108,7 @@
         <make-jar srcdir="${integration.test.dir}" jarfile="${ant.project.name}-int-tests.jar"
                   classpath="common-classpath"/>
         <make-jar srcdir="${system.test.dir}" jarfile="${ant.project.name}-sys-tests.jar" classpath="system-classpath"/>
-        <make-resource-jar srcdir="${src.dir}" jarfile="resource.jar" classpath="common-classpath" />
+        <make-resource-jar srcdir="${src.dir}" jarfile="resource.jar" classpath="common-classpath"/>
     </target>
 
     <target name="run-tests"
@@ -178,7 +179,6 @@
             <fileset dir="${dist.dir}" includes="*.war"/>
             <fileset dir="${src.dir}/deployment/env"/>
         </zip>
-
         <checksum file="${dist.dir}/${ant.project.name}.zip"/>
     </target>
 
@@ -186,17 +186,9 @@
         <fileset dir="lib/jetty/jar" includes="*.jar"/>
     </path>
 
-    <path id="tomcat-plugin-classpath">
-        <fileset dir="lib/tomcat/jar" includes="*.jar"/>
-    </path>
-
-
     <target name="run-jetty" depends="make-jars" description="Run application in Jetty.">
         <java classname="com.example.app.jetty.WebServer" classpathref="system-classpath" fork="true"
               failonerror="true"/>
-        <!--<jetty tempDirectory="jetty-temp">-->
-        <!--<webapp name="webapp" warfile="build/dist/app.war" contextpath="/build/dist" />-->
-        <!--</jetty>-->
     </target>
 
     <target name="package-src" description="Create zip of the source code for distribution.">
@@ -208,6 +200,5 @@
     <target name="get-build-number" unless="build.number">
         <input message="Build number?" addproperty="build.number"/>
     </target>
-
 
 </project>
