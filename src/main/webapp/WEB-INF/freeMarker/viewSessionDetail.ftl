@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>View Session</title>
-    <link rel="stylesheet" href="/app/css/stylesheet.css" type="text/css" />
+    <link rel="stylesheet" href="css/stylesheet.css" type="text/css" />
 </head>
 <body>
 <div class="main-page">

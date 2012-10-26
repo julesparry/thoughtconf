@@ -9,14 +9,15 @@ body {
 
 @font-face {
   font-family: 'marydaleregular';
-  src: url('/Fonts/marydale-webfont.eot');
-  src: url('/Fonts/marydale-webfont.eot?#iefix') format('embedded-opentype'),
-  url('/Fonts/marydale-webfont.woff') format('woff'),
-  url('/Fonts/marydale-webfont.ttf') format('truetype'),
-  url('/Fonts/marydale-webfont.svg#marydaleregular') format('svg');
+  src: url('fonts/marydale-webfont.eot');
+  src: url('fonts/marydale-webfont.eot?#iefix') format('embedded-opentype'),
+  url('fonts/marydale-webfont.woff') format('woff'),
+  url('fonts/marydale-webfont.ttf') format('truetype'),
+  url('fonts/marydale-webfont.svg#marydaleregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
+
 .main-page{
   min-height: 100%;
   min-width: 100%;

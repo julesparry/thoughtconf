@@ -5,7 +5,7 @@
 @font-face {
     font-family: 'marydaleregular';
     src: url('marydale-webfont.eot');
-    src: url('marydale-webfont.eot?#iefix') format('embedded-opentype'),
+    src: url('marydale-webfont.eot') format('embedded-opentype'),
          url('marydale-webfont.woff') format('woff'),
          url('marydale-webfont.ttf') format('truetype'),
          url('marydale-webfont.svg#marydaleregular') format('svg');
