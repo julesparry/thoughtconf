@@ -10,7 +10,7 @@
 sourceFilePath=/var/lib/go-agent/pipelines/CI/build/dist/app.war
 
 #user on qa machine
-user=root
+user=thoughtconf
 
 #qa machine ip
 QA_ip="10.10.4.126"
@@ -19,7 +19,7 @@ QA_ip="10.10.4.126"
 deployPath=/home/thoughtconf/workspace/apache-tomcat-7.0.32/webapps/
 
 
-#command to deploay war file from war path on CI to correct path on qa (temp path currently used)
+#command to deploay war file from war path on CI to correct path on qa
 scp $sourceFilePath $user"@"$QA_ip":/"$deployPath 
 
 
