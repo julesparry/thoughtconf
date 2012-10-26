@@ -13,11 +13,19 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("something")
 public class ExampleController {
 
+    @Autowired
     private ExampleService exampleService;
 
-    @Autowired
-    public ExampleController(ExampleService exampleService) {
+    public void setExampleService(ExampleService exampleService) {
         this.exampleService = exampleService;
+    }
+
+    public ExampleController() {
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String homePage( ) {
+        return "viewName";
     }
 
     @RequestMapping(value = "/setup", method = RequestMethod.GET)
@@ -39,5 +47,6 @@ public class ExampleController {
                           @ModelAttribute("conversation") ExampleConversation conversation) {
         return "viewName";
     }
+
 
 }
