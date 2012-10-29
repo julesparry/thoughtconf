@@ -4,15 +4,14 @@ public class User {
 
     private boolean going;
 
-    public User(){
+    public User() {
         going = false;
     }
 
     public void toggleAttendance() {
-        if(!going){
+        if (!going) {
             going = true;
-        }
-        else{
+        } else {
             going = false;
         }
     }
@@ -20,6 +19,5 @@ public class User {
     public boolean isGoing() {
         return going;
     }
-
 
 }
