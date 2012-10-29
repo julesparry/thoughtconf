@@ -6,11 +6,11 @@
 
     <import resource="mapper-context.xml"/>
 
-    <bean id="userService" class="com.example.app.services.UserService">
+    <bean id="userService" class="com.twu.thoughtconf.services.UserService">
         <property name="mapper" ref="userMapper"/>
     </bean>
 
-    <bean id="exampleService" class="com.example.app.services.ExampleService">
+    <bean id="exampleService" class="com.twu.thoughtconf.services.ExampleService">
     </bean>
 
 </beans>

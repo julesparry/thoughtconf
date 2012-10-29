@@ -112,7 +112,7 @@
     </target>
 
     <target name="run-tests"
-            depends="run-unit-tests, run-integration-tests, run-system-tests, report-tests, check-failed-tests"
+            depends="run-unit-tests, run-integration-tests, -run-system-tests, report-tests, check-failed-tests"
             description="Run all unit, integration and system tests."/>
 
     <target name="run-unit-tests" depends="make-jars" description="run unit tests">
@@ -123,7 +123,9 @@
         <unit-test testdir="${integration.test.dir}" classpath="common-classpath"/>
     </target>
 
-    <target name="run-system-tests" depends="make-jars" description="run system tests">
+    <target name="run-system-tests" depends="-run-system-tests, report-tests, check-failed-tests" description="run system tests"/>
+
+    <target name="-run-system-tests" depends="make-jars">
         <unit-test testdir="${system.test.dir}" classpath="system-classpath"/>
     </target>
 
@@ -187,7 +189,7 @@
     </path>
 
     <target name="run-jetty" depends="make-jars" description="Run application in Jetty.">
-        <java classname="com.example.app.jetty.WebServer" classpathref="system-classpath" fork="true"
+        <java classname="com.twu.thoughtconf.jetty.WebServer" classpathref="system-classpath" fork="true"
               failonerror="true"/>
     </target>
 

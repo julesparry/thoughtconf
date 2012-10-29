@@ -7,7 +7,7 @@
                            http://www.springframework.org/schema/util
                            http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
-    <!--<util:properties id="externalProperties" location="classpath:/app-external.properties">-->
+    <!--<util:properties id="externalProperties" location="classpath:/thoughtconf-external.properties">-->
     <!--</util:properties>-->
 
 </beans>
