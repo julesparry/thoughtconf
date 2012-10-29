@@ -34,9 +34,6 @@
     <option name="gradleHome" value="F:/Softwares/gradle-1.0" />
   </component>
   <component name="IdProvider" IDEtalkID="E1C13F0DA7B57468200F06C642E825FC" />
-  <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/src/main/webapp/jasmine-standalone-1.2.0/SpecRunner.html" libraries="{jquery-1.6.4, jquery.mobile-1.0.1}" />
-  </component>
   <component name="Palette2">
     <group name="Swing">
       <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
