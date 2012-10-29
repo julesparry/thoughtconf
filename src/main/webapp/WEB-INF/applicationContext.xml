@@ -18,7 +18,7 @@
     <import resource="classpath:service-context.xml" />
 
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <property name="templateLoaderPath" value="/WEB-INF/freemarker/"/>
+        <property name="templateLoaderPath" value="/WEB-INF/freeMarker/"/>
     </bean>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
