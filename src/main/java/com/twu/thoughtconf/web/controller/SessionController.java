@@ -1,4 +1,4 @@
-package com.example.app.web.controller;
+package com.twu.thoughtconf.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
