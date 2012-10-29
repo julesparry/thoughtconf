@@ -1,0 +1,99 @@
+body {
+    padding:0;
+    margin:0;
+    width:100%;
+    background: #2F2F2F;
+    color: #FFF;
+    font-family: Helvetica, Arial, Sans-serif;
+}
+
+@font-face {
+    font-family: 'marydaleregular';
+    src: url('../Fonts/marydale-webfont.eot');
+    src: url('../Fonts/marydale-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../Fonts/marydale-webfont.woff') format('woff'),
+         url('../Fonts/marydale-webfont.ttf') format('truetype'),
+         url('../Fonts/marydale-webfont.svg#marydaleregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.conf, .date, .abstract img, .speaker img {
+    float:left;
+}
+
+.track {
+    float:right;
+}
+
+.track, .conf {
+    padding:1% 1% 1% 1%;
+}
+
+
+.component-type {
+    font-size:70%;
+    color:#676767;
+}
+
+.component-title {
+    font-style:italic;
+}
+
+.session-title {
+    font-family: 'marydaleregular';
+    padding:1% 5% 1% 5%;
+}
+
+.speaker {
+    margin:0px 0px 0px 20px;
+    margin:0px 0px 0px 20px;
+    background: 1B1B1B;
+    box-shadow: 0px 5px 5px #0B0B0B inset;
+}
+
+hr {
+    border-color:#1B1B1B;
+    box-shadow: 1px 1px 1px 1px #555;
+}
+
+.horizontal-rule {
+    clear:both;
+}
+
+#vertical-rule {
+    float: left;
+    width: 1px;
+    height: 20px;
+    display:inline;
+
+}
+
+.abstract,.date-time-location,.header, .speaker{
+    padding:10px 20px 10px 20px;
+}
+
+.date, .time {
+    padding: 10px 20px 0px 0px;
+}
+
+.time {
+    margin-left:155px;
+}
+
+img{
+    margin-right: 10px;
+}
+
+h2 {
+    font-size: 120%;
+    display:inline;
+}
+
+
+
+
+
+
+
+

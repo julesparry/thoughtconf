@@ -11,6 +11,7 @@
 <body>
 <div style="height: 50px; width: 50px">
    <a href="#" data-role="button" class="going_button going_button_inactive"> </a>
+
 </div>
 <script>
     initGoingButton();
