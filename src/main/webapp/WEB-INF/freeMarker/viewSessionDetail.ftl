@@ -52,8 +52,8 @@
 
     <hr class="horizontal-rule"/>
 
-    <div class="button_container">
-        <a href="#" data-role="button" class="going_button going_button_inactive">
+    <div class="buttonContainer">
+        <a href="#" data-role="button" class="goingButton">
             <span>happy face</span>
         </a>
     </div>
