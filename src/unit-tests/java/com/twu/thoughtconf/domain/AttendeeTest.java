@@ -5,27 +5,27 @@ import org.junit.Test;
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
-public class UserTest {
+public class AttendeeTest {
 
     @Test
     public void shouldReturnGoingIsTrueWhenUserAttendanceChanged() {
 
-        User user = new User();
+        Attendee attendee = new Attendee();
 
-        user.toggleAttendance();
+        attendee.toggleAttendance();
 
-        assertTrue(user.isGoing());
+        assertTrue(attendee.isGoing());
     }
 
     @Test
     public void shouldReturnGoingIsFalseWhenUserAttendanceChanged() {
 
-        User user = new User();
+        Attendee attendee = new Attendee();
 
-        user.toggleAttendance();
-        user.toggleAttendance();
+        attendee.toggleAttendance();
+        attendee.toggleAttendance();
 
-        assertFalse(user.isGoing());
+        assertFalse(attendee.isGoing());
     }
 
 }
