@@ -18,6 +18,7 @@ public class ExampleController {
     @Autowired
     private ExampleService exampleService;
 
+
     public void setExampleService(ExampleService exampleService) {
         this.exampleService = exampleService;
     }
