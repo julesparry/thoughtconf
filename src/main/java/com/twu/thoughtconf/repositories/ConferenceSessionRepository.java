@@ -1,7 +1,9 @@
 package com.twu.thoughtconf.repositories;
 
 import com.twu.thoughtconf.domain.ConferenceSession;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ConferenceSessionRepository {
 
     public ConferenceSession findById(String sessionId) {
