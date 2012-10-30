@@ -20,8 +20,8 @@
     </bean>
 
 
-    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.twu.thoughtconf.dao.UserMapper" />
+    <bean id="attendeeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.twu.thoughtconf.dao.AttendeeMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 </beans>

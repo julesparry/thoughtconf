@@ -6,8 +6,8 @@
 
     <import resource="mapper-context.xml"/>
 
-    <bean id="userService" class="com.twu.thoughtconf.services.UserService">
-        <property name="mapper" ref="userMapper"/>
+    <bean id="userService" class="com.twu.thoughtconf.services.AttendeeService">
+        <property name="mapper" ref="attendeeMapper"/>
     </bean>
 
     <bean id="exampleService" class="com.twu.thoughtconf.services.ExampleService">

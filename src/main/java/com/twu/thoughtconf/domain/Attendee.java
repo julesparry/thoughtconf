@@ -1,10 +1,10 @@
 package com.twu.thoughtconf.domain;
 
-public class User {
+public class Attendee {
 
     private boolean going;
 
-    public User() {
+    public Attendee() {
         going = false;
     }
 
