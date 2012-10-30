@@ -5,6 +5,7 @@
     <property name="unit.test.dir" location="src/unit-tests"/>
     <property name="integration.test.dir" location="src/integration-tests"/>
     <property name="system.test.dir" location="src/system-tests"/>
+    <property name="jasmine.dir" location="src/main/webapp/jasmine/"/>
 
     <property name="build.dir" location="build"/>
     <property name="lib.dir" location="lib"/>
@@ -77,6 +78,22 @@
             </junit>
         </sequential>
     </macrodef>
+
+    <target name="run-js-test">
+        <java jar="${jasmine.dir}/jasmine-1.2.0/JsTestDriver-1.3.5.jar" fork="true" dir="." failonerror="true">
+            <arg value="--port"/>
+            <arg value="4224"/>
+            <arg value="--reset"/>
+            <arg value="--config"/>
+            <arg path="${jasmine.dir}/jsTestDriver.conf"/>
+            <arg value="--browser"/>
+            <arg value="/Applications/Firefox.app/Contents/MacOS/firefox-bin"/>
+            <arg value="--tests"/>
+            <arg value="all"/>
+            <arg value="--raiseOnFailure"/>
+            <arg value="true"/>
+        </java>
+    </target>
 
     <taskdef resource="org/apache/ivy/ant/antlib.xml">
         <classpath location="bootstrap/ant/ivy-2.1.0.jar"/>
