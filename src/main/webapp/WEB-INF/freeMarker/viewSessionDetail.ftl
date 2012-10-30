@@ -54,7 +54,7 @@
 
     <div class="button_container">
         <a href="#" data-role="button" class="going_button going_button_inactive">
-            <span> &#9786;</span>
+            <span>happy face</span>
         </a>
     </div>
     <hr class="horizontal-rule"/>
