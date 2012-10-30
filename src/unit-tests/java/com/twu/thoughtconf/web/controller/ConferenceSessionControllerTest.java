@@ -13,9 +13,9 @@ import static org.junit.Assert.assertThat;
 public class ConferenceSessionControllerTest {
 
     @Test
-    public void shouldReturnAModelAndViewWithAViewNameOfViewSessionDetail() {
+    public void shouldReturnAModelAndViewWithAViewNameOfviewConferenceSession() {
         ModelAndView mv = new ConferenceSessionController().display(null);
-        assertThat(mv.getViewName(), is("viewSessionDetail"));
+        assertThat(mv.getViewName(), is("viewConferenceSession"));
     }
 
     @Test

@@ -9,9 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ConferenceSessionController {
 
-    @RequestMapping("/view-session")
+    @RequestMapping("/view-conference-session")
     public ModelAndView display(String sessionId) {
-        ModelAndView mv = new ModelAndView("viewSessionDetail");
+        ModelAndView mv = new ModelAndView("viewConferenceSession");
         ModelMap map = mv.getModelMap();
         map.put("session", new ConferenceSession("name"));
         return mv;
