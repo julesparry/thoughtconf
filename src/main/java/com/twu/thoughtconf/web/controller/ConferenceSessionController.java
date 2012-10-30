@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class SessionController {
+public class ConferenceSessionController {
 
     @RequestMapping("/view-session")
     public ModelAndView display(String sessionId) {
