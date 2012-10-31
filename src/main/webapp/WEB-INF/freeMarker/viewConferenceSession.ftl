@@ -1,12 +1,12 @@
 <html>
 <head>
     <title>View Session</title>
-    <link rel="stylesheet" href="css/viewsession.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/viewsession.css" type="text/css" />
 
-    <link rel="stylesheet" type="TEXT/CSS" href="css/my_custom_css.css"/>
+    <link rel="stylesheet" type="TEXT/CSS" href="../../css/my_custom_css.css"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
     <!--<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script> -->
-    <script type="text/javascript" src="js/viewsession.js"> </script>
+    <script type="text/javascript" src="/js/viewsession.js"> </script>
 </head>
 <body>
 <div class="main-page">
