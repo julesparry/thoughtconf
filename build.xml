@@ -80,13 +80,13 @@
     </macrodef>
 
     <target name="setup-display">
-        <exec executable="/bin/bash" dir="test" osfamily="unix">
+        <exec executable="/bin/bash" dir="." osfamily="unix">
             <arg value="setupdisplay.sh" />
         </exec>
     </target>
 
     <target name="tearddown-display">
-        <exec executable="/bin/bash" dir="test" osfamily="unix">
+        <exec executable="/bin/bash" dir="." osfamily="unix">
             <arg value="teardowndisplay.sh" />
         </exec>
     </target>
