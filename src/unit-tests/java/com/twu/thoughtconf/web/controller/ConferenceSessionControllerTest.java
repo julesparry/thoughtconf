@@ -51,7 +51,7 @@ public class ConferenceSessionControllerTest {
         ConferenceSession expectedConferenceSession = new ConferenceSession("Awesome JS");
         verify(repository).save(expectedConferenceSession);
 
-        assertThat(mv.getViewName(), startsWith("redirect:conference-session/display/"));
+        assertThat(mv.getViewName(), startsWith("redirect:home/"));
 
     }
 

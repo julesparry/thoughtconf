@@ -42,7 +42,7 @@ public class ConferenceSessionController {
         ModelAndView mv = new ModelAndView();
         ConferenceSession newConferenceSession = new ConferenceSession(conferenceSessionName);
         repository.save(newConferenceSession);
-        mv.setViewName("redirect:conference-session/display/" + newConferenceSession.getId());
+        mv.setViewName("redirect:home/" + newConferenceSession.getId());
         return mv;
     }
 }
