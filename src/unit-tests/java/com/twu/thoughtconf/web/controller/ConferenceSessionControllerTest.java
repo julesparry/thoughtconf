@@ -16,20 +16,26 @@ import static org.mockito.Mockito.*;
 public class ConferenceSessionControllerTest {
 
     @Test
-    public void shouldReturnAModelAndViewWithAViewNameOfviewConferenceSession() {
+    public void shouldReturnViewToCreatConferenceSession() {
+        ModelAndView mv = new ConferenceSessionController(new ConferenceSessionRepository()).newConferenceSession();
+        assertThat(mv.getModelMap(), hasKey("formAction"));
+        assertThat(mv.getViewName(), is("newConferenceSession"));
+    }
+
+    @Test
+    public void shouldReturnTheConferenceSessionView() {
         ModelAndView mv = new ConferenceSessionController(new ConferenceSessionRepository()).display(null);
         assertThat(mv.getViewName(), is("viewConferenceSession"));
     }
 
     @Test
-    public void shouldPopulateTheModelMapWithAnObjectCalledSession() {
-        String sessionId = "1";
-        ModelAndView mv = new ConferenceSessionController(new ConferenceSessionRepository()).display(sessionId);
+    public void shouldAddSessionToTheView() {
+        ModelAndView mv = new ConferenceSessionController(new ConferenceSessionRepository()).display("1");
         assertThat(mv.getModelMap(), hasKey("session"));
     }
 
     @Test
-    public void shouldDelegateToTheConferenceSessionServiceToFindTheConferenceSession() {
+    public void shouldRetrieveTheConferenceSessionFromASessionId() {
         String sessionId = "1";
         ConferenceSessionRepository repository = mock(ConferenceSessionRepository.class);
         when(repository.findById(sessionId)).thenReturn(new ConferenceSession("Javascript"));

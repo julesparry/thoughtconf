@@ -5,7 +5,7 @@ describe("Behavior of dom element based on intent to attend", function() {
             var domElement = document.createElement("a");
             $(domElement).addClass("active");
 
-            (new Intent(domElement)).toggle();
+            (new ConferenceSession(domElement)).toggleAttendance();
 
             expect($(domElement).hasClass("active")).toBeFalsy();
         })
@@ -15,7 +15,7 @@ describe("Behavior of dom element based on intent to attend", function() {
         it("should change to represent intention to attend when selected", function() {
             var domElement = document.createElement("a");
 
-            (new Intent(domElement)).toggle();
+            (new ConferenceSession(domElement)).toggleAttendance();
 
             expect($(domElement).hasClass("active")).toBeTruthy();
         })
