@@ -1,4 +1,4 @@
 #!/bin/bash
-Xvfb :99 -ac &
+Xvfb :2 -ac &
 PID_XVFB="$!"
-export DISPLAY=:99
+export DISPLAY=:2
