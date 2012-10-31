@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class CreateSessionController {
+
     @RequestMapping("/create-session")
     public String index(ModelMap modelMap) {
 
         return "createSession";
     }
+
 }
