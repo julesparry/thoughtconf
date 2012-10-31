@@ -9,4 +9,8 @@ public class ConferenceSessionRepository {
     public ConferenceSession findById(String sessionId) {
         return new ConferenceSession("Javascript FROM th REPO");
     }
+
+    public ConferenceSession save(ConferenceSession conferenceSession) {
+        return conferenceSession;
+    }
 }

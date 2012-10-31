@@ -2,17 +2,15 @@ package com.twu.thoughtconf.web.controller;
 
 import com.twu.thoughtconf.domain.ConferenceSession;
 import com.twu.thoughtconf.repositories.ConferenceSessionRepository;
-import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.hasEntry;
 import static org.hamcrest.Matchers.hasKey;
+import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @Controller
 public class ConferenceSessionControllerTest {
@@ -41,6 +39,20 @@ public class ConferenceSessionControllerTest {
 
         ConferenceSession session = (ConferenceSession) mv.getModelMap().get("session");
         assertThat(session.getDisplayName(), is("Javascript"));
+    }
+
+    @Test
+    public void shouldCreateAConferenceSession() throws Exception {
+        ConferenceSessionRepository repository = mock(ConferenceSessionRepository.class);
+        ConferenceSessionController controller = new ConferenceSessionController(repository);
+
+        ModelAndView mv = controller.create("Awesome JS");
+
+        ConferenceSession expectedConferenceSession = new ConferenceSession("Awesome JS");
+        verify(repository).save(expectedConferenceSession);
+
+        assertThat(mv.getViewName(), startsWith("redirect:conference-session/display/"));
+
     }
 
 
