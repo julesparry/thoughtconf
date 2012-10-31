@@ -31,20 +31,20 @@
 
     <div class="date-time-location">
         <div class="location">
-            <div><img id="location-img" src="../../icons/home-16x15.png" alt="Home Icon" width="16px" height="15px" /></div>
+            <div><img id="location-img" src="../../images/home-16x15.png" alt="Home Icon" width="16px" height="15px" /></div>
             <div id="location-detail">Diamond District Conference room 04 Diamond District Conference room 04</div>
         </div>
 
         <div class="date-time">
             <div class="date">
-                <img src="../../icons/calendar-16x16.png" alt="Calendar Icon" width="16px" height="16px"/>
+                <img src="../../images/calendar-16x16.png" alt="Calendar Icon" width="16px" height="16px"/>
                 <span> 3 Nov, 2012 </span>
             </div>
 
             <hr id="vertical-rule"/>
 
             <div class="time">
-                <img id="clock" src="../../icons/clock-16x15.png" alt="Clock Icon" width="16px" height="15px"/>
+                <img id="clock" src="../../images/clock-16x15.png" alt="Clock Icon" width="16px" height="15px"/>
                 <span>10 AM - 11 AM</span>
             </div>
         </div>
@@ -60,7 +60,7 @@
     <hr class="horizontal-rule"/>
 
     <div class="abstract">
-        <img src="../../icons/abstract-16x15.png" alt="Abstract Icon" width="16px" height="15px"/>
+        <img src="../../images/abstract-16x15.png" alt="Abstract Icon" width="16px" height="15px"/>
         <h2>Abstract</h2>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque ligula eu augue condimentum sodales.
@@ -76,7 +76,7 @@
     <hr class="horizontal-rule"/>
 
     <div class="speaker">
-        <img src="../../icons/mic-16x16.png" alt="Mic Icon" width="16px" height="16px"/>
+        <img src="../../images/mic-16x16.png" alt="Mic Icon" width="16px" height="16px"/>
         <h2>Anand.V</h2>
         <p id="speaker-details">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque ligula eu augue condimentum sodales.
             In commodo odio id libero ultricies at accumsan velit tempus. Fusce porta dapibus lacus eget pretium. Nullam
