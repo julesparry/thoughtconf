@@ -71,10 +71,11 @@
         <dependency org="xalan" name="xalan" rev="2.7.1" conf="buildtime->*"/>
         <dependency org="xerces" name="xercesImpl" rev="2.9.0" conf="buildtime->*"/>
 
-        <dependency org="org.mybatis" name="mybatis" rev="3.1.1" transitive="false" conf="buildtime,runtime->*" />
-        <dependency org="org.mybatis" name="mybatis-spring" rev="1.1.1" transitive="false" conf="buildtime,runtime->*" />
-        <dependency org="commons-dbcp" name="commons-dbcp" rev="1.4" transitive="false" conf="buildtime,runtime->*" />
-        <dependency org="aopalliance" name="aopalliance" rev="1.0" transitive="false" conf="buildtime,runtime->*" />
-        <dependency org="commons-pool" name="commons-pool" rev="1.5.4" transitive="false" conf="buildtime,runtime->*" />
+        <dependency org="org.mybatis" name="mybatis" rev="3.1.1" transitive="false" conf="runtime->*" />
+        <dependency org="org.mybatis" name="mybatis-spring" rev="1.1.1" transitive="false" conf="runtime->*" />
+        <dependency org="commons-dbcp" name="commons-dbcp" rev="1.4" transitive="false" conf="runtime->*" />
+        <dependency org="mysql" name="mysql-connector-java" rev="5.1.21" transitive="false" conf="runtime->*"/>
+        <dependency org="aopalliance" name="aopalliance" rev="1.0" transitive="false" conf="runtime->*" />
+        <dependency org="commons-pool" name="commons-pool" rev="1.5.4" transitive="false" conf="runtime->*" />
     </dependencies>
 </ivy-module>
