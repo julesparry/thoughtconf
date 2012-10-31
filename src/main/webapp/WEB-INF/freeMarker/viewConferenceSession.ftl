@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="../../css/my_custom_css.css" type="text/css" />
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
     <!--<script type="text/javascript" src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script> -->
-    <script type="text/javascript" src="/js/viewsession.js"> </script>
+    <script type="text/javascript" src="../../js/conferenceSession.js"> </script>
+    <script type="text/javascript" src="../../js/conferenceSessionBindings.js"> </script>
 </head>
 <body>
 <div class="main-page">
@@ -53,10 +54,11 @@
     <hr class="horizontal-rule"/>
 
     <div class="buttonContainer">
-        <a href="#" data-role="button" class="goingButton">
+        <a href="#" data-role="button" class="goingButton" id="goingButton">
             <span>happy face</span>
         </a>
     </div>
+
     <hr class="horizontal-rule"/>
 
     <div class="abstract">
