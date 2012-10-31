@@ -110,7 +110,7 @@
             <arg value="true"/>
         </java-->
         <antcall target="tearddown-display"/>
-        <exec executable="/bin/bash" dir="." osfamily="unix">
+        <exec executable="/bin/bash" dir="." osfamily="unix" failonerror="true">
             <arg value="runjstest.sh" />
         </exec>
     </target>
