@@ -1,5 +1,5 @@
-function Intent(domElement) {
-    this.toggle = function(){
+function ConferenceSession(domElement) {
+    this.toggleAttendance = function(){
         $(domElement).toggleClass("active");
     };
 };

@@ -37,12 +37,18 @@ public class ConferenceSessionController {
     }
 
 
-    @RequestMapping(value = "create", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ModelAndView create(@RequestParam String conferenceSessionName) {
         ModelAndView mv = new ModelAndView();
         ConferenceSession newConferenceSession = new ConferenceSession(conferenceSessionName);
         repository.save(newConferenceSession);
-        mv.setViewName("redirect:conference-session/display/" + newConferenceSession.getId());
+        mv.setViewName("redirect:home/" + newConferenceSession.getId());
+        return mv;
+    }
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public ModelAndView newConferenceSession() {
+        ModelAndView mv = new ModelAndView("newConferenceSession");
+        mv.getModelMap().put("formAction", "/app/conference-session/create");
         return mv;
     }
 }
