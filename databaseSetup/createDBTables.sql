@@ -40,4 +40,13 @@ CREATE TABLE session
 
 ALTER TABLE session 
 ADD CONSTRAINT FK_Track_Session FOREIGN KEY(track_id)
-REFERENCES track(id) ON DELETE CASCADE; 
+REFERENCES track(id) ON DELETE CASCADE;
+
+CREATE TABLE session_attendee(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+attendee_email VARCHAR(200),
+session_id INT);
+
+ALTER TABLE session 
+ADD CONSTRAINT FK_Session_Attendee FOREIGN KEY(id)
+REFERENCES session(session_id) ON DELETE CASCADE; 
