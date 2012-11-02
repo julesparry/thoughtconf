@@ -77,5 +77,8 @@
         <dependency org="mysql" name="mysql-connector-java" rev="5.1.21" transitive="false" conf="runtime->*"/>
         <dependency org="aopalliance" name="aopalliance" rev="1.0" transitive="false" conf="runtime->*" />
         <dependency org="commons-pool" name="commons-pool" rev="1.5.4" transitive="false" conf="runtime->*" />
+
+        <dependency org="joda-time" name="joda-time" rev="2.1" conf="buildtime,runtime->*"/>
+
     </dependencies>
 </ivy-module>

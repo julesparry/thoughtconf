@@ -14,7 +14,7 @@
           p:url="jdbc:mysql://localhost/ThoughtConf" p:username="root"
           p:password=""/>
 
-    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
@@ -22,9 +22,13 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-
     <bean id="attendeeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
         <property name="mapperInterface" value="com.twu.thoughtconf.dao.AttendeeMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="sessionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.twu.thoughtconf.dao.SessionMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 </beans>

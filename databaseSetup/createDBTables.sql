@@ -42,6 +42,7 @@ ALTER TABLE session
 ADD CONSTRAINT FK_Track_Session FOREIGN KEY(track_id)
 REFERENCES track(id) ON DELETE CASCADE;
 
+DROP TABLE IF EXISTS session_attendee;
 CREATE TABLE session_attendee(
 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 attendee_email VARCHAR(200),

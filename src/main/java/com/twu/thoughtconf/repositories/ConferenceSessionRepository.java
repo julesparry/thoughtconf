@@ -1,13 +1,20 @@
 package com.twu.thoughtconf.repositories;
 
+import com.twu.thoughtconf.dao.SessionMapper;
 import com.twu.thoughtconf.domain.ConferenceSession;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ConferenceSessionRepository {
 
+    private SessionMapper sessionMapper;
+
     public ConferenceSession findById(String sessionId) {
-        return new ConferenceSession("Javascript FROM th REPO");
+        return sessionMapper.findSessionByID(sessionId);
+    }
+
+    public void setMapper(SessionMapper sessionMapper) {
+        this.sessionMapper = sessionMapper;
     }
 
     public ConferenceSession save(ConferenceSession conferenceSession) {
