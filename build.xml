@@ -79,41 +79,6 @@
         </sequential>
     </macrodef>
 
-    <target name="setup-display">
-        <echo message="creating xvfb display for browser to run tests in"/>
-        <exec executable="/bin/bash" dir="." osfamily="unix">
-            <arg value="setupdisplay.sh" />
-        </exec>
-    </target>
-
-    <target name="tearddown-display">
-        <echo message="killing display process"/>
-        <exec executable="/bin/bash" dir="." osfamily="unix">
-            <arg value="teardowndisplay.sh" />
-        </exec>
-    </target>
-
-    <target name="run-js-tests" depends="setup-display">
-        <echo message="running js tests"/>
-
-        <!--java jar="${jasmine.dir}/jasmine-1.2.0/JsTestDriver-1.3.5.jar" fork="true" dir="." failonerror="true">
-            <arg value="-port"/>
-            <arg value="4224"/>
-            <arg value="-reset"/>
-            <arg value="-config"/>
-            <arg path="${jasmine.dir}/jsTestDriver.conf"/>
-            <arg value="-browser"/>
-            <arg value="firefox"/>
-            <arg value="-tests"/>
-            <arg value="all"/>
-            <arg value="-raiseOnFailure"/>
-            <arg value="true"/>
-        </java-->
-        <!--<antcall target="tearddown-display"/>-->
-        <exec executable="/bin/bash" dir="." osfamily="unix" failonerror="true">
-            <arg value="runjstest.sh" />
-        </exec>
-    </target>
 
     <taskdef resource="org/apache/ivy/ant/antlib.xml">
         <classpath location="bootstrap/ant/ivy-2.1.0.jar"/>
@@ -165,6 +130,15 @@
     <target name="-run-system-tests" depends="make-jars">
         <unit-test testdir="${system.test.dir}" classpath="system-classpath"/>
     </target>
+
+
+    <target name="run-js-tests">
+        <echo message="running js tests"/>
+        <exec executable="/bin/bash" dir="." osfamily="unix" failonerror="true">
+            <arg value="runjstest.sh" />
+        </exec>
+    </target>
+
 
     <target name="report-tests" if="unit.tests.failed">
         <junitreport todir="${test.report.dir}">
