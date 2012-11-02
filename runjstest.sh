@@ -1,7 +1,6 @@
 #!/bin/bash
 echo "Setting up Xvfb."
 Xvfb :3 -ac &
-PID_XVFB="$!"
 export DISPLAY=:3
 
 echo "Running Tests"
