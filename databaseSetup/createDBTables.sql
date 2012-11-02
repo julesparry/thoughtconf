@@ -48,5 +48,5 @@ attendee_email VARCHAR(200),
 session_id INT);
 
 ALTER TABLE session 
-ADD CONSTRAINT FK_Session_Attendee FOREIGN KEY(id)
+ADD CONSTRAINT FK_Session_Attendee FOREIGN KEY(session_id)
 REFERENCES session(session_id) ON DELETE CASCADE; 
