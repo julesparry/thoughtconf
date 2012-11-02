@@ -44,6 +44,16 @@
 
 }
 
+.buttonContainer .text {
+  font-family: "marydaleregular", helvetica;
+  font-size: 50px;
+  clear: both;
+  display: block;
+  margin-bottom: 10px;
+  color: #999;
+
+}
+
 .goingButton {
     display: inline-block;
     font-family: Arial;
@@ -53,13 +63,14 @@
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
-    box-shadow: 1px 1px 0px #545454;
-    -webkit-box-shadow: 1px 1px 0px #545454;
-    -moz-box-shadow: 1px 1px 0px #545454;
+    box-shadow: 2px 2px 0px #545454;
+    -webkit-box-shadow: 2px 2px 0px #545454;
+    -moz-box-shadow: 2px 2px 0px #545454;
     text-shadow: 1px 1px 3px #666;
-    border: solid black 1px;
+    border: solid black 2px;
     background: #2f2f2f;
     margin: 20px;
+    margin-bottom: 10px;
 
 }
 
@@ -67,13 +78,13 @@
     display: block;
     padding: 10px;
     float: left;
-    box-shadow: -1px -1px 0 #545454;
-    -webkit-box-shadow: -1px -1px 0 #545454;
-    -moz-box-shadow: -1px -1px 0 #545454;
+    box-shadow: -2px -2px 0 #545454;
+    -webkit-box-shadow: -2px -2px 0 #545454;
+    -moz-box-shadow: -2px -2px 0 #545454;
     border-radius: 20px;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
-    margin: 1px;
+    margin: 2px;
     color: #111;
     font-size: 52px;
     background: url("../images/smile-sprite.png") no-repeat 24px 27px;

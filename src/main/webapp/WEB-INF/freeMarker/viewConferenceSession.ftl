@@ -57,6 +57,7 @@
         <a href="#" data-role="button" class="goingButton" id="goingButton">
             <span>happy face</span>
         </a>
+        <span class="text">I'm going!</span>
     </div>
 
     <hr class="horizontal-rule"/>
