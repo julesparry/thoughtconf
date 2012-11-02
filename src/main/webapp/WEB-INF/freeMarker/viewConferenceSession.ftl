@@ -25,7 +25,7 @@
     <hr class="horizontal-rule"/>
 
     <div class="session-title">
-        <h1>Consulting with Javascript</h1>
+        <h1>${session.sessionName}</h1>
     </div>
 
     <hr class="horizontal-rule"/>
@@ -33,20 +33,20 @@
     <div class="date-time-location">
         <div class="location">
             <div><img id="location-img" src="../../images/home-16x15.png" alt="Home Icon" width="16px" height="15px" /></div>
-            <div id="location-detail">Diamond District Conference room 04 Diamond District Conference room 04</div>
+            <div id="location-detail">${session.location}</div>
         </div>
 
         <div class="date-time">
             <div class="date">
                 <img src="../../images/calendar-16x16.png" alt="Calendar Icon" width="16px" height="16px"/>
-                <span> 3 Nov, 2012 </span>
+                <span>${session.sessionDate}</span>
             </div>
 
             <hr id="vertical-rule"/>
 
             <div class="time">
                 <img id="clock" src="../../images/clock-16x15.png" alt="Clock Icon" width="16px" height="15px"/>
-                <span>10 AM - 11 AM</span>
+                <span>${session.sessionDuration}</span>
             </div>
         </div>
     </div>
@@ -65,13 +65,7 @@
         <img src="../../images/abstract-16x15.png" alt="Abstract Icon" width="16px" height="15px"/>
         <h2>Abstract</h2>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque ligula eu augue condimentum sodales.
-            In commodo odio id libero ultricies at accumsan velit tempus. Fusce porta dapibus lacus eget pretium. Nullam
-            vitae velit vel magna ultricies consequat non vitae lorem. Nam scelerisque blandit sem eget pretium. Sed quis
-            odio sed massa posuere bibendum. Fusce tortor orci, sagittis id rutrum vitae, convallis non ligula. Cras id
-            augue massa, vel scelerisque elit. Maecenas viverra urna sed enim ornare ut rutrum elit tincidunt.
-
-
+           ${session.abstract}
         </p>
     </div>
 
@@ -79,12 +73,9 @@
 
     <div class="speaker">
         <img src="../../images/mic-16x16.png" alt="Mic Icon" width="16px" height="16px"/>
-        <h2>Anand.V</h2>
-        <p id="speaker-details">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque ligula eu augue condimentum sodales.
-            In commodo odio id libero ultricies at accumsan velit tempus. Fusce porta dapibus lacus eget pretium. Nullam
-            vitae velit vel magna ultricies consequat non vitae lorem. Nam scelerisque blandit sem eget pretium. Sed quis
-            odio sed massa posuere bibendum. Fusce tortor orci, sagittis id rutrum vitae, convallis non ligula. Cras id
-            augue massa, vel scelerisque elit. Maecenas viverra urna sed enim ornare ut rutrum elit tincidunt.
+        <h2>About ${session.speaker}</h2>
+        <p id="speaker-details">
+            ${session.speakerIntro}
         </p>
     </div>
 </div>

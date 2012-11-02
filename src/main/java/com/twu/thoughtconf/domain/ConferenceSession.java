@@ -1,12 +1,12 @@
 package com.twu.thoughtconf.domain;
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
 public class ConferenceSession {
     private String name;
-    private String description;
     private Date startTime;
     private Date endTime;
     private String location;
@@ -29,12 +29,8 @@ public class ConferenceSession {
     public ConferenceSession() {
     }
 
-    public String getDisplayName() {
+    public String getSessionName() {
         return name;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public Date getStartTime() {
@@ -71,5 +67,13 @@ public class ConferenceSession {
 
     public Date getEndTime() {
         return endTime;
+    }
+
+    public String getSessionDate() {
+        return new SimpleDateFormat("dd MMM, yyyy").format(startTime);
+    }
+
+    public String getSessionDuration() {
+        return new SimpleDateFormat("hh:mm a").format(startTime) + " - " + new SimpleDateFormat("hh:mm a").format(endTime);
     }
 }

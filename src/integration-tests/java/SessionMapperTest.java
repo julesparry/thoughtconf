@@ -23,8 +23,7 @@ public class SessionMapperTest {
         ConferenceSession conferenceSession = sessionMapper.findSessionByID("1");
 
         assertThat(conferenceSession.getSessionId(), is(1));
-        assertThat(conferenceSession.getDisplayName(), is("dev bootcamp"));
-        assertThat(conferenceSession.getDescription(), is("bootcamping for devs"));
+        assertThat(conferenceSession.getSessionName(), is("dev bootcamp"));
         assertThat(conferenceSession.getLocation(), is("Ajanta"));
         assertThat(conferenceSession.getType(), is("Hands on"));
         assertThat(conferenceSession.getAbstract(), is("Attendees should bring laptops so that they can code, code and code"));
@@ -33,6 +32,8 @@ public class SessionMapperTest {
         assertThat(conferenceSession.getTrackId(), is(1));
         assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getStartTime()),is("2012-12-11 09:30:00"));
         assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getEndTime()),is("2012-12-11 10:30:00"));
+        assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getStartTime().getTime()),is("09:30:00"));
+        assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getEndTime().getTime()),is("10:30:00"));
     }
 
 

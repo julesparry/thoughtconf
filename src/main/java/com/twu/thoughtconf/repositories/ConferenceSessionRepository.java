@@ -2,11 +2,13 @@ package com.twu.thoughtconf.repositories;
 
 import com.twu.thoughtconf.dao.SessionMapper;
 import com.twu.thoughtconf.domain.ConferenceSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ConferenceSessionRepository {
 
+    @Autowired
     private SessionMapper sessionMapper;
 
     public ConferenceSession findById(String sessionId) {

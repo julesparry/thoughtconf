@@ -44,7 +44,7 @@ public class ConferenceSessionControllerTest {
         ModelAndView mv = controller.display(sessionId);
 
         ConferenceSession session = (ConferenceSession) mv.getModelMap().get("session");
-        assertThat(session.getDisplayName(), is("Javascript"));
+        assertThat(session.getSessionName(), is("Javascript"));
     }
 
     @Test
