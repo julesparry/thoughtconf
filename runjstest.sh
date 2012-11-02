@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ -n "$GO_STAGE_NAME"]]
+if [[ -n "$GO_STAGE_NAME" ]]
 then
     echo "We're on the CI!"
     echo "Setting up Xvfb."
