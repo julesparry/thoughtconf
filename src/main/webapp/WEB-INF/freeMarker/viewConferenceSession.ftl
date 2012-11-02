@@ -73,7 +73,8 @@
 
     <div class="speaker">
         <img src="../../images/mic-16x16.png" alt="Mic Icon" width="16px" height="16px"/>
-        <h2>About ${session.speaker}</h2>
+        <h2>About the presenter</h2>
+        <p id="speaker-name">${session.speaker}</p>
         <p id="speaker-details">
             ${session.speakerIntro}
         </p>
