@@ -3,7 +3,7 @@
 
     <property name="src.dir" location="src/main"/>
     <property name="unit.test.dir" location="src/unit-tests"/>
-    <property name="integration.test.dir" location="src/integration-tests"/>
+    <property name="integration.test.dir" location="src/integration-tests/"/>
     <property name="system.test.dir" location="src/system-tests"/>
     <property name="jasmine.dir" location="src/main/webapp/jasmine/"/>
 
@@ -17,6 +17,7 @@
 
     <path id="common-classpath">
         <pathelement location="${unit.test.dir}"/>
+        <pathelement location="${integration.test.dir}"/>
         <pathelement location="${src.dir}"/>
         <pathelement location="${src.dir}/deployment/env/dev"/>
         <fileset dir="${compile.dir}"/>
@@ -72,7 +73,7 @@
                 </batchtest>
                 <batchtest unless="testcase" todir="${test.report.dir}">
                     <fileset dir="@{testdir}/java">
-                        <include name="**/*Tests.java"/>
+                        <include name="**/*Test*.java"/>
                     </fileset>
                 </batchtest>
             </junit>
@@ -117,11 +118,17 @@
             depends="run-unit-tests, run-integration-tests, -run-system-tests, report-tests, check-failed-tests"
             description="Run all unit, integration and system tests."/>
 
-    <target name="run-unit-tests" depends="make-jars" description="run unit tests">
+    <target name="run-unit-tests" depends="-run-unit-tests, report-tests, check-failed-tests" description="run unit tests"/>
+
+    <target name="-run-unit-tests" depends="make-jars">
         <unit-test testdir="${unit.test.dir}" classpath="common-classpath"/>
     </target>
 
-    <target name="run-integration-tests" depends="make-jars" description="run integration tests">
+    <target name="run-integration-tests" depends="-run-integration-tests, report-tests, check-failed-tests" description="run integration tests">
+        <unit-test testdir="${integration.test.dir}" classpath="common-classpath"/>
+    </target>
+
+    <target name="-run-integration-tests" depends="make-jars">
         <unit-test testdir="${integration.test.dir}" classpath="common-classpath"/>
     </target>
 

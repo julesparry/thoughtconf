@@ -1,4 +1,5 @@
-import com.twu.thoughtconf.dao.SessionMapper;
+package com.twu.thoughtconf.dao;
+
 import com.twu.thoughtconf.domain.ConferenceSession;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +20,7 @@ public class SessionMapperTest {
     SessionMapper sessionMapper;
 
     @Test
-    public void should_get_session_detail_by_given_Session_Id() {
+    public void shouldGetSessionDetailByGivenSessionId() {
         ConferenceSession conferenceSession = sessionMapper.findSessionByID("1");
 
         assertThat(conferenceSession.getSessionId(), is(1));
@@ -30,10 +31,10 @@ public class SessionMapperTest {
         assertThat(conferenceSession.getSpeaker(), is("Meng Wang"));
         assertThat(conferenceSession.getSpeakerIntro(), is("Guru in java and many other languages"));
         assertThat(conferenceSession.getTrackId(), is(1));
-        assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getStartTime()),is("2012-12-11 09:30:00"));
-        assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getEndTime()),is("2012-12-11 10:30:00"));
-        assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getStartTime().getTime()),is("09:30:00"));
-        assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getEndTime().getTime()),is("10:30:00"));
+        assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getStartTime()), is("2012-12-11 09:30:00"));
+        assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getEndTime()), is("2012-12-11 10:30:00"));
+        assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getStartTime().getTime()), is("09:30:00"));
+        assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getEndTime().getTime()), is("10:30:00"));
     }
 
 
