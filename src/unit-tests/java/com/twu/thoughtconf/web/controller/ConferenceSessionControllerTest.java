@@ -8,9 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasKey;
+import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @Controller
 public class ConferenceSessionControllerTest {
@@ -50,16 +50,18 @@ public class ConferenceSessionControllerTest {
 
     @Test
     public void shouldCreateAConferenceSession() throws Exception {
+        // Arrange
         ConferenceSessionRepository repository = mock(ConferenceSessionRepository.class);
-        ConferenceSessionController controller = new ConferenceSessionController(repository);
+        ConferenceSession expectedConferenceSession = mock(ConferenceSession.class);
+        when(expectedConferenceSession.getId()).thenReturn("12345");
+        when(repository.save(any(ConferenceSession.class))).thenReturn(expectedConferenceSession);
 
-//        ModelAndView mv = controller.create("Awesome JS");
-//
-//        ConferenceSession expectedConferenceSession = new ConferenceSession("Awesome JS");
-//        verify(repository).save(expectedConferenceSession);
-//
-//
-//        assertThat(mv.getViewName(), startsWith("redirect:home/"));
+        // Act
+        ConferenceSessionController controller = new ConferenceSessionController(repository);
+        ModelAndView mv = controller.create("Awesome JS");
+
+        // Assert
+        assertThat(mv.getViewName(), startsWith("redirect:confirmation/12345"));
 
     }
 

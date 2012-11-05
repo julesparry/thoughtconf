@@ -38,13 +38,14 @@ public class ConferenceSessionController {
 
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView create(@RequestParam String conferenceSessionName) {
+    public ModelAndView create(@RequestParam(value = "conferenceSessionName") String conferenceSessionName) {
         ModelAndView mv = new ModelAndView();
-        ConferenceSession newConferenceSession = new ConferenceSession(conferenceSessionName);
-        repository.save(newConferenceSession);
-        mv.setViewName("redirect:home/" + newConferenceSession.getId());
+        ConferenceSession conferenceSession = new ConferenceSession(conferenceSessionName);
+        ConferenceSession conferenceSessionWithId = repository.save(conferenceSession);
+        mv.setViewName("redirect:confirmation/" + conferenceSessionWithId.getId());
         return mv;
     }
+
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public ModelAndView newConferenceSession() {
         ModelAndView mv = new ModelAndView("newConferenceSession");

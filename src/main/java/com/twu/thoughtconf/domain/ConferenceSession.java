@@ -1,11 +1,10 @@
 package com.twu.thoughtconf.domain;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 public class ConferenceSession {
+
     private String name;
     private Date startTime;
     private Date endTime;
@@ -17,16 +16,15 @@ public class ConferenceSession {
     private Integer trackId;
     private Integer sessionId;
 
-
-    public String getId() {
-        return sessionId.toString();
+    public ConferenceSession() {
     }
 
     public ConferenceSession(String name) {
         this.name = name;
     }
 
-    public ConferenceSession() {
+    public String getId() {
+        return sessionId.toString();
     }
 
     public String getSessionName() {
