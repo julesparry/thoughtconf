@@ -12,9 +12,9 @@ public class SessionAttendeeControllerTest {
     private SessionAttendeeRepository mockSessionAttendeeRepository;
 
     @Test
-    public void should_create_a_session_attendee_record_after_received_going_request() {
-        int userId = 100;
-        Integer sessionId = 99;
+    public void should_create_a_session_attendee_record_after_receiving_going_request() {
+        String userId = "100";
+        int sessionId = 99;
         mockSessionAttendeeRepository = mock(SessionAttendeeRepository.class);
         SessionAttendeeController controller = new SessionAttendeeController(mockSessionAttendeeRepository);
 

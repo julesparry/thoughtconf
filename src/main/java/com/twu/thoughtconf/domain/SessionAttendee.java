@@ -1,12 +1,30 @@
 package com.twu.thoughtconf.domain;
 
 public class SessionAttendee {
-    private int userId;
+    private String attendeeEmail;
     private int sessionId;
+    private boolean going;
 
-    public SessionAttendee(int userId, int sessionId) {
-        this.userId = userId;
+    public SessionAttendee()
+    {}
+
+    public SessionAttendee(String attendeeEmail, int sessionId) {
+        this.attendeeEmail = attendeeEmail;
         this.sessionId = sessionId;
+        this.going = false;
+    }
+
+
+    public void toggleAttendance() {
+        if (!going) {
+            going = true;
+        } else {
+            going = false;
+        }
+    }
+
+    public boolean isGoing() {
+        return going;
     }
 
     @Override
@@ -16,16 +34,23 @@ public class SessionAttendee {
 
         SessionAttendee that = (SessionAttendee) o;
 
+        if (going != that.going) return false;
         if (sessionId != that.sessionId) return false;
-        if (userId != that.userId) return false;
+        if (attendeeEmail != null ? !attendeeEmail.equals(that.attendeeEmail) : that.attendeeEmail != null)
+            return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = userId;
+        int result = attendeeEmail != null ? attendeeEmail.hashCode() : 0;
         result = 31 * result + sessionId;
+        result = 31 * result + (going ? 1 : 0);
         return result;
+    }
+
+    public String getAttendeeEmail() {
+        return attendeeEmail;
     }
 }

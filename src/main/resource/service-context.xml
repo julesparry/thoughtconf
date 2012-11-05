@@ -6,7 +6,7 @@
 
     <import resource="mapper-context.xml"/>
 
-    <bean id="userService" class="com.twu.thoughtconf.services.AttendeeService">
+    <bean id="userService" class="com.twu.thoughtconf.services.SessionAttendeeService">
         <property name="mapper" ref="attendeeMapper"/>
     </bean>
 

@@ -12,6 +12,6 @@ public class SessionAttendeeController {
     }
 
     public void handleGoing(Integer sessionId) {
-        sessionAttendeeRepository.save(new SessionAttendee(100, sessionId));
+        sessionAttendeeRepository.save(new SessionAttendee("100", sessionId));
     }
 }
