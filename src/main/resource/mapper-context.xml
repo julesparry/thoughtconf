@@ -11,7 +11,7 @@
     <bean id="dataSource"
           class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
           p:driverClassName="com.mysql.jdbc.Driver"
-          p:url="jdbc:mysql://localhost/ThoughtConf" p:username="root"
+          p:url="jdbc:mysql://localhost/ThoughtConf" p:username="thoughtconf"
           p:password=""/>
 
     <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
