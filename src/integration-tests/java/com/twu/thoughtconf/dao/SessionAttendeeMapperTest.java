@@ -1,6 +1,5 @@
 package com.twu.thoughtconf.dao;
 
-import com.twu.thoughtconf.dao.SessionAttendeeMapper;
 import com.twu.thoughtconf.domain.SessionAttendee;
 import org.junit.Before;
 import org.junit.Test;
