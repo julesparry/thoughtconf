@@ -27,7 +27,7 @@
         <property name="suffix" value=".ftl"/>
 
         <property name="exposeSpringMacroHelpers" value="true"/>
-
     </bean>
 
+    <mvc:view-controller path="/" view-name="homepage"/>
 </beans>
