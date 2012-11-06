@@ -2,6 +2,7 @@ package com.twu.thoughtconf.repositories;
 
 import com.twu.thoughtconf.dao.SessionMapper;
 import com.twu.thoughtconf.domain.ConferenceSession;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +20,9 @@ public class ConferenceSessionRepository {
         this.sessionMapper = sessionMapper;
     }
 
+
     public ConferenceSession save(ConferenceSession conferenceSession) {
+        sessionMapper.save(conferenceSession);
         return conferenceSession;
     }
 }
