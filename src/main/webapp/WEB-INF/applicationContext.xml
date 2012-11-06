@@ -38,5 +38,20 @@
     </bean>
 
     <mvc:view-controller path="/" view-name="homepage"/>
+    <bean id="ticketValidationFilter" class="org.jasig.cas.client.validation.Cas10TicketValidationFilter">
+        <property name="service" value="http://127.0.0.1:8080/app/conference-session/display/1"/>
+        <property name="ticketValidator">
+            <bean class="org.jasig.cas.client.validation.Cas10TicketValidator">
+                <constructor-arg index="0" value="https://castest.thoughtworks.com/cas"/>
+            </bean>
+        </property>
+        <property name="redirectAfterValidation" value="true"/>
+        <property name="useSession" value="true"/>
+        <property name="exceptionOnValidationFailure" value="true"/>
+    </bean>
+
+    <bean id="wrapperFilter" class="org.jasig.cas.client.util.HttpServletRequestWrapperFilter">
+    </bean>
+
 
 </beans>
