@@ -25,4 +25,8 @@ public class ConferenceSessionRepository {
         sessionMapper.save(conferenceSession);
         return conferenceSession;
     }
+
+    public ConferenceSession get(int id) {
+        return null;
+    }
 }

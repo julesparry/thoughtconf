@@ -17,7 +17,7 @@
 </div>
 <hr/>
 <div class="div-create-conference-button">
-    <a href="conference-session/new" class="button">Create New Session</a>
+    <a id="create_session" href="conference-session/new" class="button">Create New Session</a>
 </div>
 
 </body>

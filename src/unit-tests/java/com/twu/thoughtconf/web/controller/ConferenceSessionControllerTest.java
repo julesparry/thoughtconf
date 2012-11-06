@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.hamcrest.Matchers.hasKey;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
@@ -64,5 +65,25 @@ public class ConferenceSessionControllerTest {
 
     }
 
+    @Test
+    public void shouldMapToSessionConfirmationViewNameWhenCallingConfirm() {
+        ConferenceSessionRepository repository = mock(ConferenceSessionRepository.class);
+        ConferenceSessionController controller = new ConferenceSessionController(repository);
+
+        ModelAndView mv = controller.confirm(123);
+        assertThat(mv.getViewName(), is("sessionConfirmation"));
+    }
+
+
+    @Test
+    public void shouldIncludeSessionInModelWhenCallingConfirm() {
+        ConferenceSessionRepository repository = mock(ConferenceSessionRepository.class);
+        ConferenceSessionController controller = new ConferenceSessionController(repository);
+        ConferenceSession expectedSession = new ConferenceSession(123);
+        when(repository.get(123)).thenReturn(expectedSession);
+
+        ModelAndView mv = controller.confirm(123);
+        assertThat((ConferenceSession) mv.getModel().get("session"), sameInstance(expectedSession));
+    }
 
 }

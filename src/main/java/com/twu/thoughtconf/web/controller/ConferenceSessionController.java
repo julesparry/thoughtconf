@@ -50,4 +50,8 @@ public class ConferenceSessionController {
         ConferenceSession conferenceSessionWithId = repository.save(conferenceSession);
         return "redirect:confirmation/" + conferenceSessionWithId.getId();
     }
+
+    public ModelAndView confirm(int id) {
+        return new ModelAndView("sessionConfirmation", "session", repository.get(id));
+    }
 }

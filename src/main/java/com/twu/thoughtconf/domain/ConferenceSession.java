@@ -23,6 +23,10 @@ public class ConferenceSession {
         this.name = name;
     }
 
+    public ConferenceSession(int id) {
+        this.sessionId = id;
+    }
+
     public String getId() {
         return sessionId.toString();
     }
