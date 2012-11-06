@@ -1,10 +1,7 @@
 package com.twu.thoughtconf.dao;
 
 import com.twu.thoughtconf.domain.ConferenceSession;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 public interface SessionMapper {
 
@@ -22,5 +19,10 @@ public interface SessionMapper {
             @Result(property = "trackId", column = "track_id")
     })
     ConferenceSession findSessionByID(@Param("sessionId") String sessionId);
+
+
+    @Insert("INSERT INTO session(session_name) VALUES (#{conferenceSession.name})")
+    @Options(useGeneratedKeys = true, keyProperty = "conferenceSession.sessionId")
+    void save(@Param("conferenceSession") ConferenceSession conferenceSession);
 
 }
