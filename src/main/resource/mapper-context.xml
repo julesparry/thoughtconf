@@ -20,15 +20,17 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+        <property name="typeHandlersPackage" value="com.twu.thoughtconf.dao" />
     </bean>
 
     <bean id="sessionAttendeeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.twu.thoughtconf.dao.SessionAttendeeMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        <property name="mapperInterface" value="com.twu.thoughtconf.dao.SessionAttendeeMapper"/>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
     <bean id="sessionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.twu.thoughtconf.dao.SessionMapper" />
-        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        <property name="mapperInterface" value="com.twu.thoughtconf.dao.SessionMapper"/>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
+
 </beans>

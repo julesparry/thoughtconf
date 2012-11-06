@@ -1,6 +1,8 @@
 package com.twu.thoughtconf.dao;
 
 import com.twu.thoughtconf.domain.SessionAttendee;
+import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,14 +20,13 @@ public class SessionAttendeeMapperTest {
     @Autowired
     private SessionAttendeeMapper sessionAttendeeMapper;
 
-    @Before
+    @After
     public void cleanSessionAttendeeTable() {
         sessionAttendeeMapper.cleanTable();
     }
 
     @Test
     public void saveTest_should_insert_new_record_into_session_attendee_table(){
-
         sessionAttendeeMapper.save("eselemela@thoughtworks.com", "1");
         SessionAttendee sessionAttendee = sessionAttendeeMapper.getSessionAttendee("eselemela@thoughtworks.com");
 

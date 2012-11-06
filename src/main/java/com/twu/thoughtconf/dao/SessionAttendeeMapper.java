@@ -15,6 +15,6 @@ public interface SessionAttendeeMapper {
     })
     public SessionAttendee getSessionAttendee(@Param("attendeeEmail") String attendeeEmail);
 
-    @Delete("DELETE FROM session_attendee")
+    @Delete("DELETE FROM session_attendee WHERE attendee_email = 'eselemela@thoughtworks.com'")
     public void cleanTable();
 }

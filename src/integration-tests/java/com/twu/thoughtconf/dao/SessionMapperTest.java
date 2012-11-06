@@ -1,6 +1,7 @@
 package com.twu.thoughtconf.dao;
 
 import com.twu.thoughtconf.domain.ConferenceSession;
+import org.joda.time.DateTime;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,10 @@ public class SessionMapperTest {
     public void shouldGetSessionDetailByGivenSessionId() {
         ConferenceSession conferenceSession = sessionMapper.findSessionByID("1");
 
+
+        // TODO: DJ and Akriti, implement equals on ConferenceSession
+
+        // orginal
         assertThat(conferenceSession.getSessionId(), is(1));
         assertThat(conferenceSession.getSessionName(), is("dev bootcamp"));
         assertThat(conferenceSession.getLocation(), is("Ajanta"));
@@ -33,10 +38,21 @@ public class SessionMapperTest {
         assertThat(conferenceSession.getSpeaker(), is("Meng Wang"));
         assertThat(conferenceSession.getSpeakerIntro(), is("Guru in java and many other languages"));
         assertThat(conferenceSession.getTrackId(), is(1));
-        assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getStartTime()), is("2012-12-11 09:30:00"));
-        assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getEndTime()), is("2012-12-11 10:30:00"));
-        assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getStartTime().getTime()), is("09:30:00"));
-        assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getEndTime().getTime()), is("10:30:00"));
+
+        // new version
+        // ConferenceSession expectedConferenceSession = new ConferenceSession("all the data");
+        // assertThat(conferenceSession, is(expectedConferenceSession));
+
+
+        DateTime expectedSessionStartTime = new DateTime(2012, 12, 11, 9, 30, 0);
+        assertThat(conferenceSession.getStartTime(), is(expectedSessionStartTime));
+
+//        assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getStartTime()), is("2012-12-11 09:30:00"));
+//        assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getEndTime()), is("2012-12-11 10:30:00"));
+//        assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getStartTime().getTime()), is("09:30:00"));
+//        assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getEndTime().getTime()), is("10:30:00"));
+
+
     }
 
     @Test

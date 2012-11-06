@@ -1,13 +1,14 @@
 package com.twu.thoughtconf.domain;
 
+import org.joda.time.DateTime;
+
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ConferenceSession {
 
     private String name;
-    private Date startTime;
-    private Date endTime;
+    private DateTime startTime;
+    private DateTime endTime;
     private String location;
     private String type;
     private String sessionAbstract;
@@ -35,7 +36,7 @@ public class ConferenceSession {
         return name;
     }
 
-    public Date getStartTime() {
+    public DateTime getStartTime() {
         return startTime;
     }
 
@@ -67,7 +68,7 @@ public class ConferenceSession {
         return sessionId;
     }
 
-    public Date getEndTime() {
+    public DateTime getEndTime() {
         return endTime;
     }
 
