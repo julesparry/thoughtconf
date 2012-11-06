@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasKey;
-import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
@@ -58,10 +57,10 @@ public class ConferenceSessionControllerTest {
 
         // Act
         ConferenceSessionController controller = new ConferenceSessionController(repository);
-        ModelAndView mv = controller.create("Awesome JS");
+        String viewName = controller.create("Awesome JS");
 
         // Assert
-        assertThat(mv.getViewName(), startsWith("redirect:confirmation/12345"));
+        assertThat(viewName, is("redirect:confirmation/12345"));
 
     }
 

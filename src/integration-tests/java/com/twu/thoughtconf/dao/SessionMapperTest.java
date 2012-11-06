@@ -10,6 +10,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.text.SimpleDateFormat;
 
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,6 +37,15 @@ public class SessionMapperTest {
         assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getEndTime()), is("2012-12-11 10:30:00"));
         assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getStartTime().getTime()), is("09:30:00"));
         assertThat(new SimpleDateFormat("hh:mm:ss").format(conferenceSession.getEndTime().getTime()), is("10:30:00"));
+    }
+
+    @Test
+    public void shouldSaveSession() {
+        ConferenceSession conferenceSession = new ConferenceSession("Javascript");
+
+        sessionMapper.save(conferenceSession);
+
+        assertThat(conferenceSession.getSessionId(), not(nullValue()));
     }
 
 

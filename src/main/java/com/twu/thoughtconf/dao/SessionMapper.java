@@ -20,7 +20,9 @@ public interface SessionMapper {
     })
     ConferenceSession findSessionByID(@Param("sessionId") String sessionId);
 
-    @Insert("INSERT INTO session(session_name) VALUES (#{name})")
-    void save(@Param("conferenceSession") ConferenceSession name);
+
+    @Insert("INSERT INTO session(session_name) VALUES (#{conferenceSession.name})")
+    @Options(useGeneratedKeys = true, keyProperty = "conferenceSession.sessionId")
+    void save(@Param("conferenceSession") ConferenceSession conferenceSession);
 
 }
