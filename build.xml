@@ -63,7 +63,7 @@
         <attribute name="classpath"/>
         <sequential>
             <mkdir dir="${test.report.dir}"/>
-            <junit fork="yes" forkmode="once" failureproperty="unit.tests.failed" printsummary="yes">
+            <junit fork="yes" forkmode="once" failureproperty="unit.tests.failed" printsummary="yes" haltonerror="true">
                 <classpath refid="@{classpath}"/>
                 <formatter type="xml"/>
                 <batchtest if="testcase" todir="${test.report.dir}">
@@ -121,7 +121,7 @@
     <target name="run-unit-tests" depends="-run-unit-tests, report-tests, check-failed-tests" description="run unit tests"/>
 
     <target name="-run-unit-tests" depends="make-jars">
-        <unit-test testdir="${unit.test.dir}" classpath="common-classpath"/>
+        <unit-test testdir="${unit.test.dir}" classpath="common-classpath" />
     </target>
 
     <target name="run-integration-tests" depends="-run-integration-tests, report-tests, check-failed-tests" description="run integration tests">
@@ -129,7 +129,7 @@
     </target>
 
     <target name="-run-integration-tests" depends="make-jars">
-        <unit-test testdir="${integration.test.dir}" classpath="common-classpath"/>
+        <unit-test testdir="${integration.test.dir}" classpath="common-classpath" />
     </target>
 
     <target name="run-system-tests" depends="-run-system-tests, report-tests, check-failed-tests" description="run system tests"/>
