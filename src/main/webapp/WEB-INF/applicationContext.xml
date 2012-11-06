@@ -45,7 +45,6 @@
             </bean>
         </property>
         <property name="redirectAfterValidation" value="true"/>
-        <property name="useSession" value="true"/>
         <property name="exceptionOnValidationFailure" value="true"/>
     </bean>
 
