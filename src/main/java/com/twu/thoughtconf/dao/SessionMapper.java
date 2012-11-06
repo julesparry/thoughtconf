@@ -22,5 +22,5 @@ public interface SessionMapper {
 
     @Insert("INSERT INTO session(session_name) VALUES (#{name})")
     void save(@Param("conferenceSession") ConferenceSession name);
-    
+
 }
