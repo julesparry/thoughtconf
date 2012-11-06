@@ -10,7 +10,7 @@ public class ConferenceSessionTest {
     @Test
     public void shouldProvideAToStringRepresentation() {
         ConferenceSession session = new ConferenceSession("Nigels Awesome Javascript");
-        assertThat(session.getSessionName(), is("Nigels Awesome Javascript"));
+        assertThat(session.getName(), is("Nigels Awesome Javascript"));
     }
 
 }

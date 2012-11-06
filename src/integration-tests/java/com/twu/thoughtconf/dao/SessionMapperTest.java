@@ -31,7 +31,7 @@ public class SessionMapperTest {
 
         // orginal
         assertThat(conferenceSession.getSessionId(), is(1));
-        assertThat(conferenceSession.getSessionName(), is("dev bootcamp"));
+        assertThat(conferenceSession.getName(), is("dev bootcamp"));
         assertThat(conferenceSession.getLocation(), is("Ajanta"));
         assertThat(conferenceSession.getType(), is("Hands on"));
         assertThat(conferenceSession.getAbstract(), is("Attendees should bring laptops so that they can code, code and code"));
@@ -63,6 +63,5 @@ public class SessionMapperTest {
 
         assertThat(conferenceSession.getSessionId(), not(nullValue()));
     }
-
 
 }

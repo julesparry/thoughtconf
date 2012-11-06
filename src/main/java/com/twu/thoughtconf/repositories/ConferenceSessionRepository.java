@@ -27,6 +27,6 @@ public class ConferenceSessionRepository {
     }
 
     public ConferenceSession get(int id) {
-        return null;
+        return findById(String.valueOf(id));
     }
 }

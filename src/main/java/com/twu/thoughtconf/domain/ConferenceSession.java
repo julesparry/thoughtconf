@@ -32,7 +32,7 @@ public class ConferenceSession {
         return sessionId.toString();
     }
 
-    public String getSessionName() {
+    public String getName() {
         return name;
     }
 

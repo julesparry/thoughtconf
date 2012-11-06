@@ -65,7 +65,8 @@ public class ConferenceSessionController {
         return "redirect:confirmation/" + conferenceSessionWithId.getId();
     }
 
-    public ModelAndView confirm(int id) {
-        return new ModelAndView("sessionConfirmation", "session", repository.get(id));
+    @RequestMapping(value = "/confirmation/{sessionId}", method= RequestMethod.GET)
+    public ModelAndView confirm(@PathVariable("sessionId") int sessionId) {
+        return new ModelAndView("sessionConfirmation", "session", repository.get(sessionId));
     }
 }
