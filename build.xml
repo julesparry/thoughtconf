@@ -18,6 +18,7 @@
 
     <property name="db.driver" value="com.mysql.jdbc.Driver" />
     <property name="db.url" value="jdbc:mysql://localhost:3306/ThoughtConf" />
+    <property name="qa.db.url" value="jdbc:mysql://10.10.4.126:3306/ThoughtConf" />
 
     <path id="common-classpath">
         <pathelement location="${unit.test.dir}"/>
@@ -105,11 +106,19 @@
 
 
     <target name="setup-dbdeploy" depends="clean-db, update-database"/>
+    <target name="setup-dbdeploy-qa" depends="clean-db-qa, update-database-qa"/>
 
     <target name="clean-db" depends="drop-and-create-database, create-changelog-table"/>
+    <target name="clean-db-qa" depends="drop-and-create-database, create-changelog-table-qa"/>
 
     <target name="create-changelog-table">
         <sql driver="${db.driver}" url="${db.url}"
+             userid="thoughtconf" password="" classpathref="mysql.classpath" >
+            <fileset file="dbscripts/createSchemaVersionTable.mysql.sql"/>
+        </sql>
+    </target>
+    <target name="create-changelog-table-qa">
+        <sql driver="${db.driver}" url="${qa.db.url}"
              userid="thoughtconf" password="" classpathref="mysql.classpath" >
             <fileset file="dbscripts/createSchemaVersionTable.mysql.sql"/>
         </sql>
@@ -123,6 +132,21 @@
          work the same as in the ant sql task, see http://ant.apache.org/manual/CoreTasks/sql.html
         -->
         <dbdeploy driver="${db.driver}" url="${db.url}"
+                  userid="thoughtconf"
+                  password=""
+                  dir="dbscripts"
+                />
+
+    </target>
+
+    <target name="update-database-qa" description="generate a sql upgrade script">
+        <taskdef name="dbdeploy" classname="com.dbdeploy.AntTarget" classpathref="dbdeploy.classpath"/>
+        <!-- if you don't specify an output file, dbdeploy will apply the changes for you
+
+        you may need to specify delimiter and delimitertype for your scripts to be split properly - these
+         work the same as in the ant sql task, see http://ant.apache.org/manual/CoreTasks/sql.html
+        -->
+        <dbdeploy driver="${db.driver}" url="${qa.db.url}"
                   userid="thoughtconf"
                   password=""
                   dir="dbscripts"
