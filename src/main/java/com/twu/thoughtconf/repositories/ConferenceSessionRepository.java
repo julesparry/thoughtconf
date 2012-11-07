@@ -2,6 +2,7 @@ package com.twu.thoughtconf.repositories;
 
 import com.twu.thoughtconf.dao.SessionMapper;
 import com.twu.thoughtconf.domain.ConferenceSession;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -45,7 +46,7 @@ public class ConferenceSessionRepository {
     public List<ConferenceSession> getSessionsFromToday() {
         List<ConferenceSession> sessions = getAllSessions();
         for (ConferenceSession session : sessions) {
-            if(session.getStartTime().isBeforeNow() ) {
+            if (session.getStartTime().toLocalDate().isBefore(new DateTime().now().toLocalDate())) {
                 sessions.remove(session);
             }
         }
