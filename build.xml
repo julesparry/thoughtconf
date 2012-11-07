@@ -15,6 +15,10 @@
 
     <property name="test.report.dir" location="${report.dir}/test"/>
 
+
+    <property name="db.driver" value="com.mysql.jdbc.Driver" />
+    <property name="db.url" value="jdbc:mysql://localhost:3306/ThoughtConf" />
+
     <path id="common-classpath">
         <pathelement location="${unit.test.dir}"/>
         <pathelement location="${integration.test.dir}"/>
@@ -31,6 +35,24 @@
         <path refid="common-classpath"/>
         <path location="${src.dir}/webapp/WEB-INF/classes"/>
     </path>
+
+    <path id="mysql.classpath">
+        <fileset dir="${lib.dir}/runtime/jar">
+            <!--<include name="mysql-connector-java-5.1.21.jar"/>-->
+        </fileset>
+    </path>
+
+    <path id="dbdeploy.classpath">
+        <!-- include the dbdeploy-ant jar -->
+        <fileset dir="${lib.dir}/runtime/jar">
+            <!--<include name="dbdeploy-ant-*.jar"/>-->
+        </fileset>
+
+        <!-- the dbdeploy task also needs the database driver jar on the classpath -->
+        <path refid="mysql.classpath" />
+
+    </path>
+
 
     <macrodef name="make-jar">
         <attribute name="srcdir"/>
@@ -80,6 +102,39 @@
         </sequential>
     </macrodef>
 
+
+
+    <target name="setup-dbdeploy" depends="clean-db, update-database"/>
+
+    <target name="clean-db" depends="drop-and-create-database, create-changelog-table"/>
+
+    <target name="create-changelog-table">
+        <sql driver="${db.driver}" url="${db.url}"
+             userid="thoughtconf" password="" classpathref="mysql.classpath" >
+            <fileset file="dbscripts/createSchemaVersionTable.mysql.sql"/>
+        </sql>
+    </target>
+
+    <target name="update-database" description="generate a sql upgrade script">
+        <taskdef name="dbdeploy" classname="com.dbdeploy.AntTarget" classpathref="dbdeploy.classpath"/>
+        <!-- if you don't specify an output file, dbdeploy will apply the changes for you
+
+        you may need to specify delimiter and delimitertype for your scripts to be split properly - these
+         work the same as in the ant sql task, see http://ant.apache.org/manual/CoreTasks/sql.html
+        -->
+        <dbdeploy driver="${db.driver}" url="${db.url}"
+                  userid="thoughtconf"
+                  password=""
+                  dir="dbscripts"
+                />
+
+    </target>
+
+
+    <target name="drop-and-create-database">
+        <delete dir="db"/>
+        <mkdir dir="db"/>
+    </target>
 
     <taskdef resource="org/apache/ivy/ant/antlib.xml">
         <classpath location="bootstrap/ant/ivy-2.1.0.jar"/>
