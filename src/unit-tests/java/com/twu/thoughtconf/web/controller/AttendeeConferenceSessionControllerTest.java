@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class SessionAttendeeControllerTest {
+public class AttendeeConferenceSessionControllerTest {
 
     private SessionAttendeeRepository mockSessionAttendeeRepository;
 
@@ -16,7 +16,7 @@ public class SessionAttendeeControllerTest {
         String userId = "100";
         int sessionId = 99;
         mockSessionAttendeeRepository = mock(SessionAttendeeRepository.class);
-        SessionAttendeeController controller = new SessionAttendeeController(mockSessionAttendeeRepository);
+        AttendeeConferenceSessionController controller = new AttendeeConferenceSessionController(mockSessionAttendeeRepository);
 
         controller.handleGoing(sessionId);
 

@@ -3,11 +3,11 @@ package com.twu.thoughtconf.web.controller;
 import com.twu.thoughtconf.domain.SessionAttendee;
 import com.twu.thoughtconf.repositories.SessionAttendeeRepository;
 
-public class SessionAttendeeController {
+public class AttendeeConferenceSessionController {
     private SessionAttendeeRepository sessionAttendeeRepository;
 
 
-    public SessionAttendeeController(SessionAttendeeRepository sessionAttendeeRepository) {
+    public AttendeeConferenceSessionController(SessionAttendeeRepository sessionAttendeeRepository) {
         this.sessionAttendeeRepository = sessionAttendeeRepository;
     }
 
