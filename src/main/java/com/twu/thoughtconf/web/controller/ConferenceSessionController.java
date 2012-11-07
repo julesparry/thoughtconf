@@ -60,8 +60,6 @@ public class ConferenceSessionController {
         return modelAndView;
     }
 
-
-
     @RequestMapping(value = "/organiser/new", method = RequestMethod.GET)
     public ModelAndView newConferenceSession() {
         ModelAndView mv = new ModelAndView("newConferenceSession");

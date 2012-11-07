@@ -19,6 +19,6 @@ public class SessionAttendeeRepository {
     }
 
     public void save(SessionAttendee sessionAttendee) {
-        sessionAttendeeMapper.save(null, null);
+        sessionAttendeeMapper.save(sessionAttendee.getAttendeeEmail(), null);
     }
 }

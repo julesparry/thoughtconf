@@ -25,7 +25,6 @@ public class SessionMapperTest {
         ConferenceSession conferenceSession = sessionMapper.findSessionByID("1");
 
 
-        // TODO: DJ and Akriti, implement equals on ConferenceSession
 
         // orginal
         assertThat(conferenceSession.getSessionId(), is(1));
