@@ -28,24 +28,5 @@
         <property name="exposeSpringMacroHelpers" value="true"/>
     </bean>
 
-    <bean id="authenticationFilter" class="org.jasig.cas.client.authentication.AuthenticationFilter">
-        <property name="casServerLoginUrl" value="https://castest.thoughtworks.com/cas/login"/>
-        <property name="service" value="http://127.0.0.1:8080/app/conference-session/display/1"/>
-        <property name="renew" value="false"/>
-        <property name="gateway" value="false"/>
-    </bean>
-
-    <bean id="ticketValidationFilter" class="org.jasig.cas.client.validation.Cas10TicketValidationFilter">
-        <property name="service" value="http://127.0.0.1:8080/app/conference-session/display/1"/>
-        <property name="ticketValidator">
-            <bean class="org.jasig.cas.client.validation.Cas10TicketValidator">
-                <constructor-arg index="0" value="https://castest.thoughtworks.com/cas"/>
-            </bean>
-        </property>
-        <property name="redirectAfterValidation" value="true"/>
-        <property name="exceptionOnValidationFailure" value="true"/>
-    </bean>
-    
-    <bean id="wrapperFilter" class="org.jasig.cas.client.util.HttpServletRequestWrapperFilter" />
 
 </beans>
