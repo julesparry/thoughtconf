@@ -1,0 +1,11 @@
+.header {
+  background: #D5E14D;
+  border-bottom: 1px solid #FFF;
+}
+
+.header img {
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto
+}

@@ -28,7 +28,7 @@ div{
   overflow: scroll;
 }
 
-.header{
+.confInfo{
   min-height: 80px;
 }
 
@@ -112,7 +112,7 @@ img{
 .date-time-location{
   min-height:150px;
 }
-.abstract,.date-time-location,.header, .speaker{
+.abstract,.date-time-location,.confInfo, .speaker{
   padding:20px 40px 20px 40px;
 }
 
