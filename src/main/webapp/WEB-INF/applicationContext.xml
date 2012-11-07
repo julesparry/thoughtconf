@@ -47,8 +47,7 @@
         <property name="redirectAfterValidation" value="true"/>
         <property name="exceptionOnValidationFailure" value="true"/>
     </bean>
-
-    <bean id="wrapperFilter" class="org.jasig.cas.client.util.HttpServletRequestWrapperFilter">
-    </bean>
+    
+    <bean id="wrapperFilter" class="org.jasig.cas.client.util.HttpServletRequestWrapperFilter" />
 
 </beans>
