@@ -1,18 +1,23 @@
 package com.twu.thoughtconf.web.controller;
 
+import com.twu.thoughtconf.domain.SessionAttendee;
 import com.twu.thoughtconf.repositories.SessionAttendeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Controller
-public class sessionAttendeeController {
+public class SessionAttendeeController {
 
     @Autowired
-    private SessionAttendeeRepository sessionAttendeeRepository;
+    private SessionAttendeeRepository repository;
 
-    public void goingToSession(HttpServletRequest request, int sessionId){
-//         String userName = String.format("%s@%s",request.getRemoteUser(), "thoughtworks.com");
+
+    public SessionAttendeeController(SessionAttendeeRepository repository) {
+        this.repository = repository;
+    }
+
+
+    public void attend(HttpServletRequest httpServletRequest, Integer conferenceSessionId) {
+        repository.save(new SessionAttendee(httpServletRequest.getRemoteUser(), conferenceSessionId));
     }
 }

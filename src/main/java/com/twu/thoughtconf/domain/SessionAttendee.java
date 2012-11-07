@@ -1,12 +1,14 @@
 package com.twu.thoughtconf.domain;
 
 public class SessionAttendee {
+
+    private Integer id;
     private String attendeeEmail;
-    private int sessionId;
+    private int sessionId; // link to the conferenceSession
     private boolean going;
 
-    public SessionAttendee()
-    {}
+    public SessionAttendee(){
+    }
 
     public SessionAttendee(String attendeeEmail, int sessionId) {
         this.attendeeEmail = attendeeEmail;
@@ -52,5 +54,9 @@ public class SessionAttendee {
 
     public String getAttendeeEmail() {
         return attendeeEmail;
+    }
+
+    public int getSessionId() {
+        return sessionId;
     }
 }

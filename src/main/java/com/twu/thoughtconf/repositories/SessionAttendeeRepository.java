@@ -9,16 +9,17 @@ import org.springframework.stereotype.Repository;
 public class SessionAttendeeRepository {
 
     @Autowired
-    private SessionAttendeeMapper sessionAttendeeMapper;
+    private SessionAttendeeMapper mapper;
 
-    public SessionAttendeeRepository() {
+    public SessionAttendeeRepository(SessionAttendeeMapper mapper) {
+        this.mapper = mapper;
     }
 
-    public SessionAttendeeRepository(SessionAttendeeMapper sessionAttendeeMapper) {
-        this.sessionAttendeeMapper = sessionAttendeeMapper;
+    public SessionAttendee save(SessionAttendee sessionAttendee) {
+        return sessionAttendee;
     }
 
-    public void save(SessionAttendee sessionAttendee) {
-        sessionAttendeeMapper.save(sessionAttendee.getAttendeeEmail(), null);
+    public SessionAttendee findByEmail(String attendeeEmail) {
+        return mapper.getSessionAttendee(attendeeEmail);
     }
 }

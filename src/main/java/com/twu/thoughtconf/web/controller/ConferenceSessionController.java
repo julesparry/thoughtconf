@@ -53,10 +53,7 @@ public class ConferenceSessionController {
     @RequestMapping(value = "/attendee/session/castest", method = RequestMethod.GET)
     public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response) throws Exception{
         ModelAndView modelAndView = new ModelAndView("homepage");
-        System.out.println("***----------User is still:" + request.getUserPrincipal() + "------------*****");
         modelAndView.addObject("username", request.getRemoteUser());
-        System.out.println("request.getRemoteUser() returns ---->" + request.getRemoteUser());
-
         return modelAndView;
     }
 
