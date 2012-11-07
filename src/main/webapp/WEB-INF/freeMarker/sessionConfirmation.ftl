@@ -8,6 +8,8 @@
 <div>
     ${session.name} was successfully published!
 </div>
-
+<div>
+${session.location}
+</div>
 </body>
 </html>

@@ -15,6 +15,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class ConferenceSessionRepositoryTest{
+
     @Test
     public void shouldReturnConferenceSessionByGivenSessionId() {
         String sessionId = "1";
@@ -75,5 +76,5 @@ public class ConferenceSessionRepositoryTest{
         return sessionMapper;
     }
 
-    
+
 }

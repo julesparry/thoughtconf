@@ -65,23 +65,6 @@ public class ConferenceSessionControllerTest {
     }
 
     @Test
-    public void shouldCreateAConferenceSession() throws Exception {
-        // Arrange
-        ConferenceSessionRepository repository = mock(ConferenceSessionRepository.class);
-        ConferenceSession expectedConferenceSession = mock(ConferenceSession.class);
-        when(expectedConferenceSession.getId()).thenReturn("12345");
-        when(repository.save(any(ConferenceSession.class))).thenReturn(expectedConferenceSession);
-
-        // Act
-        ConferenceSessionController controller = new ConferenceSessionController(repository);
-        String viewName = controller.create("Awesome JS", "", "2012-9-11", "08:10-10:20", "", "", "");
-
-        // Assert
-        assertThat(viewName, is("redirect:confirmation/12345"));
-
-    }
-
-    @Test
     public void shouldMapToSessionConfirmationViewNameWhenCallingConfirm() {
         ConferenceSessionRepository repository = mock(ConferenceSessionRepository.class);
         ConferenceSessionController controller = new ConferenceSessionController(repository);
@@ -89,7 +72,6 @@ public class ConferenceSessionControllerTest {
         ModelAndView mv = controller.confirm(123);
         assertThat(mv.getViewName(), is("sessionConfirmation"));
     }
-
 
     @Test
     public void shouldIncludeSessionInModelWhenCallingConfirm() {
@@ -100,6 +82,22 @@ public class ConferenceSessionControllerTest {
 
         ModelAndView mv = controller.confirm(123);
         assertThat((ConferenceSession) mv.getModel().get("session"), sameInstance(expectedSession));
+    }
+
+    @Test
+    public void shouldCreateAConferenceSessionForHappyPathValue() throws Exception {
+        // Arrange
+        ConferenceSessionRepository repository = mock(ConferenceSessionRepository.class);
+        ConferenceSession expectedConferenceSession = mock(ConferenceSession.class);
+        when(expectedConferenceSession.getId()).thenReturn("12345");
+        when(repository.save(any(ConferenceSession.class))).thenReturn(expectedConferenceSession);
+
+        // Act
+        ConferenceSessionController controller = new ConferenceSessionController(repository);
+        String viewName = controller.create("Javascript", "Nalanda", "2012-12-25", "08:30-09:30", "Javascript Things", "Nigel", "Dances like a Panda");
+
+        // Assert
+        assertThat(viewName, is("redirect:confirmation/12345"));
     }
 
 }

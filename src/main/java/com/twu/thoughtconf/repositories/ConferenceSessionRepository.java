@@ -13,14 +13,21 @@ public class ConferenceSessionRepository {
     @Autowired
     private SessionMapper sessionMapper;
 
-    public ConferenceSession findById(String sessionId) {
-        return sessionMapper.findSessionByID(sessionId);
+    public ConferenceSessionRepository() {
+
+    }
+
+    public ConferenceSessionRepository(SessionMapper sessionMapper) {
+        this.sessionMapper = sessionMapper;
     }
 
     public void setMapper(SessionMapper sessionMapper) {
         this.sessionMapper = sessionMapper;
     }
 
+    public ConferenceSession findById(String sessionId) {
+        return sessionMapper.findSessionByID(sessionId);
+    }
 
     public ConferenceSession save(ConferenceSession conferenceSession) {
         sessionMapper.save(conferenceSession);

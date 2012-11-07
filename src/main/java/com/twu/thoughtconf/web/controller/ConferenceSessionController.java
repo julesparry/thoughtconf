@@ -60,6 +60,8 @@ public class ConferenceSessionController {
         return modelAndView;
     }
 
+
+
     @RequestMapping(value = "/organiser/new", method = RequestMethod.GET)
     public ModelAndView newConferenceSession() {
         ModelAndView mv = new ModelAndView("newConferenceSession");
@@ -68,11 +70,18 @@ public class ConferenceSessionController {
     }
 
     @RequestMapping(value = "/organiser/create", method = RequestMethod.POST)
-    public String create(@RequestParam("name") String name, @RequestParam("location") String location,@RequestParam("date") String date,@RequestParam("time") String time, @RequestParam("abstract") String sessionAbstract, @RequestParam("presenterName") String presenterName, @RequestParam("aboutPresenter") String aboutPresenter) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("YYYY-MM-DD HH:mm");
-        String[] timeStrs = time.split("-");
-        String startTimeString = timeStrs[0];
-        String endTimeString = timeStrs[1];
+    public String create(@RequestParam("name") String name,
+                         @RequestParam("location") String location,
+                         @RequestParam("date") String date,
+                         @RequestParam("time") String time,
+                         @RequestParam("abstract") String sessionAbstract,
+                         @RequestParam("presenterName") String presenterName,
+                         @RequestParam("aboutPresenter") String aboutPresenter) {
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm:ss");
+        String[] tokens = time.split("-");
+        String startTimeString = tokens[0]+":00";
+        String endTimeString = tokens[1]+":00";
         String startDateTimeString = date + " " + startTimeString;
         String endDateTimeString = date + " " + endTimeString;
         DateTime startTime = dateTimeFormatter.parseDateTime(startDateTimeString);

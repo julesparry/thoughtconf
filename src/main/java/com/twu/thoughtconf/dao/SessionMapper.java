@@ -23,7 +23,7 @@ public interface SessionMapper {
     ConferenceSession findSessionByID(@Param("sessionId") String sessionId);
 
 
-    @Insert("INSERT INTO session(session_name) VALUES (#{conferenceSession.name})")
+    @Insert("INSERT INTO session(session_name,session_location,session_start_time, session_end_time,abstract, session_speaker, about_speaker) VALUES (#{conferenceSession.name},#{conferenceSession.location},#{conferenceSession.startTime},#{conferenceSession.endTime},#{conferenceSession.sessionAbstract},#{conferenceSession.speaker},#{conferenceSession.speakerIntro})")
     @Options(useGeneratedKeys = true, keyProperty = "conferenceSession.sessionId")
     void save(@Param("conferenceSession") ConferenceSession conferenceSession);
 

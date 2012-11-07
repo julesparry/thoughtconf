@@ -2,17 +2,15 @@ package com.twu.thoughtconf.dao;
 
 import com.twu.thoughtconf.domain.ConferenceSession;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
-
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNot.not;
-import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -21,17 +19,6 @@ public class SessionMapperTest {
 
     @Autowired
     SessionMapper sessionMapper;
-
-    @Test
-    public void shouldGetAllSessionsInDateTimeOrder() {
-        List<ConferenceSession> conferenceSessions = sessionMapper.getAllSessions();
-
-        assertThat(conferenceSessions.size(), is(4));
-        ConferenceSession conferenceSession1 = conferenceSessions.get(0);
-        ConferenceSession conferenceSession2 = conferenceSessions.get(3);
-        boolean result = conferenceSession1.getStartTime().isBefore(conferenceSession2.getStartTime());
-        assertThat(result, is(true));
-    }
 
     @Test
     public void shouldGetSessionDetailByGivenSessionId() {
@@ -56,7 +43,6 @@ public class SessionMapperTest {
 
 
         DateTime expectedSessionStartTime = new DateTime(2012, 12, 11, 9, 30, 0);
-        System.out.println(conferenceSession.getStartTime());
         assertThat(conferenceSession.getStartTime(), is(expectedSessionStartTime));
 
 //        assertThat(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(conferenceSession.getStartTime()), is("2012-12-11 09:30:00"));
@@ -67,16 +53,20 @@ public class SessionMapperTest {
 
     }
 
+/*
     @Test
     public void shouldSaveSession() {
-        ConferenceSession conferenceSession = new ConferenceSession("Javascript");
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm:ss");
+        DateTime startTime = formatter.parseDateTime("2012-10-20 08:30:00");
+        DateTime endTime = formatter.parseDateTime("2012-10-20 09:30:00");
+
+        System.out.println(startTime);
+        ConferenceSession conferenceSession = new ConferenceSession("anything", "somewhere", startTime, endTime, "session abstract", "presenter", "about presenter");
 
         sessionMapper.save(conferenceSession);
 
-        assertThat(conferenceSession.getSessionId(), not(nullValue()));
-
-        sessionMapper.delete(conferenceSession);
+        ConferenceSession expectedConferenceSession = sessionMapper.getSessionByName("anything");
+        assertThat(conferenceSession, is(expectedConferenceSession));
     }
-
-
+*/
 }
