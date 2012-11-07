@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 
 // Responsible for creating and displaying conference sessions
 @Controller
-@RequestMapping("conference-session")
 public class ConferenceSessionController {
 
     @Autowired
@@ -35,7 +34,7 @@ public class ConferenceSessionController {
         this.repository = repository;
     }
 
-    @RequestMapping(value = "/display/{sessionId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/attendee/session/{sessionId}", method = RequestMethod.GET)
     public ModelAndView display(@PathVariable("sessionId") String sessionId) {
         ModelAndView mv = new ModelAndView("viewConferenceSession");
         ModelMap map = mv.getModelMap();
@@ -43,7 +42,7 @@ public class ConferenceSessionController {
         return mv;
     }
 
-    @RequestMapping(value = "/display/castest", method = RequestMethod.GET)
+    @RequestMapping(value = "/attendee/session/castest", method = RequestMethod.GET)
     public ModelAndView welcome(HttpServletRequest request, HttpServletResponse response) throws Exception{
         ModelAndView modelAndView = new ModelAndView("homepage");
         System.out.println("***----------User is still:" + request.getUserPrincipal() + "------------*****");
@@ -55,14 +54,14 @@ public class ConferenceSessionController {
 
 
 
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/organiser/new", method = RequestMethod.GET)
     public ModelAndView newConferenceSession() {
         ModelAndView mv = new ModelAndView("newConferenceSession");
-        mv.getModelMap().put("formAction", "/app/conference-session/create");
+        mv.getModelMap().put("formAction", "/thoughtconf/organiser/create");
         return mv;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/organiser/create", method = RequestMethod.POST)
     public String create(@RequestParam("name") String name, @RequestParam("location") String location,@RequestParam("date") String date,@RequestParam("time") String time, @RequestParam("abstract") String sessionAbstract, @RequestParam("presenterName") String presenterName, @RequestParam("aboutPresenter") String aboutPresenter) {
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("YYYY-MM-DD HH:mm");
         String[] timeStrs = time.split("-");
@@ -77,7 +76,7 @@ public class ConferenceSessionController {
         return "redirect:confirmation/" + conferenceSessionWithId.getId();
     }
 
-    @RequestMapping(value = "/confirmation/{sessionId}", method= RequestMethod.GET)
+    @RequestMapping(value = "/organiser/confirmation/{sessionId}", method= RequestMethod.GET)
     public ModelAndView confirm(@PathVariable("sessionId") int sessionId) {
         return new ModelAndView("sessionConfirmation", "session", repository.get(sessionId));
     }

@@ -11,7 +11,7 @@ echo "Stopping tomcat..."
 echo "ok"
 
 echo "Copying war to tomcat webapps dir..."
-cp /Users/jparry/code/thoughtconf/build/dist/app.war /Library/Tomcat/webap
+cp /Users/jparry/code/thoughtconf/build/dist/thoughtconf.war /Library/Tomcat/webapp
 echo "ok"
 
 echo "Starting tomcat..."

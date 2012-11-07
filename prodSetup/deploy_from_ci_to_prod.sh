@@ -7,7 +7,7 @@
 ##########################################
 
 #path to pull war from ci machine
-sourceFilePath=/var/lib/go-agent/pipelines/CI/build/dist/app.war
+sourceFilePath=/var/lib/go-agent/pipelines/CI/build/dist/thoughtconf.war
 
 #user on prod machine
 user=thoughtconf
