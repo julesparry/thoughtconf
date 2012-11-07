@@ -3,6 +3,8 @@ package com.twu.thoughtconf.dao;
 import com.twu.thoughtconf.domain.ConferenceSession;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 public interface SessionMapper {
 
     @Select("SELECT * FROM session WHERE session_id = #{sessionId}")
@@ -25,4 +27,21 @@ public interface SessionMapper {
     @Options(useGeneratedKeys = true, keyProperty = "conferenceSession.sessionId")
     void save(@Param("conferenceSession") ConferenceSession conferenceSession);
 
+    @Select("SELECT * FROM session ORDER BY session_start_time ASC")
+    @Results(value = {
+            @Result(property = "sessionId", column = "session_id"),
+            @Result(property = "name", column = "session_name"),
+            @Result(property = "startTime", column = "session_start_time"),
+            @Result(property = "endTime", column = "session_end_time"),
+            @Result(property = "location", column = "session_location"),
+            @Result(property = "type", column = "session_type"),
+            @Result(property = "sessionAbstract", column = "abstract"),
+            @Result(property = "speaker", column = "session_speaker"),
+            @Result(property = "speakerIntro", column = "about_speaker"),
+            @Result(property = "trackId", column = "track_id")
+    })
+    List<ConferenceSession> getAllSessions();
+
+    @Delete("DELETE FROM session WHERE session_id = #{conferenceSession.sessionId}" )
+    void delete(@Param("conferenceSession") ConferenceSession conferenceSession);
 }
