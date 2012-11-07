@@ -30,7 +30,7 @@ public class ConferenceSessionControllerTest {
     public void shouldRetrieveAllConferenceSessions() {
         ConferenceSessionRepository repository = mock(ConferenceSessionRepository.class);
         List sessionList = new ArrayList();
-        when(repository.getAllSessions()).thenReturn(sessionList);
+        when(repository.getSessionsFromToday()).thenReturn(sessionList);
         ModelAndView mv = new ConferenceSessionController(repository).displayAllSessions();
 
         assertThat(mv.getViewName(), Matchers.is("attendeeHomepage"));
