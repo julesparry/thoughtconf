@@ -15,9 +15,15 @@
         <div>
             <div>New Conference Session</div>
             <div>
-                <form name="conferenceCreationForm" action="${formAction}" method="POST">
-                    Conference Name: <input type="text" id='conferenceSessionName' name='conferenceSessionName'/><br/>
-                    <input type='submit'/>
+                <form name="sessionCreationForm" action="${formAction}" method="POST">
+                    Session Name: <input type="text" id='sessionName' name='name'/><br/>
+                    Location: <input type="text" id='sessionLocation' name='location'/><br/>
+                    Date: <input type="text" id='sessionDate' name='date'/><br/>
+                    Time: <input type="text" id="sessionTime" name="time" /><br/>
+                    Abstract: <input type="text" id='abstract' name='abstract' /><br/>
+                    Presenter name: <input type="text" id='presenterName' name='presenterName' /><br/>
+                    About presenter: <input type="text" id='aboutPresenter' name='aboutPresenter' /><br/>
+                    <button type='submit' name="Publish">Publish</button>
                 </form>
             </div>
         </div>

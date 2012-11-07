@@ -58,7 +58,7 @@ public class ConferenceSessionControllerTest {
 
         // Act
         ConferenceSessionController controller = new ConferenceSessionController(repository);
-        String viewName = controller.create("Awesome JS");
+        String viewName = controller.create("Awesome JS", "", "2012-9-11", "08:10-10:20", "", "", "");
 
         // Assert
         assertThat(viewName, is("redirect:confirmation/12345"));

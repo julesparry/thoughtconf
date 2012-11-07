@@ -28,6 +28,16 @@ public class ConferenceSession {
         this.sessionId = id;
     }
 
+    public ConferenceSession(String name, String location, DateTime startTime, DateTime endTime, String sessionAbstract, String presenterName, String aboutPresenter) {
+        this.name = name;
+        this.location = location;
+        this.startTime =startTime;
+        this.endTime = endTime;
+        this.sessionAbstract = sessionAbstract;
+        this.speaker = presenterName;
+        this.speakerIntro = aboutPresenter;
+    }
+
     public String getId() {
         return sessionId.toString();
     }

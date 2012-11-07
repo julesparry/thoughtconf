@@ -2,6 +2,9 @@ package com.twu.thoughtconf.web.controller;
 
 import com.twu.thoughtconf.domain.ConferenceSession;
 import com.twu.thoughtconf.repositories.ConferenceSessionRepository;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +25,7 @@ public class ConferenceSessionController {
 
     @Autowired
     private ConferenceSessionRepository repository;
+
 
 
     public ConferenceSessionController() {
@@ -59,8 +63,16 @@ public class ConferenceSessionController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@RequestParam(value = "conferenceSessionName") String conferenceSessionName) {
-        ConferenceSession conferenceSession = new ConferenceSession(conferenceSessionName);
+    public String create(@RequestParam("name") String name, @RequestParam("location") String location,@RequestParam("date") String date,@RequestParam("time") String time, @RequestParam("abstract") String sessionAbstract, @RequestParam("presenterName") String presenterName, @RequestParam("aboutPresenter") String aboutPresenter) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("YYYY-MM-DD HH:mm");
+        String[] timeStrs = time.split("-");
+        String startTimeString = timeStrs[0];
+        String endTimeString = timeStrs[1];
+        String startDateTimeString = date + " " + startTimeString;
+        String endDateTimeString = date + " " + endTimeString;
+        DateTime startTime = dateTimeFormatter.parseDateTime(startDateTimeString);
+        DateTime endTime = dateTimeFormatter.parseDateTime(endDateTimeString);
+        ConferenceSession conferenceSession = new ConferenceSession(name, location, startTime, endTime, sessionAbstract, presenterName, aboutPresenter);
         ConferenceSession conferenceSessionWithId = repository.save(conferenceSession);
         return "redirect:confirmation/" + conferenceSessionWithId.getId();
     }
