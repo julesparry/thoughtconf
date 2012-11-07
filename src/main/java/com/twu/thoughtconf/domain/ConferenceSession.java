@@ -31,7 +31,7 @@ public class ConferenceSession {
     public ConferenceSession(String name, String location, DateTime startTime, DateTime endTime, String sessionAbstract, String presenterName, String aboutPresenter) {
         this.name = name;
         this.location = location;
-        this.startTime =startTime;
+        this.startTime = startTime;
         this.endTime = endTime;
         this.sessionAbstract = sessionAbstract;
         this.speaker = presenterName;
@@ -88,5 +88,15 @@ public class ConferenceSession {
 
     public String getSessionDuration() {
         return new SimpleDateFormat("hh:mm a").format(startTime) + " - " + new SimpleDateFormat("hh:mm a").format(endTime);
+    }
+
+    public String getDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMMM yyyy");
+        return dateFormat.format(startTime.toDate());
+    }
+
+    public String getTime() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm aaa");
+        return String.format("%s - %s", dateFormat.format(startTime.toDate()), dateFormat.format(endTime.toDate()));
     }
 }

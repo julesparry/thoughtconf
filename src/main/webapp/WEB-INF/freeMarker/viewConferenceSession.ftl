@@ -25,7 +25,7 @@
     <hr class="horizontal-rule"/>
 
     <div class="session-title">
-        <h1>${session.sessionName}</h1>
+        <h1>${session.name}</h1>
     </div>
 
     <hr class="horizontal-rule"/>
@@ -39,14 +39,14 @@
         <div class="date-time">
             <div class="date">
                 <img src="../../images/calendar-16x16.png" alt="Calendar Icon" width="16px" height="16px"/>
-                <span>${session.sessionDate}</span>
+                <span>${session.date}</span>
             </div>
 
             <hr id="vertical-rule"/>
 
             <div class="time">
                 <img id="clock" src="../../images/clock-16x15.png" alt="Clock Icon" width="16px" height="15px"/>
-                <span>${session.sessionDuration}</span>
+                <span>${session.time}</span>
             </div>
         </div>
     </div>
