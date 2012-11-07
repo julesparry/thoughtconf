@@ -1,31 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-                           http://www.springframework.org/schema/context
-                           http://www.springframework.org/schema/context/spring-context-3.0.xsd
-                           http://www.springframework.org/schema/mvc
-                           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+                            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
+    <import resource="mapper-context.xml"/>
 
-    <context:annotation-config />
-    <context:component-scan base-package="com.twu.thoughtconf" />
-    <mvc:annotation-driven />
-    <mvc:view-controller path="/" view-name="organiserHomepage"/>
-
-    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <property name="templateLoaderPath" value="/WEB-INF/freeMarker/"/>
+    <bean id="sessionAttendeeService" class="com.twu.thoughtconf.services.SessionAttendeeService">
+        <property name="mapper" ref="sessionAttendeeMapper"/>
     </bean>
 
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-        <property name="cache" value="true"/>
-        <property name="prefix" value=""/>
-        <property name="suffix" value=".ftl"/>
-
-        <property name="exposeSpringMacroHelpers" value="true"/>
+    <bean id="exampleService" class="com.twu.thoughtconf.services.ExampleService">
     </bean>
 
     <bean id="authenticationFilter" class="org.jasig.cas.client.authentication.AuthenticationFilter">
@@ -45,7 +30,7 @@
         <property name="redirectAfterValidation" value="true"/>
         <property name="exceptionOnValidationFailure" value="true"/>
     </bean>
-    
+
     <bean id="wrapperFilter" class="org.jasig.cas.client.util.HttpServletRequestWrapperFilter" />
 
 </beans>
