@@ -34,8 +34,16 @@ public class ConferenceSessionController {
         this.repository = repository;
     }
 
+    @RequestMapping(value = "/attendee/sessions", method = RequestMethod.GET)
+    public ModelAndView displayAllSessions(){
+        ModelAndView mv = new ModelAndView("attendeeHomepage");
+        ModelMap modelMap = mv.getModelMap();
+        modelMap.put("sessions", repository.getAllSessions());
+        return mv;
+    }
+
     @RequestMapping(value = "/attendee/session/{sessionId}", method = RequestMethod.GET)
-    public ModelAndView display(@PathVariable("sessionId") String sessionId) {
+    public ModelAndView displaySession(@PathVariable("sessionId") String sessionId) {
         ModelAndView mv = new ModelAndView("viewConferenceSession");
         ModelMap map = mv.getModelMap();
         map.put("session", repository.findById(sessionId));
@@ -51,8 +59,6 @@ public class ConferenceSessionController {
 
         return modelAndView;
     }
-
-
 
     @RequestMapping(value = "/organiser/new", method = RequestMethod.GET)
     public ModelAndView newConferenceSession() {
@@ -80,4 +86,5 @@ public class ConferenceSessionController {
     public ModelAndView confirm(@PathVariable("sessionId") int sessionId) {
         return new ModelAndView("sessionConfirmation", "session", repository.get(sessionId));
     }
+
 }

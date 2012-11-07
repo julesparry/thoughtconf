@@ -99,4 +99,8 @@ public class ConferenceSession {
         SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm aaa");
         return String.format("%s - %s", dateFormat.format(startTime.toDate()), dateFormat.format(endTime.toDate()));
     }
+
+    public void setStartTime(DateTime startTime) {
+        this.startTime = startTime;
+    }
 }
