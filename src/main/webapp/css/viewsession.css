@@ -22,11 +22,6 @@ div{
   font-style: normal;
 }
 
-.main-page{
-  min-height: 100%;
-  width: 100%;
-}
-
 .header{
   min-height: 80px;
 }
@@ -103,21 +98,15 @@ hr {
   clear:both;
 }
 
-.date-time-location,.abstract,.speaker{
+.date-time-location, .abstract, .speaker{
   font-size:30px;
 }
-
-.date-time-location{
-  min-height:150px;
-}
-
 
 .date, .time {
   float: left;
 }
 .date-time, .location {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  overflow: hidden;
 }
 .abstract, .speaker {
   min-height: 300px;

@@ -19,11 +19,6 @@ body {
   font-style: normal;
 }
 
-.main-page{
-  min-height: 100%;
-  width: 100%;
-}
-
 .header {
   background: #D5E14D;
   border-bottom: 1px solid #FFF;

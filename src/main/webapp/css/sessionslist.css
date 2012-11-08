@@ -26,7 +26,7 @@ ol {
 
 .session-name {
   font-weight: lighter;
-  font-size: 30px;
+  font-size: 36px;
   margin-bottom: 10px
 }
 
@@ -43,8 +43,11 @@ img {
   height: 25px;
 }
 
+.date-time-location {
+  padding: 0;
+}
+
 .date-time-location div {
-  font-size: 20px;
   font-weight: lighter;
   margin-right: 25px;
   margin-bottom: 10px;
