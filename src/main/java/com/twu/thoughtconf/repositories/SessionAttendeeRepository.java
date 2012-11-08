@@ -16,10 +16,16 @@ public class SessionAttendeeRepository {
     }
 
     public SessionAttendee save(SessionAttendee sessionAttendee) {
+
+        mapper.save(sessionAttendee.getAttendeeEmail(), String.valueOf( sessionAttendee.getSessionId()));
         return sessionAttendee;
     }
 
     public SessionAttendee findByEmail(String attendeeEmail) {
         return mapper.getSessionAttendee(attendeeEmail);
+    }
+
+    public SessionAttendeeMapper setSessionAttendeeMapper(SessionAttendeeMapper sessionAttendeeMapper) {
+        return mapper;
     }
 }

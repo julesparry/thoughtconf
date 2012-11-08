@@ -27,9 +27,24 @@ public class SessionAttendeeMapperTest {
 
     @Test
     public void saveTest_should_insert_new_record_into_session_attendee_table(){
-        sessionAttendeeMapper.save("eselemela@thoughtworks.com", "1");
-        SessionAttendee sessionAttendee = sessionAttendeeMapper.getSessionAttendee("eselemela@thoughtworks.com");
+        sessionAttendeeMapper.save("eseleme",  "1");
+        SessionAttendee sessionAttendee = sessionAttendeeMapper.getSessionAttendee("eseleme");
 
-        assertThat(sessionAttendee.getAttendeeEmail(), is("eselemela@thoughtworks.com"));
+        assertThat(sessionAttendee.getAttendeeEmail(), is("eseleme"));
+    }
+
+    @Test
+    public void should_return_session_attendee()
+    {
+        sessionAttendeeMapper.save("eseleme", "1");
+        SessionAttendee sessionAttendee = sessionAttendeeMapper.getSessionAttendee("eseleme");
+        assertThat(sessionAttendee.getAttendeeEmail(), is("eseleme"));
+        assertThat(sessionAttendee.getSessionId(), is(1));
+    }
+
+    @Before
+    public void clean()
+    {
+        sessionAttendeeMapper.cleanTable();
     }
 }
