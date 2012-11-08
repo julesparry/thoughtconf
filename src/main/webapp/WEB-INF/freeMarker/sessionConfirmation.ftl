@@ -6,15 +6,17 @@
 <body>
 
 <div>
-    ${session.name} was successfully published!
+    <h2>
+        ${session.name} was successfully published!
+    </h2>
 </div>
 <div>
-    ${session.location}<br/>
-    ${session.date}<br/>
-    ${session.time}<br/>
-    ${session.abstract}<br/>
-    ${session.speaker}<br/>
-    ${session.speakerIntro}<br/>
+    <p>Location: ${session.location}</p>
+    <p>Date: ${session.date}<p/>
+    <p>Time: ${session.time}</p>
+    <p>Abstract: ${session.abstract}</p>
+    <p>Speaker: ${session.speaker}</p>
+    <p>About Speaker: ${session.speakerIntro}</p><br/>
 
 </div>
 </body>
