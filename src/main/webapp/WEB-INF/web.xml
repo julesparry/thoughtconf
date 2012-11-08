@@ -96,7 +96,7 @@
 
     <filter-mapping>
         <filter-name>CAS Authentication Filter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/attendee/*</url-pattern>
     </filter-mapping>
 
     <filter>
@@ -110,7 +110,7 @@
 
     <filter-mapping>
         <filter-name>CAS Validation Filter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/attendee/*</url-pattern>
     </filter-mapping>
 
     <filter>
