@@ -11,6 +11,9 @@ public class SessionAttendeeRepository {
     @Autowired
     private SessionAttendeeMapper mapper;
 
+    public SessionAttendeeRepository() {
+    }
+
     public SessionAttendeeRepository(SessionAttendeeMapper mapper) {
         this.mapper = mapper;
     }
