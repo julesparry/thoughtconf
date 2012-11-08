@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>View Session</title>
+    <title>Attendee Home Page</title>
     <link rel="stylesheet" href="../css/default.css" type="text/css"/>
 </head>
 <link rel="stylesheet" href="../css/sessionslist.css" type="text/css"/>
@@ -43,6 +43,11 @@
                             <span>${session.time}</span>
                         </div>
                     </div>
+                </div>
+
+                <div class="presenter">
+                    <span>Presenter: </span>
+                    <span class="speaker-name">${session.speaker}</span>
                 </div>
             </a>
         </li>
