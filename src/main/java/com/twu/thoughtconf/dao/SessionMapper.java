@@ -18,7 +18,7 @@ public interface SessionMapper {
             @Result(property = "sessionAbstract", column = "abstract"),
             @Result(property = "speaker", column = "session_speaker"),
             @Result(property = "speakerIntro", column = "about_speaker"),
-            @Result(property = "trackId", column = "track_id")
+            @Result(property = "conferenceName", column = "conference_name")
     })
     ConferenceSession findSessionByID(@Param("sessionId") String sessionId);
 
@@ -38,7 +38,7 @@ public interface SessionMapper {
             @Result(property = "sessionAbstract", column = "abstract"),
             @Result(property = "speaker", column = "session_speaker"),
             @Result(property = "speakerIntro", column = "about_speaker"),
-            @Result(property = "trackId", column = "track_id")
+            @Result(property = "conferenceName", column = "conference_name")
     })
     List<ConferenceSession> getAllSessions();
 
@@ -56,7 +56,7 @@ public interface SessionMapper {
             @Result(property = "sessionAbstract", column = "abstract"),
             @Result(property = "speaker", column = "session_speaker"),
             @Result(property = "speakerIntro", column = "about_speaker"),
-            @Result(property = "trackId", column = "track_id")
+            @Result(property = "conferenceName", column = "conference_name")
     })
     ConferenceSession getSessionByName(String anything);
 }
