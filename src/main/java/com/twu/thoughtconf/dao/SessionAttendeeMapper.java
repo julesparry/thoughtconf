@@ -19,10 +19,13 @@ public interface SessionAttendeeMapper {
     public void cleanTable();
 
     @Select("SELECT * FROM session_attendee WHERE attendee_email = #{attendeeEmail} AND session_id = #{sessionId}")
-    @Results(value ={
+            @Results(value ={
             @Result(property = "attendeeEmail", column = "attendee_email"),
             @Result(property = "sessionId", column = "session_id")
     })
     public SessionAttendee getSessionAttendeeUsingEmailAndSessionId(@Param("attendeeEmail") String attendeeEmail,
                                                                     @Param("sessionId") String sessionId);
+
+    @Delete("DELETE * FROM session_attendee WHERE attendee_email = #{attendeeEmail} AND session_id = #{sessionId}")
+    void removeAttendee(String attendeeEmail, String sessionId);
 }

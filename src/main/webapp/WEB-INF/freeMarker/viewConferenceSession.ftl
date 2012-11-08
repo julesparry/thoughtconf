@@ -56,7 +56,7 @@
       <hr class="horizontal-rule"/>
 
       <div class="buttonContainer">
-          <a href="#" data-role="button" class="goingButton" id="goingButton">
+          <a href="#" data-role="button" data-sessionid="${session.id}" class="goingButton <#if going == true>active</#if>" id="goingButton">
               <span>happy face</span>
           </a>
           <span class="text">I'm going!</span>
