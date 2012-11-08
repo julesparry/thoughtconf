@@ -41,7 +41,7 @@ public class SessionAttendeeRepositoryIntegrationTest {
     public void shouldReturnFalseForNonExistantBasedOnEmailAndSessionId() throws Exception {
         SessionAttendeeRepository repository = new SessionAttendeeRepository(mapper);
 
-        assertFalse(repository.findSessionAttendee(attendeeEmail, 1));
+        assertFalse(repository.hasSessionAttendee(attendeeEmail, 1));
     }
 
     @Test
@@ -51,7 +51,18 @@ public class SessionAttendeeRepositoryIntegrationTest {
         SessionAttendeeRepository repository = new SessionAttendeeRepository(mapper);
         repository.save(expectedSessionAttendee);
 
-        assertTrue(repository.findSessionAttendee(expectedSessionAttendee.getAttendeeEmail(), expectedSessionAttendee.getSessionId()));
+        assertTrue(repository.hasSessionAttendee(expectedSessionAttendee.getAttendeeEmail(), expectedSessionAttendee.getSessionId()));
     }
+
+    @Test
+    public void shouldRemoveTheSessionAttendee() throws Exception {
+        SessionAttendeeRepository repository = new SessionAttendeeRepository(mapper);
+        SessionAttendee sessionAttendee = new SessionAttendee(attendeeEmail, 3);
+        repository.save(sessionAttendee);
+        repository.remove(sessionAttendee);
+        boolean exists = repository.hasSessionAttendee(sessionAttendee.getAttendeeEmail(), sessionAttendee.getSessionId());
+        assertFalse(exists);
+    }
+
 
 }

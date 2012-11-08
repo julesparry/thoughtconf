@@ -49,7 +49,7 @@ public class ConferenceSessionController {
     public ModelAndView displaySession(@PathVariable("sessionId") String sessionId, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("viewConferenceSession");
         ModelMap map = mv.getModelMap();
-        map.put("going", sessionAttendeeRepository.findSessionAttendee(request.getRemoteUser(), Integer.parseInt(sessionId)));
+        map.put("going", sessionAttendeeRepository.hasSessionAttendee(request.getRemoteUser(), Integer.parseInt(sessionId)));
         map.put("session", repository.findById(sessionId));
         return mv;
     }

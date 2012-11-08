@@ -20,7 +20,7 @@ public class SessionAttendeeRepository {
 
     public SessionAttendee save(SessionAttendee sessionAttendee) {
 
-        mapper.save(sessionAttendee.getAttendeeEmail(), String.valueOf( sessionAttendee.getSessionId()));
+        mapper.save(sessionAttendee.getAttendeeEmail(), String.valueOf(sessionAttendee.getSessionId()));
         return sessionAttendee;
     }
 
@@ -28,16 +28,16 @@ public class SessionAttendeeRepository {
         return mapper.getSessionAttendee(attendeeEmail);
     }
 
-    public boolean findSessionAttendee(String attendeeEmail, int i) {
+    public boolean hasSessionAttendee(String attendeeEmail, int i) {
         SessionAttendee attendee = mapper.getSessionAttendeeUsingEmailAndSessionId(attendeeEmail, String.valueOf(i));
 
-        if(attendee == null)
+        if (attendee == null)
             return false;
         else
             return true;
     }
 
     public void remove(SessionAttendee sessionAttendee) {
-        //implement me!
+        mapper.removeAttendee(sessionAttendee.getAttendeeEmail(), String.valueOf(sessionAttendee.getSessionId()));
     }
 }
