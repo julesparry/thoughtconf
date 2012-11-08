@@ -45,6 +45,12 @@ public class ConferenceSessionController {
         return mv;
     }
 
+    @RequestMapping(value = {"/organiser", "/"}, method = RequestMethod.GET)
+    public ModelAndView showOrganiserHomePage(){
+        ModelAndView mv = new ModelAndView("organiserHomepage");
+        return mv;
+    }
+
     @RequestMapping(value = "/attendee/session/{sessionId}", method = RequestMethod.GET)
     public ModelAndView displaySession(@PathVariable("sessionId") String sessionId, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("viewConferenceSession");

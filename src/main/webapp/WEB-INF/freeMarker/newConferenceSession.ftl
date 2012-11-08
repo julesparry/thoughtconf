@@ -21,12 +21,12 @@
 
                     <div class="clear">
                         <p class="date_and_time">
-                            <label>Date</label>
+                            <label>Date (yyyy-mm-dd)</label>
                             <input type="text" id='sessionDate' name='date'/>
                         </p>
 
                         <p class="date_and_time">
-                            <label>Time (Start-End)</label>
+                            <label>Time (hh:mm-hh:mm)</label>
                             <input type="text" id="sessionTime" name="time"/>
                         </p>
                     </div>
