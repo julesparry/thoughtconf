@@ -27,14 +27,15 @@ public class SessionAttendeeController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public String going(@PathVariable("sessionId") String sessionId, HttpServletRequest httpServletRequest) {
-        repository.save(new SessionAttendee(httpServletRequest.getRemoteUser(), Integer.parseInt(sessionId)));
+    public String going(@PathVariable("sessionId") int sessionId, HttpServletRequest httpServletRequest) {
+        repository.save(new SessionAttendee(httpServletRequest.getRemoteUser(), sessionId));
         return "going";
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseBody
-    public String notGoing(@PathVariable("sessionId") String sessionId, HttpServletRequest httpServletRequest) {
+    public String notGoing(@PathVariable("sessionId") int sessionId, HttpServletRequest httpServletRequest) {
+        repository.remove(new SessionAttendee(httpServletRequest.getRemoteUser(), sessionId));
         return "notGoing";
     }
 

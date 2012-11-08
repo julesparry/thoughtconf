@@ -13,23 +13,23 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @Controller
 public class SessionAttendeeControllerTest {
 
     @Test
-    public void shouldCreateASessionAttendee() {
-
+    public void shouldCreateASessionAttendeeWhenGoing() {
         // ARRANGE
-        String conferenceSessionId = "1";
+        int conferenceSessionId = 1;
         String emailId = "emailId";
 
-        HttpServletRequest httpServletRequest = new MockHttpServletRequest();
-        httpServletRequest.setAttribute("remoteUser", emailId);
+        MockHttpServletRequest httpServletRequest = new MockHttpServletRequest();
+        httpServletRequest.setRemoteUser(emailId);
 
         SessionAttendeeRepository repository = mock(SessionAttendeeRepository.class);
-        SessionAttendee createdConferenceSessionAttendee = new SessionAttendee(emailId,Integer.parseInt(conferenceSessionId));
+        SessionAttendee createdConferenceSessionAttendee = new SessionAttendee(emailId,conferenceSessionId);
         when(repository.save(isA(SessionAttendee.class))).thenReturn(createdConferenceSessionAttendee);
 
         // ACT
@@ -37,8 +37,27 @@ public class SessionAttendeeControllerTest {
         controller.going(conferenceSessionId, httpServletRequest);
 
         // ASSERT
-        assertThat(String.valueOf(createdConferenceSessionAttendee.getSessionId()), is(conferenceSessionId));
+        assertThat(createdConferenceSessionAttendee.getSessionId(), is(conferenceSessionId));
         assertThat(createdConferenceSessionAttendee.getAttendeeEmail(), is(emailId));
+    }
+
+    @Test
+    public void shouldRemoveASessionAttendeeWhenNotGoing() {
+        // ARRANGE
+        int conferenceSessionId = 1;
+        String emailId = "emailId";
+
+        MockHttpServletRequest httpServletRequest = new MockHttpServletRequest();
+        httpServletRequest.setRemoteUser(emailId);
+
+        SessionAttendeeRepository repository = mock(SessionAttendeeRepository.class);
+
+        // ACT
+        SessionAttendeeController controller = new SessionAttendeeController(repository);
+        controller.notGoing(conferenceSessionId, httpServletRequest);
+
+        // ASSERT
+        verify(repository).remove(new SessionAttendee(emailId, conferenceSessionId));
     }
 
 }
