@@ -1,3 +1,3 @@
 create user thoughtconf;
-
+create database ThoughtConf;
 grant all privileges on ThoughtConf.* to 'thoughtconf'@'localhost' with grant option;
