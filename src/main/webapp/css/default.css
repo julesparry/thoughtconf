@@ -5,6 +5,7 @@ body {
   background: #2F2F2F;
   color: #FFF;
   font-family: "Helvetica", Arial, Sans-serif;
+  font-size: medium;
 }
 
 @font-face {
@@ -21,7 +22,6 @@ body {
 .main-page{
   min-height: 100%;
   width: 100%;
-  overflow: scroll;
 }
 
 .header {
@@ -47,3 +47,29 @@ hr {
   visibility: hidden;
   content: "";
 }
+
+#location-detail, .date-time .date, .date-time .time, .abstract h2, .speaker h2 {
+  background: url(images/icons-sprite.png) no-repeat top left;
+  padding-left: 35px
+}
+
+
+.abstract h2 { 
+  background-position: 0 26px; 
+}
+
+.date-time .date { 
+  background-position: 0 -70px; 
+}
+
+.date-time .time { 
+  background-position: 0 -144px; 
+} 
+
+#location-detail { 
+  background-position: 0 -219px; 
+} 
+.speaker h2 { 
+  background-position: 0 -288px; 
+} 
+
