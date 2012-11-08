@@ -2,6 +2,7 @@ package com.twu.thoughtconf.web.controller;
 
 import com.twu.thoughtconf.domain.ConferenceSession;
 import com.twu.thoughtconf.repositories.ConferenceSessionRepository;
+import com.twu.thoughtconf.repositories.SessionAttendeeRepository;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -25,13 +26,15 @@ public class ConferenceSessionController {
     @Autowired
     private ConferenceSessionRepository repository;
 
-
+    @Autowired
+    private SessionAttendeeRepository sessionAttendeeRepository;
 
     public ConferenceSessionController() {
     }
 
-    public ConferenceSessionController(ConferenceSessionRepository repository) {
+    public ConferenceSessionController(ConferenceSessionRepository repository, SessionAttendeeRepository sessionAttendeeRepository) {
         this.repository = repository;
+        this.sessionAttendeeRepository = sessionAttendeeRepository;
     }
 
     @RequestMapping(value = "/attendee/sessions", method = RequestMethod.GET)
@@ -43,9 +46,10 @@ public class ConferenceSessionController {
     }
 
     @RequestMapping(value = "/attendee/session/{sessionId}", method = RequestMethod.GET)
-    public ModelAndView displaySession(@PathVariable("sessionId") String sessionId) {
+    public ModelAndView displaySession(@PathVariable("sessionId") String sessionId, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("viewConferenceSession");
         ModelMap map = mv.getModelMap();
+        map.put("going", sessionAttendeeRepository.findSessionAttendee(request.getRemoteUser(), Integer.parseInt(sessionId)));
         map.put("session", repository.findById(sessionId));
         return mv;
     }

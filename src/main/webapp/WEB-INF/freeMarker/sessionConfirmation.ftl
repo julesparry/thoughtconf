@@ -9,7 +9,13 @@
     ${session.name} was successfully published!
 </div>
 <div>
-${session.location}
+    ${session.location}<br/>
+    ${session.date}<br/>
+    ${session.time}<br/>
+    ${session.abstract}<br/>
+    ${session.speaker}<br/>
+    ${session.speakerIntro}<br/>
+
 </div>
 </body>
 </html>

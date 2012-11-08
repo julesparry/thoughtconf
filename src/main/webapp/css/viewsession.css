@@ -98,6 +98,10 @@ hr {
   clear:both;
 }
 
+.date-time-location div {
+  margin-bottom: 10px;
+}
+
 .date-time-location, .abstract, .speaker{
   font-size:30px;
 }

@@ -1,13 +1,13 @@
 <html>
   <head>
-      <title>View Session</title>
+      <title>Attendee Home Page</title>
       <link rel="stylesheet" href="../css/default.css" type="text/css"/>
       <link rel="stylesheet" href="../css/viewsession.css" type="text/css"/>
       <link rel="stylesheet" href="../css/sessionslist.css" type="text/css"/>
   </head>
   <body>
     <div class="header">
-      <img src="/images/logo-500-115.png" />
+      <img src="../images/logo-500-115.png" />
     </div>
 
     <div class="main-page">
@@ -38,8 +38,11 @@
                   </div>
                 </div>
 
+                <div class="presenter">
+                    <span>Presenter: </span>
+                    <span class="speaker-name">${session.speaker}</span>
+                </div>
               </div>
-
             </a>
           </li>
         </#list>

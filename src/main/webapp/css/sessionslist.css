@@ -57,8 +57,12 @@ img {
   float: left;
 }
 
-.date-time-location .date-time{
+.presenter{
+  font-weight: lighter;
   margin-bottom: 0px;
 }
 
+.presenter .speaker-name{
+  margin-left: 10px;
+}
 
