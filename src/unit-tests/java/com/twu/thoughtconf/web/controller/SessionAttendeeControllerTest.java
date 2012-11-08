@@ -34,7 +34,7 @@ public class SessionAttendeeControllerTest {
 
         // ACT
         SessionAttendeeController controller = new SessionAttendeeController(repository);
-        controller.attendSession(conferenceSessionId, httpServletRequest);
+        controller.going(conferenceSessionId, httpServletRequest);
 
         // ASSERT
         assertThat(String.valueOf(createdConferenceSessionAttendee.getSessionId()), is(conferenceSessionId));
