@@ -19,6 +19,7 @@
     <property name="db.driver" value="com.mysql.jdbc.Driver" />
     <property name="db.url" value="jdbc:mysql://localhost:3306/ThoughtConf" />
     <property name="qa.db.url" value="jdbc:mysql://10.10.4.126:3306/ThoughtConf" />
+    <property name="prod.db.url" value="jdbc:mysql://10.10.4.125:3306/ThoughtConf" />
 
     <path id="common-classpath">
         <pathelement location="${unit.test.dir}"/>
@@ -107,9 +108,11 @@
 
     <target name="setup-dbdeploy" depends="clean-db, update-database"/>
     <target name="setup-dbdeploy-qa" depends="clean-db-qa, update-database-qa"/>
+    <target name="setup-dbdeploy-prod" depends="clean-db-prod, update-database-prod"/>
 
     <target name="clean-db" depends="drop-and-create-database, create-changelog-table"/>
     <target name="clean-db-qa" depends="drop-and-create-database, create-changelog-table-qa"/>
+    <target name="clean-db-prod" depends="drop-and-create-database, create-changelog-table-prod"/>
 
     <target name="create-changelog-table">
         <sql driver="${db.driver}" url="${db.url}"
@@ -119,6 +122,12 @@
     </target>
     <target name="create-changelog-table-qa">
         <sql driver="${db.driver}" url="${qa.db.url}"
+             userid="thoughtconf" password="" classpathref="mysql.classpath" >
+            <fileset file="dbscripts/createSchemaVersionTable.mysql.sql"/>
+        </sql>
+    </target>
+    <target name="create-changelog-table-prod">
+        <sql driver="${db.driver}" url="${prod.db.url}"
              userid="thoughtconf" password="" classpathref="mysql.classpath" >
             <fileset file="dbscripts/createSchemaVersionTable.mysql.sql"/>
         </sql>
@@ -143,6 +152,17 @@
         <taskdef name="dbdeploy" classname="com.dbdeploy.AntTarget" classpathref="dbdeploy.classpath"/>
 
         <dbdeploy driver="${db.driver}" url="${qa.db.url}"
+                  userid="thoughtconf"
+                  password=""
+                  dir="dbscripts"
+                />
+
+    </target>
+
+    <target name="update-database-prod" description="generate a sql upgrade script">
+        <taskdef name="dbdeploy" classname="com.dbdeploy.AntTarget" classpathref="dbdeploy.classpath"/>
+
+        <dbdeploy driver="${db.driver}" url="${prod.db.url}"
                   userid="thoughtconf"
                   password=""
                   dir="dbscripts"

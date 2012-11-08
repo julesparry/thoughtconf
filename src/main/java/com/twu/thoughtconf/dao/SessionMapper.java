@@ -44,4 +44,19 @@ public interface SessionMapper {
 
     @Delete("DELETE FROM session WHERE session_id = #{conferenceSession.sessionId}" )
     void delete(@Param("conferenceSession") ConferenceSession conferenceSession);
+
+    @Select("SELECT * FROM session WHERE session_name = #{name.}")
+    @Results(value = {
+            @Result(property = "sessionId", column = "session_id"),
+            @Result(property = "name", column = "session_name"),
+            @Result(property = "startTime", column = "session_start_time"),
+            @Result(property = "endTime", column = "session_end_time"),
+            @Result(property = "location", column = "session_location"),
+            @Result(property = "type", column = "session_type"),
+            @Result(property = "sessionAbstract", column = "abstract"),
+            @Result(property = "speaker", column = "session_speaker"),
+            @Result(property = "speakerIntro", column = "about_speaker"),
+            @Result(property = "trackId", column = "track_id")
+    })
+    ConferenceSession getSessionByName(String anything);
 }
