@@ -1,7 +1,8 @@
 package com.twu.thoughtconf.dao;
 
 import org.apache.commons.lang.NotImplementedException;
-import org.apache.ibatis.type.*;
+import org.apache.ibatis.type.BaseTypeHandler;
+import org.apache.ibatis.type.JdbcType;
 import org.joda.time.DateTime;
 
 import java.sql.*;
@@ -9,8 +10,10 @@ import java.sql.*;
 // Responsible for mapping a java Date to a joda DateTime
 public class DateTimeTypeHandler extends BaseTypeHandler<DateTime> {
 
+
     @Override
     public void setNonNullParameter(PreparedStatement preparedStatement, int i, DateTime dateTime, JdbcType jdbcType) throws SQLException {
+        preparedStatement.setDate(i, new Date(dateTime.toDate().getTime()));
     }
 
     @Override
@@ -25,6 +28,7 @@ public class DateTimeTypeHandler extends BaseTypeHandler<DateTime> {
     }
 
     @Override
+
     public DateTime getNullableResult(CallableStatement callableStatement, int i) throws SQLException {
         throw new NotImplementedException();
     }

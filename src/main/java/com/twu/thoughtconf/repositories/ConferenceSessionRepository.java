@@ -31,6 +31,7 @@ public class ConferenceSessionRepository {
     }
 
     public ConferenceSession save(ConferenceSession conferenceSession) {
+        System.out.println(conferenceSession.getStartTime().toString());
         sessionMapper.save(conferenceSession);
         return conferenceSession;
     }

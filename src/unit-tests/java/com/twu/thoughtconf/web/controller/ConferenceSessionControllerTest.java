@@ -3,7 +3,11 @@ package com.twu.thoughtconf.web.controller;
 import com.twu.thoughtconf.domain.ConferenceSession;
 import com.twu.thoughtconf.repositories.ConferenceSessionRepository;
 import org.hamcrest.Matchers;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.junit.Test;
+import org.mockito.Mockito;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -89,8 +93,8 @@ public class ConferenceSessionControllerTest {
         // Arrange
         ConferenceSessionRepository repository = mock(ConferenceSessionRepository.class);
         ConferenceSession expectedConferenceSession = mock(ConferenceSession.class);
-        when(expectedConferenceSession.getId()).thenReturn("12345");
-        when(repository.save(any(ConferenceSession.class))).thenReturn(expectedConferenceSession);
+        when(expectedConferenceSession.getId()).thenReturn(12345);
+        when(repository.save(Mockito.any(ConferenceSession.class))).thenReturn(expectedConferenceSession);
 
         // Act
         ConferenceSessionController controller = new ConferenceSessionController(repository);
@@ -100,4 +104,34 @@ public class ConferenceSessionControllerTest {
         assertThat(viewName, is("redirect:confirmation/12345"));
     }
 
+    @Test
+    public void shouldReturnJodaTime()
+    {
+        DateTime expectedDateTime = new DateTime(2012,9,10,8,30,0);
+        String dateString = "2012-9-10";
+        String timeString = "8:30";
+
+        ConferenceSessionController controller = new ConferenceSessionController();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm:ss");
+        assertThat(controller.parseToJodaTime(dateString,dateTimeFormatter, timeString), is(expectedDateTime));
+    }
+
+    @Test
+    public void shouldSaveConferenceSessionWithCorrectParameter(){
+        String name = "Akriti";
+        String location = "Bengaluru";
+        DateTime startTime = new DateTime(2012,9,10,8,30,0);
+        DateTime endTime = new DateTime(2012,9,10,9,30,0);
+        String sessionAbstract = "Javascript";
+        String presenterName = "Yaxuan";
+        String aboutPresenter = "Come from Xi'an";
+        ConferenceSession expectedConferenceSession = new ConferenceSession(name, location, startTime, endTime, sessionAbstract, presenterName, aboutPresenter);
+
+        ConferenceSessionRepository conferenceSessionRepository = Mockito.mock(ConferenceSessionRepository.class);
+        
+        when(conferenceSessionRepository.save(Mockito.any(ConferenceSession.class))).thenReturn(expectedConferenceSession);
+        ConferenceSessionController controller = new ConferenceSessionController(conferenceSessionRepository);
+        controller.create(name, location, "2012-9-10", "08:30-09:30", sessionAbstract, presenterName, aboutPresenter);
+        verify(conferenceSessionRepository).save(expectedConferenceSession);
+    }
 }

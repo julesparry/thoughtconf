@@ -38,8 +38,12 @@ public class ConferenceSession {
         this.speakerIntro = aboutPresenter;
     }
 
-    public String getId() {
-        return sessionId.toString();
+    public void setSessionId(Integer sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    public Integer getId() {
+        return sessionId;
     }
 
     public String getName() {
@@ -82,14 +86,6 @@ public class ConferenceSession {
         return endTime;
     }
 
-    public String getSessionDate() {
-        return new SimpleDateFormat("dd MMM, yyyy").format(startTime);
-    }
-
-    public String getSessionDuration() {
-        return new SimpleDateFormat("hh:mm a").format(startTime) + " - " + new SimpleDateFormat("hh:mm a").format(endTime);
-    }
-
     public String getDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMMM yyyy");
         return dateFormat.format(startTime.toDate());
@@ -102,5 +98,47 @@ public class ConferenceSession {
 
     public void setStartTime(DateTime startTime) {
         this.startTime = startTime;
+    }
+
+    public void setEndTime(DateTime endTime) {
+        this.endTime = endTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ConferenceSession that = (ConferenceSession) o;
+
+
+        if (location != null ? !location.equals(that.location) : that.location != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (sessionAbstract != null ? !sessionAbstract.equals(that.sessionAbstract) : that.sessionAbstract != null)
+            return false;
+        if (sessionId != null ? !sessionId.equals(that.sessionId) : that.sessionId != null) return false;
+        if (speaker != null ? !speaker.equals(that.speaker) : that.speaker != null) return false;
+        if (speakerIntro != null ? !speakerIntro.equals(that.speakerIntro) : that.speakerIntro != null) return false;
+        if (startTime != null ? !startTime.equals(that.startTime) : that.startTime != null) return false;
+        if (endTime != null ? !endTime.equals(that.endTime) : that.endTime != null) return false;
+        if (trackId != null ? !trackId.equals(that.trackId) : that.trackId != null) return false;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
+        result = 31 * result + (endTime != null ? endTime.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (sessionAbstract != null ? sessionAbstract.hashCode() : 0);
+        result = 31 * result + (speaker != null ? speaker.hashCode() : 0);
+        result = 31 * result + (speakerIntro != null ? speakerIntro.hashCode() : 0);
+        result = 31 * result + (trackId != null ? trackId.hashCode() : 0);
+        result = 31 * result + (sessionId != null ? sessionId.hashCode() : 0);
+        return result;
     }
 }
