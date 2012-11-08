@@ -1,4 +1,4 @@
-USE ThoughtConf;
+USE ThoughtConf;		
 
 DROP TABLE IF EXISTS conference;
 
