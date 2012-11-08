@@ -40,3 +40,10 @@ hr {
   border-color:#1B1B1B;
   box-shadow: 1px 1px 1px 1px #555;
 }
+
+.clear:after {
+  clear: both;
+  display: block;
+  visibility: hidden;
+  content: "";
+}

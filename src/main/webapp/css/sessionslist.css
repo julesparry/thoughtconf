@@ -1,9 +1,61 @@
-.session-item{
-    text-decoration: none;
-    color: #FFF;
+.session-list-title {
+  font-size: 30px;
+  height: 50px;
+  margin: 20 auto 20 40;
 }
 
-ol{
-    list-style-type:none;
 
+ol {
+  padding-right: 40px;
 }
+
+.session-item {
+  list-style-type: none;
+  border: 1px solid black;
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px #545454;
+  padding: 10 15;
+}
+
+.session-item a {
+  text-decoration: none;
+  color: #FFF;
+  display: block;
+}
+
+.session-name {
+  font-weight: lighter;
+  font-size: 30px;
+  margin-bottom: 10px
+}
+
+.conference-title {
+  font-weight: lighter;
+  font-style: italic;
+  color: #DDD;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+img {
+  width: 25px;
+  height: 25px;
+}
+
+.date-time-location div {
+  font-size: 20px;
+  font-weight: lighter;
+  margin-right: 25px;
+  margin-bottom: 10px;
+}
+
+.location div , .date-time div{
+  float: left;
+}
+
+.date-time-location .date-time{
+  margin-bottom: 0px;
+}
+
+
