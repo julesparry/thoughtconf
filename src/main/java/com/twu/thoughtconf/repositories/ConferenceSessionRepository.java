@@ -40,7 +40,7 @@ public class ConferenceSessionRepository {
     }
 
     public List<ConferenceSession> getAllSessions() {
-        return sessionMapper.getAllSessions();  //To change body of created methods use File | Settings | File Templates.
+        return sessionMapper.getAllSessions();
     }
 
     public List<ConferenceSession> getSessionsFromToday() {

@@ -38,7 +38,7 @@ public class ConferenceSessionController {
     public ModelAndView displayAllSessions(){
         ModelAndView mv = new ModelAndView("attendeeHomepage");
         ModelMap modelMap = mv.getModelMap();
-        modelMap.put("sessions", repository.getSessionsFromToday());
+        modelMap.put("sessions", repository.getAllSessions());
         return mv;
     }
 
