@@ -22,22 +22,22 @@ public class SessionAttendeeControllerTest {
     public void shouldCreateASessionAttendee() {
 
         // ARRANGE
-        Integer conferenceSessionId = 1;
+        String conferenceSessionId = "1";
         String emailId = "emailId";
 
         HttpServletRequest httpServletRequest = new MockHttpServletRequest();
         httpServletRequest.setAttribute("remoteUser", emailId);
 
         SessionAttendeeRepository repository = mock(SessionAttendeeRepository.class);
-        SessionAttendee createdConferenceSessionAttendee = new SessionAttendee(emailId, conferenceSessionId);
+        SessionAttendee createdConferenceSessionAttendee = new SessionAttendee(emailId,Integer.parseInt(conferenceSessionId));
         when(repository.save(isA(SessionAttendee.class))).thenReturn(createdConferenceSessionAttendee);
 
         // ACT
         SessionAttendeeController controller = new SessionAttendeeController(repository);
-        controller.attend(httpServletRequest, conferenceSessionId);
+        controller.attendSession(conferenceSessionId, httpServletRequest);
 
         // ASSERT
-        assertThat(createdConferenceSessionAttendee.getSessionId(), is(conferenceSessionId));
+        assertThat(String.valueOf(createdConferenceSessionAttendee.getSessionId()), is(conferenceSessionId));
         assertThat(createdConferenceSessionAttendee.getAttendeeEmail(), is(emailId));
     }
 

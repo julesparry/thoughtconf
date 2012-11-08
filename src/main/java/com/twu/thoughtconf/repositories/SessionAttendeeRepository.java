@@ -28,7 +28,12 @@ public class SessionAttendeeRepository {
         return mapper.getSessionAttendee(attendeeEmail);
     }
 
-    public SessionAttendeeMapper setSessionAttendeeMapper(SessionAttendeeMapper sessionAttendeeMapper) {
-        return mapper;
+    public boolean findSessionAttendee(String attendeeEmail, int i) {
+        SessionAttendee attendee = mapper.getSessionAttendeeUsingEmailAndSessionId(attendeeEmail, String.valueOf(i));
+
+        if(attendee == null)
+            return false;
+        else
+            return true;
     }
 }
