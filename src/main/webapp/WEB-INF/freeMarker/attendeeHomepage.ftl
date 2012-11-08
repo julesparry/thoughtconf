@@ -18,9 +18,8 @@
         <#list sessions as session>
           <li class="session-item">
             <a href="session/${session.sessionId}">
-
               <div class="session-name">${session.name}</div>
-              <div class="conference-title">ThoughtWorks Away Day</div>
+              <div class="conference-title">${session.conferenceName}</div>
 
               <div class="date-time-location">
 

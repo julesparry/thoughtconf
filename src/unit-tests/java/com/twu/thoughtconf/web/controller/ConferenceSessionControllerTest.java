@@ -79,7 +79,7 @@ public class ConferenceSessionControllerTest {
         when(conferenceSessionRepository.findById(sessionId)).thenReturn(new ConferenceSession("Javascript"));
 
         SessionAttendeeRepository sessionAttendeeRepository = mock(SessionAttendeeRepository.class);
-        when(sessionAttendeeRepository.findSessionAttendee("test@thoughtworks.com", Integer.parseInt(sessionId))).thenReturn(true);
+        when(sessionAttendeeRepository.hasSessionAttendee("test@thoughtworks.com", Integer.parseInt(sessionId))).thenReturn(true);
 
         ConferenceSessionController controller = new ConferenceSessionController(conferenceSessionRepository, sessionAttendeeRepository);
         MockHttpServletRequest httpRequest = new MockHttpServletRequest();

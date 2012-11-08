@@ -14,8 +14,8 @@ public class ConferenceSession {
     private String sessionAbstract;
     private String speaker;
     private String speakerIntro;
-    private Integer trackId;
     private Integer sessionId;
+    private String conferenceName;
 
     public ConferenceSession() {
     }
@@ -74,10 +74,6 @@ public class ConferenceSession {
         return speakerIntro;
     }
 
-    public Integer getTrackId() {
-        return trackId;
-    }
-
     public Integer getSessionId() {
         return sessionId;
     }
@@ -104,6 +100,10 @@ public class ConferenceSession {
         this.endTime = endTime;
     }
 
+    public String getConferenceName() {
+        return conferenceName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -121,7 +121,7 @@ public class ConferenceSession {
         if (speakerIntro != null ? !speakerIntro.equals(that.speakerIntro) : that.speakerIntro != null) return false;
         if (startTime != null ? !startTime.equals(that.startTime) : that.startTime != null) return false;
         if (endTime != null ? !endTime.equals(that.endTime) : that.endTime != null) return false;
-        if (trackId != null ? !trackId.equals(that.trackId) : that.trackId != null) return false;
+        if (conferenceName != null ? !conferenceName.equals(that.conferenceName) : that.conferenceName != null) return false;
         if (type != null ? !type.equals(that.type) : that.type != null) return false;
 
         return true;
@@ -137,7 +137,7 @@ public class ConferenceSession {
         result = 31 * result + (sessionAbstract != null ? sessionAbstract.hashCode() : 0);
         result = 31 * result + (speaker != null ? speaker.hashCode() : 0);
         result = 31 * result + (speakerIntro != null ? speakerIntro.hashCode() : 0);
-        result = 31 * result + (trackId != null ? trackId.hashCode() : 0);
+        result = 31 * result + (conferenceName != null ? conferenceName.hashCode() : 0);
         result = 31 * result + (sessionId != null ? sessionId.hashCode() : 0);
         return result;
     }

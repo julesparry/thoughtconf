@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertNull;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -55,6 +56,15 @@ public class SessionAttendeeMapperTest {
     @Test
     public void shouldTestEmptyResultSetAndReturnNull() throws Exception {
         SessionAttendee sessionAttendee = sessionAttendeeMapper.getSessionAttendeeUsingEmailAndSessionId("test", "4");
+        assertNull(sessionAttendee);
+    }
+
+    @Test
+    public void shouldRemoveSessionAttendeeRecord()
+    {
+        sessionAttendeeMapper.save(attendeeEmail, sessionId);
+        sessionAttendeeMapper.removeAttendee(attendeeEmail, sessionId);
+        SessionAttendee sessionAttendee = sessionAttendeeMapper.getSessionAttendee(attendeeEmail);
         assertNull(sessionAttendee);
     }
 

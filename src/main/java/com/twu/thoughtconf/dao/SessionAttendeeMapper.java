@@ -25,7 +25,6 @@ public interface SessionAttendeeMapper {
     })
     public SessionAttendee getSessionAttendeeUsingEmailAndSessionId(@Param("attendeeEmail") String attendeeEmail,
                                                                     @Param("sessionId") String sessionId);
-
-    @Delete("DELETE * FROM session_attendee WHERE attendee_email = #{attendeeEmail} AND session_id = #{sessionId}")
-    void removeAttendee(String attendeeEmail, String sessionId);
+    @Delete("DELETE FROM session_attendee WHERE attendee_email = #{attendeeEmail} AND session_id = #{sessionId}")
+    void removeAttendee(@Param("attendeeEmail") String attendeeEmail, @Param("sessionId") String sessionId);
 }
