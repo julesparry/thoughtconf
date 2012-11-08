@@ -2,6 +2,7 @@ package com.twu.thoughtconf.web.controller;
 
 import com.twu.thoughtconf.domain.ConferenceSession;
 import com.twu.thoughtconf.repositories.ConferenceSessionRepository;
+import com.twu.thoughtconf.repositories.SessionAttendeeRepository;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -25,13 +26,15 @@ public class ConferenceSessionController {
     @Autowired
     private ConferenceSessionRepository repository;
 
-
+    @Autowired
+    private SessionAttendeeRepository sessionAttendeeRepository;
 
     public ConferenceSessionController() {
     }
 
-    public ConferenceSessionController(ConferenceSessionRepository repository) {
+    public ConferenceSessionController(ConferenceSessionRepository repository, SessionAttendeeRepository sessionAttendeeRepository) {
         this.repository = repository;
+        this.sessionAttendeeRepository = sessionAttendeeRepository;
     }
 
     @RequestMapping(value = "/attendee/sessions", method = RequestMethod.GET)
@@ -43,9 +46,10 @@ public class ConferenceSessionController {
     }
 
     @RequestMapping(value = "/attendee/session/{sessionId}", method = RequestMethod.GET)
-    public ModelAndView displaySession(@PathVariable("sessionId") String sessionId) {
+    public ModelAndView displaySession(@PathVariable("sessionId") String sessionId, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("viewConferenceSession");
         ModelMap map = mv.getModelMap();
+        map.put("going", sessionAttendeeRepository.findSessionAttendee(request.getRemoteUser(), Integer.parseInt(sessionId)));
         map.put("session", repository.findById(sessionId));
         return mv;
     }
@@ -75,15 +79,17 @@ public class ConferenceSessionController {
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm:ss");
         String[] tokens = time.split("-");
-        String startTimeString = tokens[0]+":00";
-        String endTimeString = tokens[1]+":00";
-        String startDateTimeString = date + " " + startTimeString;
-        String endDateTimeString = date + " " + endTimeString;
-        DateTime startTime = dateTimeFormatter.parseDateTime(startDateTimeString);
-        DateTime endTime = dateTimeFormatter.parseDateTime(endDateTimeString);
+        DateTime startTime = parseToJodaTime(date, dateTimeFormatter, tokens[0]);
+        DateTime endTime = parseToJodaTime(date, dateTimeFormatter, tokens[1]);
         ConferenceSession conferenceSession = new ConferenceSession(name, location, startTime, endTime, sessionAbstract, presenterName, aboutPresenter);
         ConferenceSession conferenceSessionWithId = repository.save(conferenceSession);
         return "redirect:confirmation/" + conferenceSessionWithId.getId();
+    }
+
+    protected DateTime parseToJodaTime(String date, DateTimeFormatter dateTimeFormatter, String token) {
+        String timeString = token +":00";
+        String dateTimeString = date + " " + timeString;
+        return dateTimeFormatter.parseDateTime(dateTimeString);
     }
 
     @RequestMapping(value = "/organiser/confirmation/{sessionId}", method= RequestMethod.GET)

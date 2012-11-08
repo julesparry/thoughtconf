@@ -36,4 +36,8 @@ public class SessionAttendeeRepository {
         else
             return true;
     }
+
+    public void remove(SessionAttendee sessionAttendee) {
+        //implement me!
+    }
 }

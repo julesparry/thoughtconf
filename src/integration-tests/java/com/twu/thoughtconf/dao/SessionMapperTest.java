@@ -24,7 +24,7 @@ public class SessionMapperTest {
     public void shouldGetSessionDetailByGivenSessionId() {
         ConferenceSession conferenceSession = sessionMapper.findSessionByID("1");
 
-
+        // TODO: DJ and Akriti, implement equals on ConferenceSession
 
         // orginal
         assertThat(conferenceSession.getSessionId(), is(1));
@@ -34,7 +34,7 @@ public class SessionMapperTest {
         assertThat(conferenceSession.getAbstract(), is("Attendees should bring laptops so that they can code, code and code"));
         assertThat(conferenceSession.getSpeaker(), is("Meng Wang"));
         assertThat(conferenceSession.getSpeakerIntro(), is("Guru in java and many other languages"));
-        //assertThat(conferenceSession.getTrackId(), is(1));
+        assertThat(conferenceSession.getSessionId(), is(1));
 
         // new version
         // ConferenceSession expectedConferenceSession = new ConferenceSession("all the data");
@@ -52,7 +52,7 @@ public class SessionMapperTest {
 
     }
 
-/*
+
     @Test
     public void shouldSaveSession() {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm:ss");
@@ -65,7 +65,8 @@ public class SessionMapperTest {
         sessionMapper.save(conferenceSession);
 
         ConferenceSession expectedConferenceSession = sessionMapper.getSessionByName("anything");
-        assertThat(conferenceSession, is(expectedConferenceSession));
+        assertThat(conferenceSession.getName(), is(expectedConferenceSession.getName()));
+        sessionMapper.delete(conferenceSession);
     }
-*/
+
 }

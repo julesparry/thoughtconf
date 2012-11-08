@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@RequestMapping(value = "/api/session/{sessionId}/attendance")
 public class SessionAttendeeController {
 
     public SessionAttendeeController() {
@@ -24,11 +25,18 @@ public class SessionAttendeeController {
         this.repository = repository;
     }
 
-    @RequestMapping(value = "/api/session/attend/{sessionId}", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public String attendSession(@PathVariable("sessionId") String sessionId, HttpServletRequest httpServletRequest) {
-        repository.save(new SessionAttendee(httpServletRequest.getRemoteUser(), Integer.parseInt(sessionId)));
-        return "attending";
+    public String going(@PathVariable("sessionId") int sessionId, HttpServletRequest httpServletRequest) {
+        repository.save(new SessionAttendee(httpServletRequest.getRemoteUser(), sessionId));
+        return "going";
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    @ResponseBody
+    public String notGoing(@PathVariable("sessionId") int sessionId, HttpServletRequest httpServletRequest) {
+        repository.remove(new SessionAttendee(httpServletRequest.getRemoteUser(), sessionId));
+        return "notGoing";
     }
 
 }
