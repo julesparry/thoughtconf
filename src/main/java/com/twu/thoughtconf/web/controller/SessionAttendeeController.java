@@ -11,11 +11,9 @@ public class SessionAttendeeController {
     @Autowired
     private SessionAttendeeRepository repository;
 
-
     public SessionAttendeeController(SessionAttendeeRepository repository) {
         this.repository = repository;
     }
-
 
     public void attend(HttpServletRequest httpServletRequest, Integer conferenceSessionId) {
         repository.save(new SessionAttendee(httpServletRequest.getRemoteUser(), conferenceSessionId));
