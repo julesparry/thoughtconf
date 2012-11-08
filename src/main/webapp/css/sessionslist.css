@@ -1,22 +1,50 @@
 .session-list-title {
-  font-size: 30px;
+  font-size: 62px;
+  line-height: 62px;
   height: 50px;
-  margin: 20 auto 20 40;
+  margin: 60px 40px 70px 40px;
 }
 
 
 ol {
   padding-right: 40px;
+  margin-top: 60px
 }
 
 .session-item {
   list-style-type: none;
   border: 1px solid black;
   margin-top: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 4px #545454;
-  padding: 10 15;
-}
+  box-shadow: 0px 0px 4px #292929;
+  padding: 20px 30px;
+  font-size: 32px;
+
+
+  *display: inline;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: #393939;
+  *background-color: #e6e6e6;
+  background-image: -moz-linear-gradient(top, #393939, #292929);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#393939), to(#292929));
+  background-image: -webkit-linear-gradient(top, #393939, #292929);
+  background-image: -o-linear-gradient(top, #393939, #292929);
+  background-image: linear-gradient(to bottom, #393939, #292929);
+  background-repeat: repeat-x;
+  border: 2px solid #121212;
+  *border: 0;
+  -webkit-border-radius: 20px;
+     -moz-border-radius: 20px;
+          border-radius: 20px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  *zoom: 1;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+
+        }
 
 .session-item a {
   text-decoration: none;
@@ -26,21 +54,17 @@ ol {
 
 .session-name {
   font-weight: lighter;
-  font-size: 36px;
-  margin-bottom: 10px
+  font-size: 52px;
+  margin-bottom: 10px;
+  color: #D5E14D;
 }
 
 .conference-title {
   font-weight: lighter;
   font-style: italic;
   color: #DDD;
-  font-size: 25px;
+  font-size: 32px;
   margin-bottom: 20px;
-}
-
-img {
-  width: 25px;
-  height: 25px;
 }
 
 .date-time-location {
