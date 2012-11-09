@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.sql.Timestamp;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -49,14 +51,30 @@ public class SessionMapperTest {
         DateTime startTime = formatter.parseDateTime("2012-10-20 08:30:00");
         DateTime endTime = formatter.parseDateTime("2012-10-20 09:30:00");
 
-        System.out.println(startTime);
         ConferenceSession conferenceSession = new ConferenceSession("anything", "somewhere", startTime, endTime, "session abstract", "presenter", "about presenter");
-
         sessionMapper.save(conferenceSession);
 
         ConferenceSession expectedConferenceSession = sessionMapper.getSessionByName("anything");
+        System.out.println(expectedConferenceSession.getEndTime());
         assertThat(conferenceSession.getName(), is(expectedConferenceSession.getName()));
+        assertThat(conferenceSession.getEndTime(), is(expectedConferenceSession.getEndTime()));
         sessionMapper.delete(conferenceSession);
     }
+    @Test
+    public void shouldSaveSessionWithCorrectTime() {
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm:ss");
+        DateTime startTime = formatter.parseDateTime("2012-10-20 08:30:00");
+        DateTime endTime = formatter.parseDateTime("2012-10-20 09:30:00");
+
+        ConferenceSession conferenceSession = new ConferenceSession("anything", "somewhere", startTime, endTime, "session abstract", "presenter", "about presenter");
+        sessionMapper.save(conferenceSession);
+
+        ConferenceSession expectedConferenceSession = sessionMapper.getSessionByName("anything");
+        System.out.println(expectedConferenceSession.getEndTime());
+        assertThat(conferenceSession.getName(), is(expectedConferenceSession.getName()));
+        assertThat(conferenceSession.getEndTime(), is(expectedConferenceSession.getEndTime()));
+        sessionMapper.delete(conferenceSession);
+    }
+
 
 }
