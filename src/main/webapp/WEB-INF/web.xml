@@ -127,10 +127,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <welcome-file-list>
-        <welcome-file>/index.jsp</welcome-file>
-    </welcome-file-list>
-
     <error-page>
         <error-code>404</error-code>
         <location>/404.jsp</location>
