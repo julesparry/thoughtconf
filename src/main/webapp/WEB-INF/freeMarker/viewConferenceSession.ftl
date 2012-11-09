@@ -18,11 +18,7 @@
       <div class="conf-info">
           <div class="conf">
               <div class="component-type">conference</div>
-              <div class="component-title">Away Day Bangalore 2012</div>
-          </div>
-          <div class="track">
-              <div class="component-type">track</div>
-              <div class="component-title">Javascript</div>
+              <div class="component-title">${session.conferenceName?default("ThoughtWorks Away Day")}</div>
           </div>
       </div>
 
