@@ -15,7 +15,6 @@
     <context:component-scan base-package="com.twu.thoughtconf" />
     <mvc:annotation-driven />
 
-    <mvc:view-controller path="/" view-name="organiserHomepage"/>
     <mvc:view-controller path="/organiser" view-name="organiserHomepage"/>
 
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
