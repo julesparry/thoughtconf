@@ -60,8 +60,6 @@ public class ConferenceSessionRepositoryTest{
 
         assertThat(sessionsFromToday.size(), is(1));
         assertThat(sessionsFromToday.get(0).getStartTime(), is(new DateTime(2013, 12, 11, 9, 30, 0)));
-
-
     }
 
     private ConferenceSession createConferenceSession(int year, int month, int day, int hour, int minute, int second) {
