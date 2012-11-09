@@ -51,8 +51,8 @@ public class SessionMapperTest {
         DateTime startTime = formatter.parseDateTime("2012-10-20 08:30:00");
         DateTime endTime = formatter.parseDateTime("2012-10-20 09:30:00");
 
-        ConferenceSession conferenceSession = new ConferenceSession("anything", "somewhere", startTime, endTime, "session abstract", "presenter", "about presenter");
-        sessionMapper.save(conferenceSession);
+        System.out.println(startTime);
+        ConferenceSession conferenceSession = new ConferenceSession("anyConference","anything", "somewhere", startTime, endTime, "session abstract", "presenter", "about presenter");
 
         ConferenceSession expectedConferenceSession = sessionMapper.getSessionByName("anything");
         System.out.println(expectedConferenceSession.getEndTime());
@@ -75,6 +75,5 @@ public class SessionMapperTest {
         assertThat(conferenceSession.getEndTime(), is(expectedConferenceSession.getEndTime()));
         sessionMapper.delete(conferenceSession);
     }
-
 
 }

@@ -69,7 +69,8 @@ public class ConferenceSessionController {
     }
 
     @RequestMapping(value = "/organiser/create", method = RequestMethod.POST)
-    public String create(@RequestParam("name") String name,
+    public String create(@RequestParam("conferenceName") String conferenceName,
+                         @RequestParam("name") String name,
                          @RequestParam("location") String location,
                          @RequestParam("date") String date,
                          @RequestParam("time") String time,
@@ -81,7 +82,7 @@ public class ConferenceSessionController {
         String[] tokens = time.split("-");
         DateTime startTime = parseToJodaTime(date, dateTimeFormatter, tokens[0]);
         DateTime endTime = parseToJodaTime(date, dateTimeFormatter, tokens[1]);
-        ConferenceSession conferenceSession = new ConferenceSession(name, location, startTime, endTime, sessionAbstract, presenterName, aboutPresenter);
+        ConferenceSession conferenceSession = new ConferenceSession(conferenceName, name, location, startTime, endTime, sessionAbstract, presenterName, aboutPresenter);
         ConferenceSession conferenceSessionWithId = repository.save(conferenceSession);
         return "redirect:confirmation/" + conferenceSessionWithId.getId();
     }

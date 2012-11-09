@@ -119,7 +119,7 @@ public class ConferenceSessionControllerTest {
 
         // Act
         ConferenceSessionController controller = new ConferenceSessionController(repository, mock(SessionAttendeeRepository.class));
-        String viewName = controller.create("Javascript", "Nalanda", "2012-12-25", "08:30-09:30", "Javascript Things", "Nigel", "Dances like a Panda");
+        String viewName = controller.create("JavaConference","Javascript", "Nalanda", "2012-12-25", "08:30-09:30", "Javascript Things", "Nigel", "Dances like a Panda");
 
         // Assert
         assertThat(viewName, is("redirect:confirmation/12345"));
@@ -138,6 +138,7 @@ public class ConferenceSessionControllerTest {
 
     @Test
     public void shouldSaveConferenceSessionWithCorrectParameter() {
+        String conferenceName="confAkriti";
         String name = "Akriti";
         String location = "Bengaluru";
         DateTime startTime = new DateTime(2012, 9, 10, 8, 30, 0);
@@ -145,13 +146,13 @@ public class ConferenceSessionControllerTest {
         String sessionAbstract = "Javascript";
         String presenterName = "Yaxuan";
         String aboutPresenter = "Come from Xi'an";
-        ConferenceSession expectedConferenceSession = new ConferenceSession(name, location, startTime, endTime, sessionAbstract, presenterName, aboutPresenter);
+        ConferenceSession expectedConferenceSession = new ConferenceSession(conferenceName,name, location, startTime, endTime, sessionAbstract, presenterName, aboutPresenter);
 
         ConferenceSessionRepository conferenceSessionRepository = mock(ConferenceSessionRepository.class);
 
         when(conferenceSessionRepository.save(any(ConferenceSession.class))).thenReturn(expectedConferenceSession);
         ConferenceSessionController controller = new ConferenceSessionController(conferenceSessionRepository, mock(SessionAttendeeRepository.class));
-        controller.create(name, location, "2012-9-10", "08:30-09:30", sessionAbstract, presenterName, aboutPresenter);
+        controller.create(conferenceName,name, location, "2012-9-10", "08:30-09:30", sessionAbstract, presenterName, aboutPresenter);
         verify(conferenceSessionRepository).save(expectedConferenceSession);
     }
 }

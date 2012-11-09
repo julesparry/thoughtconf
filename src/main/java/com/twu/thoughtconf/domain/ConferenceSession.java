@@ -5,7 +5,15 @@ import org.joda.time.DateTime;
 import java.text.SimpleDateFormat;
 
 public class ConferenceSession {
+    public String getSessionAbstract() {
+        return sessionAbstract;
+    }
 
+    public void setSessionAbstract(String sessionAbstract) {
+        this.sessionAbstract = sessionAbstract;
+    }
+
+    private String conferenceName;
     private String name;
     private DateTime startTime;
     private DateTime endTime;
@@ -15,10 +23,11 @@ public class ConferenceSession {
     private String speaker;
     private String speakerIntro;
     private Integer sessionId;
-    private String conferenceName;
+
 
     public ConferenceSession() {
     }
+
 
     public ConferenceSession(String name) {
         this.name = name;
@@ -28,7 +37,8 @@ public class ConferenceSession {
         this.sessionId = id;
     }
 
-    public ConferenceSession(String name, String location, DateTime startTime, DateTime endTime, String sessionAbstract, String presenterName, String aboutPresenter) {
+    public ConferenceSession( String conferenceName, String name, String location, DateTime startTime, DateTime endTime, String sessionAbstract, String presenterName, String aboutPresenter) {
+        this.conferenceName = conferenceName;
         this.name = name;
         this.location = location;
         this.startTime = startTime;
@@ -44,6 +54,10 @@ public class ConferenceSession {
 
     public Integer getId() {
         return sessionId;
+    }
+
+    public String getConferenceName() {
+        return conferenceName;
     }
 
     public String getName() {
@@ -100,9 +114,6 @@ public class ConferenceSession {
         this.endTime = endTime;
     }
 
-    public String getConferenceName() {
-        return conferenceName;
-    }
 
     @Override
     public boolean equals(Object o) {
