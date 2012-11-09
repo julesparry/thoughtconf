@@ -77,7 +77,7 @@ public class ConferenceSessionController {
                          @RequestParam("presenterName") String presenterName,
                          @RequestParam("aboutPresenter") String aboutPresenter) {
 
-        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm:ss");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");
         String[] tokens = time.split("-");
         DateTime startTime = parseToJodaTime(date, dateTimeFormatter, tokens[0]);
         DateTime endTime = parseToJodaTime(date, dateTimeFormatter, tokens[1]);
