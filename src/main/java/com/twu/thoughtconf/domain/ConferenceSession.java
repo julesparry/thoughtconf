@@ -24,10 +24,8 @@ public class ConferenceSession {
     private String speakerIntro;
     private Integer sessionId;
 
-
     public ConferenceSession() {
     }
-
 
     public ConferenceSession(String name) {
         this.name = name;
