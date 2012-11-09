@@ -66,7 +66,6 @@ public class SessionMapperTest {
         DateTime startTime = formatter.parseDateTime("2012-10-20 08:30:00");
         DateTime endTime = formatter.parseDateTime("2012-10-20 09:30:00");
 
-
         ConferenceSession conferenceSession = new ConferenceSession("anything", "somewhere", startTime, endTime, "session abstract", "presenter", "about presenter");
         sessionMapper.save(conferenceSession);
 

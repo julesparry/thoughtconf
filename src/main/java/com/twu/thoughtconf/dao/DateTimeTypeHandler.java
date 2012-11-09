@@ -13,7 +13,6 @@ public class DateTimeTypeHandler extends BaseTypeHandler<DateTime> {
 
     @Override
     public void setNonNullParameter(PreparedStatement preparedStatement, int i, DateTime dateTime, JdbcType jdbcType) throws SQLException {
-//        preparedStatement.setDate(i, new Date(dateTime.toDate().getTime()));
          preparedStatement.setTimestamp(i, new Timestamp(dateTime.toDate().getTime()));
     }
 

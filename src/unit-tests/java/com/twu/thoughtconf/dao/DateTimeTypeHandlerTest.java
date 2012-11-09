@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -17,11 +18,10 @@ public class DateTimeTypeHandlerTest {
         int index = 1;
         DateTime dateTime = DateTime.now();
 
-        PreparedStatement mock = mock(PreparedStatement.class);
-        handler.setNonNullParameter(mock, index, dateTime, JdbcType.DATE);
+        PreparedStatement preparedStatement = mock(PreparedStatement.class);
+        handler.setNonNullParameter(preparedStatement, index, dateTime, JdbcType.DATE);
 
-        Date expectedDate = new Date(dateTime.toDate().getTime());
-        verify(mock).setDate(index, expectedDate);
+        verify(preparedStatement).setTimestamp(index, new Timestamp(dateTime.toDate().getTime()));
     }
 
 }
