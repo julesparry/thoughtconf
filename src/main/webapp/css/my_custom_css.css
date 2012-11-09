@@ -38,23 +38,20 @@
 
 }     */
 
-.buttonContainer {
+.btn-container {
     overflow: hidden;
     text-align: center;
 
 }
 
-.buttonContainer .text {
+.btn-container .text {
   font-family: "marydaleregular", helvetica;
-  font-size: 50px;
   clear: both;
   display: block;
-  margin-bottom: 10px;
-  color: #999;
 
 }
 
-.goingButton {
+.going-btn {
     display: inline-block;
     font-family: Arial;
     color: white;
@@ -66,17 +63,20 @@
     box-shadow: 2px 2px 0px #545454;
     -webkit-box-shadow: 2px 2px 0px #545454;
     -moz-box-shadow: 2px 2px 0px #545454;
-    text-shadow: 1px 1px 3px #666;
+    text-shadow: 1px 2px 0px #444;
     border: solid black 2px;
-    background: #2f2f2f;
     margin: 20px;
     margin-bottom: 10px;
+    padding: 0;
+    background-image: linear-gradient(to bottom, #333, #444);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333), to(#444));
+    background-image: -webkit-linear-gradient(bottom, #333, #444);
 
 }
 
-.goingButton span {
+.going-btn span {
     display: block;
-    padding: 10px;
+    padding: 160px 0px 30px 0;
     float: left;
     box-shadow: -2px -2px 0 #545454;
     -webkit-box-shadow: -2px -2px 0 #545454;
@@ -85,25 +85,25 @@
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     margin: 2px;
-    color: #111;
-    font-size: 52px;
-    background: url("../images/smile-sprite.png") no-repeat 24px 27px;
-    height: 150px;
-    width: 150px;
-    text-indent: -9999px;
+    color: #212121;
+    font-size: 62px;
+    font-weight: 400;
+    background: url("../images/smile-sprite.png") no-repeat center 22px;
+    width: 300px;
 }
 
-.goingButton.active {
+.going-btn.active {
     -webkit-box-shadow: 1px 1px 8px #555, -1px -1px 8px #555;
     -moz-box-shadow: 1px 1px 8px #555, -1px -1px 8px #555;
     background: #222;
 }
 
-.goingButton.active span {
+.going-btn.active span {
     -webkit-box-shadow: inset 2px 2px 10px black, inset -2px -2px 10px black;
     -moz-box-shadow: inset 2px 2px 10px black, inset -2px -2px 10px black;
     margin: 0;
-    padding: 11px;
-    background-position: -178px 27px;
+    background-position: center -383px;
+    color: #D5E14D;
+    padding: 162px 0px 32px 0;
 
 }

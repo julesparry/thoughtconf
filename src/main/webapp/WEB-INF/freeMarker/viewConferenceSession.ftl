@@ -54,11 +54,10 @@
 
       <hr class="horizontal-rule"/>
 
-      <div class="buttonContainer">
-          <a href="#" data-role="button" data-sessionid="${session.id}" class="goingButton <#if going == true>active</#if>" id="goingButton">
-              <span>happy face</span>
+      <div class="btn-container">
+          <a href="#" data-role="button" data-sessionid="${session.id}" class="going-btn <#if going == true>active</#if>" id="goingButton">
+              <span class="text">I'm going!</span>
           </a>
-          <span class="text">I'm going!</span>
       </div>
 
       <hr class="horizontal-rule"/>
