@@ -22,7 +22,7 @@
     <p><b>About Speaker:</b> ${session.speakerIntro}</p><br/>
 </div>
 <div>
-    <a id="return_homepage" href="/thoughtconf/organiser" class="return_button">Return to Homepage test</a>
+    <a id="return_homepage" href="/thoughtconf/organiser" class="return_button">Return to Homepage</a>
 </div>
 </body>
 </html>

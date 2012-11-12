@@ -155,4 +155,18 @@ public class ConferenceSessionControllerTest {
         controller.create(conferenceName,name, location, "2012-9-10", "08:30-09:30", sessionAbstract, presenterName, aboutPresenter);
         verify(conferenceSessionRepository).save(expectedConferenceSession);
     }
+
+    @Test
+    public void shouldViewSessionNameOnHomePage() throws Exception {
+        ConferenceSessionRepository conferenceSessionRepository = mock(ConferenceSessionRepository.class);
+        List sessionList = new ArrayList();
+        when(conferenceSessionRepository.getAllSessions()).thenReturn(sessionList);
+
+        ModelAndView mv = new ConferenceSessionController(conferenceSessionRepository,mock(SessionAttendeeRepository.class)).displayAllSessionsOnOrganiser();
+        assertThat(mv.getViewName(), Matchers.is("organiserHomepage"));
+        assertThat(mv.getModelMap(), hasKey("sessions"));
+        assertThat((List) mv.getModelMap().get("sessions"), Matchers.sameInstance(sessionList));
+
+
+    }
 }

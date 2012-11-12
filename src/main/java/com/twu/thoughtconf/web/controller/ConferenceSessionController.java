@@ -98,4 +98,11 @@ public class ConferenceSessionController {
         return new ModelAndView("sessionConfirmation", "session", repository.get(sessionId));
     }
 
+    @RequestMapping(value = "/organiser")
+    public ModelAndView displayAllSessionsOnOrganiser() {
+        ModelAndView mv = new ModelAndView("organiserHomepage");
+        ModelMap modelMap = mv.getModelMap();
+        modelMap.put("sessions", repository.getAllSessions());
+        return mv;
+    }
 }

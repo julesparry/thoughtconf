@@ -23,3 +23,36 @@
     text-align: center;
 
  }
+.publish-session{
+margin-top: 100px;
+}
+
+.date{
+    width: 15%;
+    margin-left: 10px;
+}
+.conference-name{
+    width: 20%;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+.session-name{
+    padding-left: 4%;
+    width: 20%;
+}
+.one-line{
+    width: 100%;
+    display: block;
+    padding-bottom: 20px;
+}
+
+.one-line div{
+    float: left;
+}
+
+.clear:after {
+    clear: both;
+    display: block;
+    visibility: hidden;
+    content: "";
+}
