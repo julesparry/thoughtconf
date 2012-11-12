@@ -95,7 +95,7 @@ public class ConferenceSessionController {
 
     @RequestMapping(value = "/organiser/confirmation/{sessionId}", method= RequestMethod.GET)
     public ModelAndView confirm(@PathVariable("sessionId") int sessionId) {
-        return new ModelAndView("sessionConfirmation", "session", repository.get(sessionId));
+        return new ModelAndView("sessionConfirmation", "session", repository.getSessionById(sessionId));
     }
 
     @RequestMapping(value = "/organiser")

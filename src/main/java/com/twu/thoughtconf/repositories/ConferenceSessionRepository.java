@@ -36,7 +36,7 @@ public class ConferenceSessionRepository {
         return conferenceSession;
     }
 
-    public ConferenceSession get(int id) {
+    public ConferenceSession getSessionById(int id) {
         return findById(String.valueOf(id));
     }
 

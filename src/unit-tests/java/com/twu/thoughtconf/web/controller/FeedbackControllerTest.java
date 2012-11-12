@@ -1,7 +1,9 @@
 package com.twu.thoughtconf.web.controller;
 
 
+import com.twu.thoughtconf.domain.ConferenceSession;
 import com.twu.thoughtconf.domain.Feedback;
+import com.twu.thoughtconf.repositories.ConferenceSessionRepository;
 import com.twu.thoughtconf.repositories.FeedbackRepository;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,8 +49,8 @@ public class FeedbackControllerTest {
     
    @Test
    public void shouldReturnConfirmView() {
-       FeedbackRepository feedbackRepository = mock(FeedbackRepository.class);
        Feedback expectFeedBack = mock(Feedback.class);
+       FeedbackRepository feedbackRepository = mock(FeedbackRepository.class);
        when(feedbackRepository.getFeedbackByID(FEEDBACK_ID)).thenReturn(expectFeedBack);
 
        FeedbackController feedbackController = new FeedbackController();
@@ -62,4 +64,19 @@ public class FeedbackControllerTest {
 
    }
 
+    @Test
+    public void shouldReturnFeedbackViewForASession() {
+        ConferenceSession conferenceSession = mock(ConferenceSession.class);
+        ConferenceSessionRepository conferenceSessionRepository = mock(ConferenceSessionRepository.class);
+        when(conferenceSessionRepository.getSessionById(SESSION_ID)).thenReturn(conferenceSession);
+
+        FeedbackController feedbackController = new FeedbackController();
+        feedbackController.setConferenceSessionRepository(conferenceSessionRepository);
+
+        ModelAndView modelAndView = feedbackController.newFeedback(SESSION_ID);
+
+        ConferenceSession actualConferenceSession = (ConferenceSession) modelAndView.getModelMap().get("session");
+        assertThat(modelAndView.getViewName(), is("newFeedbackPage"));
+        assertThat(actualConferenceSession, sameInstance(conferenceSession));
+    }
 }

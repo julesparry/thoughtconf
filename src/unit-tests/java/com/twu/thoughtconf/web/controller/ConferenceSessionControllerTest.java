@@ -103,7 +103,7 @@ public class ConferenceSessionControllerTest {
         ConferenceSessionRepository repository = mock(ConferenceSessionRepository.class);
         ConferenceSessionController controller = new ConferenceSessionController(repository, mock(SessionAttendeeRepository.class));
         ConferenceSession expectedSession = new ConferenceSession(123);
-        when(repository.get(123)).thenReturn(expectedSession);
+        when(repository.getSessionById(123)).thenReturn(expectedSession);
 
         ModelAndView mv = controller.confirm(123);
         assertThat((ConferenceSession) mv.getModel().get("session"), sameInstance(expectedSession));

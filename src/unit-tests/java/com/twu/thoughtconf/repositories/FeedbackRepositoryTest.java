@@ -17,6 +17,7 @@ public class FeedbackRepositoryTest {
 
         FeedbackMapper feedbackMapper = mock(FeedbackMapper.class);
         Feedback feedback = mock(Feedback.class);
+
         FeedbackRepository feedbackRepository = new FeedbackRepository();
         feedbackRepository.setMapper(feedbackMapper);
 
