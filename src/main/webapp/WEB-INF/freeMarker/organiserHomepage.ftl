@@ -6,6 +6,7 @@
     <#--<script src=""></script>-->
     <#--<link rel="stylesheet" href="../../css/my_custom_css.css" type=text/css/>-->
     <link rel="stylesheet" href="css/createConference.css" type="text/css" />
+    <title>Organiser Home Page</title>
 </head>
 <body>
 <#--<h1>Test ${name}</h1>-->

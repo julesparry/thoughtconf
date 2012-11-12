@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>create session</title>
+    <title>Create Session</title>
     <link rel="stylesheet" href="../css/newConferenceSession.css" type="text/css" />
 </head>
 <body>
@@ -31,7 +31,7 @@
 
                         <p class="date_and_time">
                             <label>Time (hh:mm-hh:mm)</label>
-                            <input type="text" id="sessionTime" name="time"  placeholder="Ex: 01:00-12:00"/>
+                            <input type="text" id="sessionTime" name="time"  placeholder="Ex: 00:00-23:59"/>
                         </p>
                     </div>
                     <p>
@@ -39,11 +39,11 @@
                         <textarea type="text" id='abstract' name='abstract' class="session_text_box box_height"  placeholder="Enter Abstract"></textarea>
                     </p>
                     <p>
-                        <label>Presenter name</label>
+                        <label>Presenter Name</label>
                         <input type="text" id='presenterName' name='presenterName' class="session_text_box"  placeholder="Enter Presenter Name"/>
                     </p>
                     <p>
-                        <label>About presenter</label>
+                        <label>About Presenter</label>
                         <textarea type="text" id='aboutPresenter' name='aboutPresenter' class="session_text_box box_height"  placeholder="Enter About Presenter"></textarea><br/>
                     </p>
                     <button type='submit' name="Publish">Publish</button>
