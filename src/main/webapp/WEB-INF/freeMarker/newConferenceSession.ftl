@@ -2,6 +2,10 @@
 <head>
     <title>Create Session</title>
     <link rel="stylesheet" href="../css/newConferenceSession.css" type="text/css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="../js/customDatepicker.js"></script>
 </head>
 <body>
 <div class="main-page">
@@ -26,7 +30,9 @@
                     <div class="clear">
                         <p class="date_and_time">
                             <label>Date (yyyy-mm-dd)</label>
-                            <input type="text" id='sessionDate' name='date'  placeholder="Ex: 2012-12-31"/ >
+
+                            <input type="text" id="sessionDate" name='date'  placeholder="Ex: 2012-12-31" />
+                            <!--input type="text" id='sessionDate' name='date'  placeholder="Ex: 2012-12-31"/ -->
                         </p>
 
                         <p class="date_and_time">
