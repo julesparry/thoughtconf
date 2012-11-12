@@ -2,7 +2,7 @@
 
 $(document).ready(
     function() {
-        $( "#sessionDate" ).datepicker();
+        $( "#sessionDate" ).datepicker({minDate: 0});
     }
 );
 
