@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 
 public interface FeedbackMapper {
 
-    @Delete("DELETE FROM feedback WHERE session_attendee_id = 911")
+    @Delete("DELETE FROM feedback ")
     public void cleanTable();
 
     @Select("SELECT * FROM feedback WHERE session_attendee_id = #{sessionAttendeeId}")
