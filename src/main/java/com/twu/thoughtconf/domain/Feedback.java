@@ -1,18 +1,19 @@
 package com.twu.thoughtconf.domain;
 
 public class Feedback {
-    Integer sessionAttendeeId;
+    private Integer feedbackId;
+    private Integer sessionId;
+    private String attendeeEmail;
+    private Integer presenterRating;
+    private Integer contentRating;
+    private Integer overallRating;
 
-    int presenterRating;
-    int contentRating;
-    int overallRating;
+    public Feedback() {
+    }
 
-
-    public Feedback(Integer sessionAttendeeId,
-                    int presenterRating,
-                    int contentRating,
-                    int overallRating){
-        this.sessionAttendeeId = sessionAttendeeId;
+    public Feedback(Integer sessionId, String attendeeEmail, Integer presenterRating, Integer contentRating, Integer overallRating) {
+        this.sessionId = sessionId;
+        this.attendeeEmail = attendeeEmail;
         this.presenterRating = presenterRating;
         this.contentRating = contentRating;
         this.overallRating = overallRating;
@@ -30,8 +31,15 @@ public class Feedback {
         return overallRating;
     }
 
-    public Integer getSessionAttendeeId() {
-        return sessionAttendeeId;
+    public String getAttendeeEmail() {
+        return attendeeEmail;
     }
 
+    public Integer getSessionId() {
+        return sessionId;
+    }
+
+    public Integer getFeedbackId() {
+        return feedbackId;
+    }
 }

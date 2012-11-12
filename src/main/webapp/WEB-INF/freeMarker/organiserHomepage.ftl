@@ -18,6 +18,5 @@
 <div class="div-create-conference-button">
     <a id="create_session" href="organiser/new" class="button">Create New Session</a>
 </div>
-
 </body>
 </html>
