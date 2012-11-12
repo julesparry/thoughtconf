@@ -14,7 +14,12 @@ public class FeedbackRepository {
         this.feedbackMapper = feedbackMapper;
     }
 
-    public void save(Feedback feedback) {
+    public Feedback save(Feedback feedback) {
         feedbackMapper.save(feedback);
+        return feedback;
+    }
+
+    public Feedback getFeedbackByID(Integer feedbackID) {
+        return feedbackMapper.getFeedbackById(feedbackID);
     }
 }
