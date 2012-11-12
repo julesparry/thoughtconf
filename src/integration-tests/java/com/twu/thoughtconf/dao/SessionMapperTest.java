@@ -16,7 +16,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(value = {"/mapper-context.xml"})
+@ContextConfiguration(value = {"classpath:mapper-context.xml"})
 public class SessionMapperTest {
 
     @Autowired
@@ -51,11 +51,11 @@ public class SessionMapperTest {
         DateTime startTime = formatter.parseDateTime("2012-10-20 08:30:00");
         DateTime endTime = formatter.parseDateTime("2012-10-20 09:30:00");
 
-        ConferenceSession conferenceSession = new ConferenceSession("anyConference","anything", "somewhere", startTime, endTime, "session abstract", "presenter", "about presenter");
+        ConferenceSession conferenceSession = new ConferenceSession("conference","anything", "somewhere", startTime, endTime, "session abstract", "presenter", "about presenter");
         sessionMapper.save(conferenceSession);
 
         ConferenceSession expectedConferenceSession = sessionMapper.getSessionByName("anything");
-        //System.out.println(expectedConferenceSession.getEndTime());
+        System.out.println(expectedConferenceSession.getEndTime());
         assertThat(conferenceSession.getName(), is(expectedConferenceSession.getName()));
         assertThat(conferenceSession.getEndTime(), is(expectedConferenceSession.getEndTime()));
         sessionMapper.delete(conferenceSession);
@@ -66,7 +66,7 @@ public class SessionMapperTest {
         DateTime startTime = formatter.parseDateTime("2012-10-20 08:30:00");
         DateTime endTime = formatter.parseDateTime("2012-10-20 09:30:00");
 
-        ConferenceSession conferenceSession = new ConferenceSession("anyConference","anything", "somewhere", startTime, endTime, "session abstract", "presenter", "about presenter");
+        ConferenceSession conferenceSession = new ConferenceSession("conference", "anything", "somewhere", startTime, endTime, "session abstract", "presenter", "about presenter");
         sessionMapper.save(conferenceSession);
 
         ConferenceSession expectedConferenceSession = sessionMapper.getSessionByName("anything");
@@ -75,5 +75,6 @@ public class SessionMapperTest {
         assertThat(conferenceSession.getEndTime(), is(expectedConferenceSession.getEndTime()));
         sessionMapper.delete(conferenceSession);
     }
+
 
 }

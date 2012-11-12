@@ -5,6 +5,9 @@ public class SessionAnnouncements {
 
     private String announcements;
 
+    private SessionAnnouncements() {
+    }
+
     public SessionAnnouncements(int sessionId, String announcements) {
         this.sessionId = sessionId;
         this.announcements = announcements;
@@ -18,6 +21,5 @@ public class SessionAnnouncements {
     public String getAnnouncements() {
         return announcements;
     }
-
 
 }
