@@ -21,6 +21,7 @@
     <div class="conference-name">    <i> ${session.conferenceName?default("Away Day 2012")}</i></div>
     <div class="session-name">    <b>${session.name}</b></div>
     </div>
+<hr>
 </#list>
 </div>
 </body>

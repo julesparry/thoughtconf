@@ -28,22 +28,23 @@ margin-top: 100px;
 }
 
 .date{
-    width: 15%;
+    width: 12%;
     margin-left: 10px;
 }
 .conference-name{
-    width: 20%;
+    width: 15%;
     word-wrap: break-word;
     overflow: hidden;
 }
 .session-name{
-    padding-left: 4%;
+    padding-left: 2%;
     width: 20%;
 }
 .one-line{
     width: 100%;
     display: block;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .one-line div{
