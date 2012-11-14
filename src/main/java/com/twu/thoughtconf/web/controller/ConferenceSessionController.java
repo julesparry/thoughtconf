@@ -1,5 +1,6 @@
 package com.twu.thoughtconf.web.controller;
 
+import com.google.gson.Gson;
 import com.twu.thoughtconf.domain.ConferenceSession;
 import com.twu.thoughtconf.repositories.ConferenceSessionRepository;
 import com.twu.thoughtconf.repositories.SessionAttendeeRepository;
@@ -9,14 +10,13 @@ import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 
 // Responsible for creating and displaying conference sessions
@@ -106,7 +106,15 @@ public class ConferenceSessionController {
         return mv;
     }
 
-//    @RequestMapping(value = "/organiser/new", method = RequestMethod.GET){
-//
-//    }
+    private List<String>  getConferenceNames()  {
+        List<String> allConferenceNames = repository.getAllConferenceNames();
+        return allConferenceNames;
+    }
+
+    @RequestMapping(value = "/conferenceList")
+    @ResponseBody
+    public String getJSONConferenceList(){
+        Gson gson = new Gson();
+        return gson.toJson(getConferenceNames());
+    }
 }
