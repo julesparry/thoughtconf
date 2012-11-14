@@ -20,7 +20,7 @@ $(document).ready(function() {
 $(document).ready(function(){
     $.getJSON("/thoughtconf/conferenceList", function(response){
         var conferenceNames = response.toString().split(",");
-        
+
         $("#conferenceName").autocomplete({
                 source: conferenceNames
             });
