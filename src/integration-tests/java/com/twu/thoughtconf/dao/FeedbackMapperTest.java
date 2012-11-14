@@ -1,3 +1,4 @@
+
 package com.twu.thoughtconf.dao;
 
 import com.twu.thoughtconf.domain.Feedback;
@@ -18,7 +19,8 @@ public class FeedbackMapperTest {
     @Autowired
     private FeedbackMapper feedbackMapper;
 
-    private int sessionId = 11;
+
+    private int sessionId = 1;
     private String attendeeEmail = "Kaly";
     private int presenterRating = 3;
     private int contentRating = 5;
