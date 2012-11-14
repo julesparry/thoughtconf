@@ -166,7 +166,5 @@ public class ConferenceSessionControllerTest {
         assertThat(mv.getViewName(), Matchers.is("organiserHomepage"));
         assertThat(mv.getModelMap(), hasKey("sessions"));
         assertThat((List) mv.getModelMap().get("sessions"), Matchers.sameInstance(sessionList));
-
-
     }
 }

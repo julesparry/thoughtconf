@@ -32,7 +32,6 @@
                             <label>Date (yyyy-mm-dd)</label>
 
                             <input type="text" id="sessionDate" name='date'  placeholder="Ex: 2012-12-31" />
-                            <!--input type="text" id='sessionDate' name='date'  placeholder="Ex: 2012-12-31"/ -->
                         </p>
 
                         <p class="date_and_time">

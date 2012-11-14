@@ -11,10 +11,9 @@ import java.util.List;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.sameInstance;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
-public class ConferenceSessionRepositoryTest{
+public class ConferenceSessionRepositoryTest {
 
     @Test
     public void shouldReturnConferenceSessionByGivenSessionId() {
@@ -28,15 +27,12 @@ public class ConferenceSessionRepositoryTest{
         conferenceSessionRepository.setMapper(sessionMapper);
 
         ConferenceSession actualConferenceSession = conferenceSessionRepository.findById(sessionId);
-        
+
         assertThat(actualConferenceSession, sameInstance(expectConferenceSession));
-
-
-
     }
 
     @Test
-    public void shouldReturnAllSessions(){
+    public void shouldReturnAllSessions() {
         List conferenceSessions = new ArrayList<ConferenceSession>();
         SessionMapper sessionMapper = createMapper(conferenceSessions);
 
@@ -48,7 +44,7 @@ public class ConferenceSessionRepositoryTest{
     }
 
     @Test
-    public void shouldReturnSessionsFromToday(){
+    public void shouldReturnSessionsFromToday() {
         List conferenceSessions = new ArrayList<ConferenceSession>();
         conferenceSessions.add(createConferenceSession(2011, 12, 11, 9, 30, 0));
         conferenceSessions.add(createConferenceSession(2013, 12, 11, 9, 30, 0));
@@ -74,5 +70,17 @@ public class ConferenceSessionRepositoryTest{
         return sessionMapper;
     }
 
+    @Test
+    public void shouldReturnAllConferences() {
+        //Arrange
+        SessionMapper mapper = mock(SessionMapper.class);
+        ConferenceSessionRepository repository = new ConferenceSessionRepository();
+        repository.setMapper(mapper);
 
+        //Act
+        repository.getAllConferenceNames();
+
+        //Assert: Make sure that the repository delegates the getAllConferenceNames to the mapper.
+        verify(mapper).getAllConferenceNames();
+    }
 }

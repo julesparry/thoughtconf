@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -60,6 +60,7 @@ public class SessionMapperTest {
         assertThat(conferenceSession.getEndTime(), is(expectedConferenceSession.getEndTime()));
         sessionMapper.delete(conferenceSession);
     }
+
     @Test
     public void shouldSaveSessionWithCorrectTime() {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd hh:mm:ss");
@@ -76,5 +77,15 @@ public class SessionMapperTest {
         sessionMapper.delete(conferenceSession);
     }
 
+    @Test
+    public void shouldGetAllConferenceNames(){
+        ArrayList<String> expectedListConferenceNames = new ArrayList<String>();
+        expectedListConferenceNames.add("conf1");
+        expectedListConferenceNames.add("conf2");
 
+        ArrayList<String> actualListConferenceNames = sessionMapper.getAllConferenceNames();
+
+        assertThat(actualListConferenceNames.get(0), is(expectedListConferenceNames.get(0)));
+        assertThat(actualListConferenceNames.get(1), is(expectedListConferenceNames.get(1)));
+    }
 }

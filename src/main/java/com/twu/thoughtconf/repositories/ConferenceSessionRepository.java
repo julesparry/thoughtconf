@@ -2,6 +2,7 @@ package com.twu.thoughtconf.repositories;
 
 import com.twu.thoughtconf.dao.SessionMapper;
 import com.twu.thoughtconf.domain.ConferenceSession;
+import org.apache.commons.lang.NotImplementedException;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -52,5 +53,9 @@ public class ConferenceSessionRepository {
             }
         }
         return sessions;
+    }
+
+    public List<String> getAllConferenceNames() {
+      return sessionMapper.getAllConferenceNames();
     }
 }

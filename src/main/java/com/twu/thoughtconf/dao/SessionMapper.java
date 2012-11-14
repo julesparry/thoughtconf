@@ -3,6 +3,7 @@ package com.twu.thoughtconf.dao;
 import com.twu.thoughtconf.domain.ConferenceSession;
 import org.apache.ibatis.annotations.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface SessionMapper {
@@ -59,4 +60,9 @@ public interface SessionMapper {
             @Result(property = "conferenceName", column = "conference_name")
     })
     ConferenceSession getSessionByName(String anything);
+
+    @Select("SELECT DISTINCT conference_name FROM session")
+    ArrayList<String> getAllConferenceNames();
+
+
 }
