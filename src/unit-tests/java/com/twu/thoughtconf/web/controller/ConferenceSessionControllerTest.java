@@ -167,4 +167,17 @@ public class ConferenceSessionControllerTest {
         assertThat(mv.getModelMap(), hasKey("sessions"));
         assertThat((List) mv.getModelMap().get("sessions"), Matchers.sameInstance(sessionList));
     }
+
+    @Test
+    public void shouldUpdateShowFlag() throws Exception {
+        ConferenceSessionRepository conferenceSessionRepository = mock(ConferenceSessionRepository.class);
+        String sessionId = "1";
+        ConferenceSession expectedConferenceSession = new ConferenceSession(1);
+        expectedConferenceSession.setShowFlag(0);
+
+        ConferenceSessionController controller = new ConferenceSessionController(conferenceSessionRepository, mock(SessionAttendeeRepository.class));
+
+        when(conferenceSessionRepository.updateShowFlag(sessionId)).thenReturn(expectedConferenceSession);
+        assertThat(controller.updateShowFlag(sessionId), Matchers.is("0"));
+    }
 }

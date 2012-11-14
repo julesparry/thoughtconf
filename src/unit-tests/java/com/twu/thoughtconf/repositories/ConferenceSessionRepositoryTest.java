@@ -2,6 +2,7 @@ package com.twu.thoughtconf.repositories;
 
 import com.twu.thoughtconf.dao.SessionMapper;
 import com.twu.thoughtconf.domain.ConferenceSession;
+import org.hamcrest.core.IsSame;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
@@ -21,7 +22,7 @@ public class ConferenceSessionRepositoryTest {
 
         SessionMapper sessionMapper = mock(SessionMapper.class);
         ConferenceSession expectConferenceSession = mock(ConferenceSession.class);
-        when(sessionMapper.findSessionByID(sessionId)).thenReturn(expectConferenceSession);
+        when(sessionMapper.getSessionByID(sessionId)).thenReturn(expectConferenceSession);
 
         ConferenceSessionRepository conferenceSessionRepository = new ConferenceSessionRepository();
         conferenceSessionRepository.setMapper(sessionMapper);
@@ -68,6 +69,22 @@ public class ConferenceSessionRepositoryTest {
         SessionMapper sessionMapper = mock(SessionMapper.class);
         when(sessionMapper.getAllSessions()).thenReturn(conferenceSessions);
         return sessionMapper;
+    }
+
+    @Test
+    public void shouldUpdateShowFlag() throws Exception {
+        String sessionId="1";
+        SessionMapper sessionMapper = mock(SessionMapper.class);
+        ConferenceSession expectedConferenceSession = new ConferenceSession(sessionId);
+        sessionMapper.updateShowFlag(sessionId);
+        when(sessionMapper.getSessionByID(sessionId)).thenReturn(expectedConferenceSession);
+
+        ConferenceSessionRepository conferenceSessionRepository = new ConferenceSessionRepository(sessionMapper);
+        conferenceSessionRepository.updateShowFlag(sessionId);
+
+        ConferenceSession foundConferenceSession = conferenceSessionRepository.findById(sessionId);
+
+        assertThat(expectedConferenceSession, IsSame.sameInstance(foundConferenceSession));
     }
 
     @Test

@@ -24,7 +24,7 @@ public class SessionMapperTest {
 
     @Test
     public void shouldGetSessionDetailByGivenSessionId() {
-        ConferenceSession conferenceSession = sessionMapper.findSessionByID("1");
+        ConferenceSession conferenceSession = sessionMapper.getSessionByID("1");
 
         // TODO: DJ and Akriti, implement equals on ConferenceSession
 
@@ -75,6 +75,15 @@ public class SessionMapperTest {
         assertThat(conferenceSession.getName(), is(expectedConferenceSession.getName()));
         assertThat(conferenceSession.getEndTime(), is(expectedConferenceSession.getEndTime()));
         sessionMapper.delete(conferenceSession);
+    }
+
+    @Test
+    public void shouldUpdateTheShowFlag() throws Exception {
+        String sessionId = "2";
+        sessionMapper.updateShowFlag(sessionId);
+        ConferenceSession conferenceSession = sessionMapper.getSessionByID(sessionId);
+
+        assertThat(conferenceSession.getShowFlag(), is(0));
     }
 
     @Test

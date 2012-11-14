@@ -24,6 +24,16 @@ public class ConferenceSession {
     private String speakerIntro;
     private Integer sessionId;
 
+    public Integer getShowFlag() {
+        return showFlag;
+    }
+
+    public void setShowFlag(Integer showFlag) {
+        this.showFlag = showFlag;
+    }
+
+    private Integer showFlag;
+
     public ConferenceSession() {
     }
 
@@ -33,9 +43,10 @@ public class ConferenceSession {
 
     public ConferenceSession(int id) {
         this.sessionId = id;
+        this.showFlag=1;
     }
 
-    public ConferenceSession( String conferenceName, String name, String location, DateTime startTime, DateTime endTime, String sessionAbstract, String presenterName, String aboutPresenter) {
+    public ConferenceSession(String conferenceName, String name, String location, DateTime startTime, DateTime endTime, String sessionAbstract, String presenterName, String aboutPresenter) {
         this.conferenceName = conferenceName;
         this.name = name;
         this.location = location;
@@ -44,6 +55,7 @@ public class ConferenceSession {
         this.sessionAbstract = sessionAbstract;
         this.speaker = presenterName;
         this.speakerIntro = aboutPresenter;
+        this.showFlag = 1;
     }
 
     public void setSessionId(Integer sessionId) {
@@ -150,4 +162,5 @@ public class ConferenceSession {
         result = 31 * result + (sessionId != null ? sessionId.hashCode() : 0);
         return result;
     }
+
 }

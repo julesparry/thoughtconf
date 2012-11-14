@@ -19,16 +19,17 @@ public interface SessionMapper {
             @Result(property = "sessionAbstract", column = "abstract"),
             @Result(property = "speaker", column = "session_speaker"),
             @Result(property = "speakerIntro", column = "about_speaker"),
-            @Result(property = "conferenceName", column = "conference_name")
+            @Result(property = "conferenceName", column = "conference_name"),
+            @Result(property = "showFlag", column = "show_flag")
     })
-    ConferenceSession findSessionByID(@Param("sessionId") String sessionId);
+    ConferenceSession getSessionByID(@Param("sessionId") String sessionId);
 
 
     @Insert("INSERT INTO session(conference_name,session_name,session_location,session_start_time, session_end_time,abstract, session_speaker, about_speaker) VALUES (#{conferenceSession.conferenceName},#{conferenceSession.name},#{conferenceSession.location},#{conferenceSession.startTime},#{conferenceSession.endTime},#{conferenceSession.sessionAbstract},#{conferenceSession.speaker},#{conferenceSession.speakerIntro})")
     @Options(useGeneratedKeys = true, keyProperty = "conferenceSession.sessionId")
     void save(@Param("conferenceSession") ConferenceSession conferenceSession);
 
-    @Select("SELECT * FROM session ORDER BY session_start_time ASC")
+    @Select("SELECT * FROM session WHERE show_flag = 1 ORDER BY session_start_time ASC")
     @Results(value = {
             @Result(property = "sessionId", column = "session_id"),
             @Result(property = "name", column = "session_name"),
@@ -64,5 +65,6 @@ public interface SessionMapper {
     @Select("SELECT DISTINCT conference_name FROM session WHERE conference_name IS NOT NULL")
     ArrayList<String> getAllConferenceNames();
 
-
+    @Update("UPDATE session SET show_flag=0 WHERE session_id = #{sessionId}")
+    void updateShowFlag(@Param("sessionId") String sessionId);
 }
