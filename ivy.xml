@@ -88,5 +88,6 @@
 
         <dependency org="org.jasig.cas" name="cas-client-core" rev="3.1.10" transitive="false" conf="runtime->*" />
         <dependency org="org.springframework.security" name="spring-security-core" rev="3.0.2.RELEASE" conf="runtime->*"/>
+        <dependency org="com.google.code.gson" name="gson" rev="2.2.2"/>
     </dependencies>
 </ivy-module>

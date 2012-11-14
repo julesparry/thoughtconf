@@ -61,7 +61,7 @@ public interface SessionMapper {
     })
     ConferenceSession getSessionByName(String anything);
 
-    @Select("SELECT DISTINCT conference_name FROM session")
+    @Select("SELECT DISTINCT conference_name FROM session WHERE conference_name IS NOT NULL")
     ArrayList<String> getAllConferenceNames();
 
 

@@ -15,3 +15,15 @@ $(document).ready(function() {
         return false;
     });
 });
+
+
+$(document).ready(function(){
+    $.getJSON("/thoughtconf/conferenceList", function(response){
+        var conferenceNames = response.toString().split(",");
+
+        $("#conferenceName").autocomplete({
+                source: conferenceNames
+            });
+    })
+
+});
