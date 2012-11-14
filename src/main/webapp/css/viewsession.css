@@ -102,7 +102,7 @@ hr {
   font-size:36px;
 }
 
-.date, .time {
+.date, .time{
   float: left;
 }
 .date-time, .location {
@@ -123,10 +123,31 @@ h2 {
   font-weight: 600;
 }
 
+.feedback-container{
+  margin: 30px 40px 30px 40px;
+  padding: 25px;
+  background: #444;
+  box-shadow: 0px 5px 5px #545454 inset;
+  border-radius: 20px;
+}
 
+.feedback-container div{
+  float: left;
+}
 
+.feedback-reminder {
+  width: 460px;
+  margin: 20px 0 0 230px  ;
 
+}
 
+.feedback-reminder h2{
+  font-size: 40px;
+}
 
+.feedback-reminder p{
+  font-size: 36px;
+  font-weight: lighter;
+}
 
 

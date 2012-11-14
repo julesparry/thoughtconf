@@ -74,6 +74,18 @@
               ${session.speakerIntro}
           </p>
       </div>
+      <div class="feedback-container clear">
+          <div class="feedback-reminder">
+              <h2>Session is over?</h2>
+
+              <p>Don't forget the feedback!</p>
+          </div>
+          <div class="btn-container">
+              <a href="${session.id}/feedback" data-role="button" data-sessionid="${session.id}" class="feedback-btn">
+                  <span class="text">give feedback</span>
+              </a>
+          </div>
+      </div>
   </div>
 </body>
 </html>

@@ -25,7 +25,7 @@
         <property name="cache" value="true"/>
         <property name="prefix" value=""/>
         <property name="suffix" value=".ftl"/>
-
+        <property name="requestContextAttribute" value="rc"/>
         <property name="exposeSpringMacroHelpers" value="true"/>
     </bean>
 

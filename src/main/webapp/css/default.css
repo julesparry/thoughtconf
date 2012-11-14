@@ -69,7 +69,7 @@ hr {
 } 
 
 
-.session-item, .going-btn {
+.session-item, .going-btn , .feedback-btn{
   list-style-type: none;
   border: 1px solid black;
   margin-top: 30px;
