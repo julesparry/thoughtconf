@@ -5,6 +5,7 @@ import com.twu.thoughtconf.repositories.ConferenceSessionRepository;
 import com.twu.thoughtconf.repositories.FeedbackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,7 +38,7 @@ public class FeedbackController {
    }
 
    @RequestMapping(value = "/feedback/create", method = RequestMethod.POST)
-    public String saveFeedback(@RequestParam("sessionId") Integer sessionId,
+    public String saveFeedback(@PathVariable("sessionId") Integer sessionId,
                                @RequestParam("presenterRating")Integer presenterRating,
                                @RequestParam("contentRating") Integer contentRating,
                                @RequestParam("overallRating") Integer overallRating,
@@ -48,7 +49,12 @@ public class FeedbackController {
     }
 
     @RequestMapping(value = "/feedback/confirmation/{feedbackId}", method= RequestMethod.GET)
-    public ModelAndView ConfirmFeedback(@PathVariable("feedbackId") int feedbackId) {
-        return new ModelAndView("feedbackConfirmation", "feedback", feedbackRepository.getFeedbackByID(feedbackId));
+    public ModelAndView ConfirmFeedback(@PathVariable("sessionId") int sessionId,
+                                        @PathVariable("feedbackId") int feedbackId) {
+        ModelAndView modelAndView = new ModelAndView("feedbackConfirmation");
+        ModelMap modelMap = modelAndView.getModelMap();
+        modelMap.put("feedback",feedbackRepository.getFeedbackByID(feedbackId));
+        modelMap.put("session", conferenceSessionRepository.getSessionById(sessionId));
+        return modelAndView;
     }
 }

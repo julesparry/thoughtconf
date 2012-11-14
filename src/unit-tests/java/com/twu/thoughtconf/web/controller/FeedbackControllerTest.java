@@ -53,14 +53,23 @@ public class FeedbackControllerTest {
        FeedbackRepository feedbackRepository = mock(FeedbackRepository.class);
        when(feedbackRepository.getFeedbackByID(FEEDBACK_ID)).thenReturn(expectFeedBack);
 
+       ConferenceSession expectSession = mock(ConferenceSession.class);
+       ConferenceSessionRepository sessionRepository = mock(ConferenceSessionRepository.class);
+       when(sessionRepository.getSessionById(SESSION_ID)).thenReturn(expectSession);
+
+
        FeedbackController feedbackController = new FeedbackController();
        feedbackController.setFeedbackRepository(feedbackRepository);
+       feedbackController.setConferenceSessionRepository(sessionRepository);
 
-       ModelAndView modelAndView = feedbackController.ConfirmFeedback(FEEDBACK_ID);
+       ModelAndView modelAndView = feedbackController.ConfirmFeedback(SESSION_ID,FEEDBACK_ID);
 
        Feedback actualFeedback = (Feedback) modelAndView.getModelMap().get("feedback");
        assertThat(modelAndView.getViewName(), is("feedbackConfirmation"));
        assertThat(actualFeedback, sameInstance(expectFeedBack));
+
+       ConferenceSession actualSession = (ConferenceSession) modelAndView.getModelMap().get("session");
+       assertThat(actualSession, sameInstance(expectSession));
 
    }
 
