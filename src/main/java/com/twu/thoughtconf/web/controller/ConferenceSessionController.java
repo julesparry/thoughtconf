@@ -105,4 +105,8 @@ public class ConferenceSessionController {
         modelMap.put("sessions", repository.getAllSessions());
         return mv;
     }
+
+//    @RequestMapping(value = "/organiser/new", method = RequestMethod.GET){
+//
+//    }
 }
