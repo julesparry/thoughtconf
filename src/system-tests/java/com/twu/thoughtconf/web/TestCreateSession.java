@@ -18,6 +18,7 @@ public class TestCreateSession {
         }
 
         String OrganiserLoginURL="http://10.10.4.126:8080/thoughtconf/organiser";
+
         @BeforeClass
         public static void functionBeforeClass(){
             driver= new FirefoxDriver();
@@ -58,77 +59,46 @@ public class TestCreateSession {
         }
 
 
-        public static String ConfirmationPageURL;
+
 
         @Test
-        public void testSessionNameConfirmation(){
+        public void testSessionConfirmationPage(){
             testCreateSessionRedirection();
             createASession();
             driver.findElement(By.xpath("//button[@name='Publish']")).click();
 
-            String ActualConferenceName=driver.findElement(By.xpath("//div[1]/h2/i")).getText();
-            assertThat(ActualConferenceName,is(SessionName));
-            ConfirmationPageURL=driver.getCurrentUrl();
-            System.out.println(ConfirmationPageURL);
-        }
+            String ActualSessionName=driver.findElement(By.xpath("//div[1]/h2/i")).getText();
+            assertThat(ActualSessionName,is(SessionName));
 
-        @Test
-        public void testConferenceNameConfirmation(){
 
-            System.out.println(ConfirmationPageURL);
-            getURL(ConfirmationPageURL);
             String ActualConferenceName=driver.findElement(By.xpath("//div[2]/p[1]")).getText();
             assertThat(ActualConferenceName,is("Conference Name: "+ConferenceName));
 
-        }
-        @Test
-        public void testLocationConfirmation(){
-
-            getURL(ConfirmationPageURL);
-            String ActualConferenceName=driver.findElement(By.xpath("//div[2]/p[2]")).getText();
-            assertThat(ActualConferenceName,is("Location: "+Location));
-
-        }
+            String ActualLocation=driver.findElement(By.xpath("//div[2]/p[2]")).getText();
+            assertThat(ActualLocation,is("Location: "+Location));
 
 
-        @Test
-        public void testDateConfirmation(){
-            getURL(ConfirmationPageURL);
-            String ActualConferenceName=driver.findElement(By.xpath("//div[2]/p[3]")).getText();
-            assertThat(ActualConferenceName,is("Date: 12 November 2012"));
 
-        }
+            String ActualDate=driver.findElement(By.xpath("//div[2]/p[3]")).getText();
+            assertThat(ActualDate,is("Date: 12 November 2012"));
 
-        @Test
-        public void testTimeConfirmation(){
-            getURL(ConfirmationPageURL);
 
-            String ActualConferenceName=driver.findElement(By.xpath("//div[2]/p[5]")).getText();
-            assertThat(ActualConferenceName,is("Time: 11:00 AM - 03:00 PM"));
 
-        }
+            String ActualTime=driver.findElement(By.xpath("//div[2]/p[5]")).getText();
+            assertThat(ActualTime,is("Time: 11:00 AM - 03:00 PM"));
 
-        @Test
-        public void testAbstractConfirmation(){
 
-            getURL(ConfirmationPageURL);
-            String ActualConferenceName=driver.findElement(By.xpath("//div[2]/p[6]")).getText();
-            assertThat(ActualConferenceName,is("Abstract: "+Abstract));
+            String ActualAbstract=driver.findElement(By.xpath("//div[2]/p[6]")).getText();
+            assertThat(ActualAbstract,is("Abstract: "+Abstract));
 
-        }
 
-        @Test
-        public void testPresenterNameConfirmation(){
-            getURL(ConfirmationPageURL);
-            String ActualConferenceName=driver.findElement(By.xpath("//div[2]/p[7]")).getText();
-            assertThat(ActualConferenceName,is("Speaker: "+PresenterName));
+            String ActualPresenterName=driver.findElement(By.xpath("//div[2]/p[7]")).getText();
+            assertThat(ActualPresenterName,is("Speaker: "+PresenterName));
 
-        }
-        @Test
-        public void testAboutPresenterConfirmation(){
-            getURL(ConfirmationPageURL);
-            String ActualConferenceName=driver.findElement(By.xpath("//div[2]/p[8]")).getText();
-            assertThat(ActualConferenceName,is("About Speaker: "+AboutPresenter));
+
+
+            String ActualAboutPresenter=driver.findElement(By.xpath("//div[2]/p[8]")).getText();
+            assertThat(ActualAboutPresenter,is("About Speaker: "+AboutPresenter));
 
         }
 
