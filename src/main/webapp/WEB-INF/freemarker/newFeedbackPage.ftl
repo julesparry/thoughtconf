@@ -46,6 +46,10 @@
             </div>
         </div>
     </div>
+    <div class="presenter">
+        <span>Presenter: </span>
+        <span class="speaker-name">${session.speaker}</span>
+    </div>
 
     <hr class="horizontal-rule"/>
 
