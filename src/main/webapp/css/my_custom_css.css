@@ -92,9 +92,11 @@
     width: 300px;
 }
 
+.feedback-btn{
+ width: 98%;
+}
 .feedback-btn span{
   display: block;
-  padding: 140px 0px 10px 0;
   float: left;
   box-shadow: -2px -2px 0 #545454;
   -webkit-box-shadow: -2px -2px 0 #545454;
@@ -103,11 +105,12 @@
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   margin: 2px;
-  color: #212121;
-  font-size: 20px;
+  font-size: 62px;
   font-weight: 400;
-  background: url("../images/smile-sprite.png") no-repeat center 22px;
-  width: 200px;
+  color: #212121;
+  line-height: 145px;
+  width: 100%;
+  text-align: center;
 }
 
 .going-btn.active {

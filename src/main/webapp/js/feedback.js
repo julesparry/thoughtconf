@@ -30,7 +30,7 @@ $(document).ready(function() {
             url: "feedback/create",
             data: feedback.getVotedValues(),
             success: function(data) {
-                window.location="feedback/"+ data;      }
+                window.location="feedback/"+ data;}
         });
     });
 });

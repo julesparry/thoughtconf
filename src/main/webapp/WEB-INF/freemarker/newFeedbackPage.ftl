@@ -63,7 +63,7 @@
             </li>
             <hr class="horizontal-rule"/>
             <li class="vote-item  overall clear">
-                <div>Overall Experience</div>
+                <div>Experience</div>
                 <#include "/common/votePoint.ftl">
             </li>
         </ul>
