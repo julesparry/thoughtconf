@@ -47,7 +47,7 @@ public interface SessionMapper {
     @Delete("DELETE FROM session WHERE session_id = #{conferenceSession.sessionId}" )
     void delete(@Param("conferenceSession") ConferenceSession conferenceSession);
 
-    @Select("SELECT * FROM session WHERE session_name = #{name.}")
+    @Select("SELECT * FROM session WHERE session_name = #{sessionName}")
     @Results(value = {
             @Result(property = "sessionId", column = "session_id"),
             @Result(property = "name", column = "session_name"),
@@ -60,7 +60,7 @@ public interface SessionMapper {
             @Result(property = "speakerIntro", column = "about_speaker"),
             @Result(property = "conferenceName", column = "conference_name")
     })
-    ConferenceSession getSessionByName(String anything);
+    ConferenceSession getSessionByName(@Param("sessionName")String sessionName);
 
     @Select("SELECT DISTINCT conference_name FROM session WHERE conference_name IS NOT NULL")
     ArrayList<String> getAllConferenceNames();
