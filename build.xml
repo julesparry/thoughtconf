@@ -88,7 +88,7 @@
         <sequential>
             <mkdir dir="${test.report.dir}"/>
             <junit fork="yes" forkmode="once" failureproperty="unit.tests.failed" printsummary="yes" haltonerror="true">
-                <jvmarg value="-Dtest.with.firefox=true"/>
+                <jvmarg value="-Dtest.with.firefox=true -Dtest.with.host.address=http://localhost:8080"/>
                 <classpath refid="@{classpath}"/>
                 <formatter type="xml"/>
                 <batchtest if="testcase" todir="${test.report.dir}">
@@ -228,7 +228,7 @@
         <unit-test testdir="${integration.test.dir}" classpath="common-classpath" />
     </target>
 
-    <target name="run-system-tests" depends="-run-system-tests, report-tests, check-failed-tests" description="run system tests"/>
+    <target name="run-system-tests" depends="start-jetty, -run-system-tests, stop-jetty, report-tests, check-failed-tests" description="run system tests"/>
 
     <target name="-run-system-tests" depends="make-jars">
         <unit-test testdir="${system.test.dir}" classpath="system-classpath"/>
@@ -305,6 +305,18 @@
     <target name="run-jetty" depends="make-jars" description="Run application in Jetty.">
         <java classname="com.twu.thoughtconf.jetty.WebServer" classpathref="system-classpath" fork="true"
               failonerror="true"/>
+    </target>
+
+    <target name="start-jetty" depends="make-jars" description="Run application in Jetty.">
+        <java classname="com.twu.thoughtconf.jetty.WebServer" classpathref="system-classpath" fork="true" spawn="true"/>
+        <waitfor maxwait="60" maxwaitunit="second">
+            <http url="http://localhost:8080/thoughtconf/attendee/sessions"/>
+        </waitfor>
+        <echo message="Jetty started."/>
+    </target>
+
+    <target name="stop-jetty" description="Stop jetty.">
+        <get src="http://localhost:8080/shutdown" dest="build/shutdown.html" ignoreerrors="true"/>
     </target>
 
     <target name="package-src" description="Create zip of the source code for distribution.">
