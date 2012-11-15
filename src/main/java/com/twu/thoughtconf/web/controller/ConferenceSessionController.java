@@ -8,6 +8,7 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,7 @@ public class ConferenceSessionController {
 
     @Autowired
     private SessionAttendeeRepository sessionAttendeeRepository;
+    private ApplicationContext applicationContext;
 
     public ConferenceSessionController() {
     }
@@ -117,4 +119,11 @@ public class ConferenceSessionController {
         Gson gson = new Gson();
         return gson.toJson(getConferenceNames());
     }
+    @RequestMapping(value = "/api/organiser/{sessionId}", method = RequestMethod.POST)
+    @ResponseBody
+    public String updateShowFlag(@PathVariable("sessionId") String sessionId) {
+        ConferenceSession conferenceSession = repository.updateShowFlag(sessionId);
+        return conferenceSession.getShowFlag().toString();
+    }
+
 }

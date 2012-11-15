@@ -28,7 +28,7 @@ public class ConferenceSessionRepository {
     }
 
     public ConferenceSession findById(String sessionId) {
-        return sessionMapper.findSessionByID(sessionId);
+        return sessionMapper.getSessionByID(sessionId);
     }
 
     public ConferenceSession save(ConferenceSession conferenceSession) {
@@ -57,5 +57,10 @@ public class ConferenceSessionRepository {
 
     public List<String> getAllConferenceNames() {
       return sessionMapper.getAllConferenceNames();
+    }
+
+    public ConferenceSession updateShowFlag(String sessionId) {
+        sessionMapper.updateShowFlag(sessionId);
+        return sessionMapper.getSessionByID(sessionId);
     }
 }
