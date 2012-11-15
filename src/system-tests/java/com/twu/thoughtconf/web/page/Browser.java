@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Browser {
 
@@ -33,6 +34,12 @@ public class Browser {
             driver.get(url);
         }
         return this;
+    }
+
+    public void timeout(){
+
+            driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+
     }
 
     public String getHostAddress() {
