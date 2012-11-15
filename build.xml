@@ -63,7 +63,7 @@
         <sequential>
             <mkdir dir="${compile.dir}/classes"/>
             <javac srcdir="@{srcdir}/java" destdir="${compile.dir}/classes" classpathref="@{classpath}"
-                   includeantruntime="no" debug="yes"/>
+                   includeantruntime="no" debug="yes" encoding="UTF-8"/>
             <jar jarfile="${compile.dir}/@{jarfile}" basedir="${compile.dir}/classes">
                 <fileset dir="@{srcdir}/java" excludes="**/*.java"/>
             </jar>
