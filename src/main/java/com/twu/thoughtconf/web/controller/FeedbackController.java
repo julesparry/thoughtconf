@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +39,7 @@ public class FeedbackController {
    }
 
    @RequestMapping(value = "/feedback/create", method = RequestMethod.POST)
+   @ResponseBody
     public String saveFeedback(@PathVariable("sessionId") Integer sessionId,
                                @RequestParam("presenterRating")Integer presenterRating,
                                @RequestParam("contentRating") Integer contentRating,
@@ -45,7 +47,9 @@ public class FeedbackController {
                                HttpServletRequest httpServletRequest) {
         Feedback feedback = new Feedback(sessionId,httpServletRequest.getRemoteUser(),presenterRating,contentRating,overallRating);
         Feedback savedFeedback = feedbackRepository.save(feedback);
-        return  "redirect:confirmation/" + savedFeedback.getFeedbackId();
+
+        return  "confirmation/" + savedFeedback.getFeedbackId();
+//        return  "redirect:confirmation/" + savedFeedback.getFeedbackId();
     }
 
     @RequestMapping(value = "/feedback/confirmation/{feedbackId}", method= RequestMethod.GET)

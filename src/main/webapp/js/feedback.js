@@ -25,7 +25,12 @@ $(document).ready(function() {
     var feedback = new Feedback();
     feedback.initialVotePoint();
     $('.submit-btn').click(function(){
-        console.log('h----------------------------------------');
-        $.post("feedback/create", feedback.getVotedValues());
+        $.ajax({
+            type: 'POST',
+            url: "feedback/create",
+            data: feedback.getVotedValues(),
+            success: function(data) {
+                window.location="feedback/"+ data;      }
+        });
     });
 });

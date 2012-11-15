@@ -44,7 +44,7 @@ public class FeedbackControllerTest {
         String viewName = feedbackController.saveFeedback(SESSION_ID, PRESENTER_RATING, CONTENT_RATING, OVERALL_RATING, httpServletRequest);
 
         verify(feedbackRepository).save(new Feedback(SESSION_ID, USER, PRESENTER_RATING, CONTENT_RATING, OVERALL_RATING));
-        assertThat(viewName, is("redirect:confirmation/" + FEEDBACK_ID));
+        assertThat(viewName, is("confirmation/" + FEEDBACK_ID));
     }
     
    @Test
