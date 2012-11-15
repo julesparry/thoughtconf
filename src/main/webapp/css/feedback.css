@@ -1,44 +1,44 @@
 .feedback-title {
-  font-size: 62px;
+  font-size: 45px;
   line-height: 62px;
   height: 50px;
-  margin: 60px 40px 70px 40px;
+  margin: 40px 0 40px 30px;
 }
 
-.session-detail, .feedback-vote{
-  margin-left: 45px;
+.session-detail, .feedback-vote {
+  margin-left: 30px;
 }
 
-.feedback-vote hr{
+.feedback-vote hr {
   margin-left: -100px;
 }
 
-.feedback-vote span{
+.feedback-vote span {
   font-weight: lighter;
   font-size: 52px;
   line-height: 100px;
 }
 
-.vote-list{
+.vote-list {
   list-style-type: none;
 }
 
-.vote-item{
+.vote-item {
   font-size: 36px;
   font-weight: lighter;
   margin-bottom: 40px;
   margin: 40px 0;
 }
 
-.vote-item div{
+.vote-item div {
   float: left;
 }
 
-.vote-item div:first-child{
- width: 395px;
+.vote-item div:first-child {
+  width: 300px;
 }
 
-.submit-btn{
+.submit-btn {
   background: #D5E14D;
   border-radius: 10px;
   margin: 30px 40px 30px 40px;
@@ -48,13 +48,13 @@
   box-shadow: 0 0 10px #545454 inset;
 }
 
-.vote-point{
+.vote-point {
   margin-top: 0;
   padding-left: 0;
   list-style-type: none;
 }
 
-.vote-point li{
+.vote-point li {
   float: left;
   background: #444;
   margin-right: 20px;
@@ -62,10 +62,9 @@
   width: 50px;
   text-align: center;
   border-radius: 5px;
-  box-shadow:0px 0px 2px 1px #777777;
+  box-shadow: 0px 0px 2px 1px #777777;
 }
 
-.vote-point .active{
-  box-shadow:0px 0px 2px 1px #D5E14D;
+.vote-point .active {
+  box-shadow: 0px 0px 2px 1px #D5E14D;
 }
-
